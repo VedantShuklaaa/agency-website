@@ -147,6 +147,9 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
+  --font-twid: var(--font-twid);
+  /* ← add this */
+  --font-onest: var(--font-onest);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -167,7 +170,12 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }

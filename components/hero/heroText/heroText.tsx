@@ -8,7 +8,7 @@ export default function HeroText() {
 	return (
 		<div className=" flex flex-col items-between justify-center ">
 			<div className="h-[60vh] border-b border-black dark:border-zinc-700 flex items-end justify-between py-7 px-7">
-				<div className="h-[45vh] w-[30vw] text-7xl font-twid font-[500] flex flex-col">
+				<div className="h-[45vh] w-[30vw] text-7xl font-twid font-[500] flex flex-col ">
 					<span>DESIGN STUDIO</span>
 					<span>FOR TIMELESS</span>
 					<RotatingText />
@@ -16,10 +16,15 @@ export default function HeroText() {
 				<div className="h-[45vh] w-[25vw] border rounded-xl bg-white"></div>
 			</div>
 
-			<div className="h-[35vh] w-full border-b flex items-center justify-center">
-				<span className="text-7xl">
+			<div className="h-[35vh] w-full border-b border-black dark:border-zinc-600 flex items-center justify-center">
+				<span className="text-[17vw] font-twid font-[500] leading-none">
 					creative apes
 				</span>
+			</div>
+
+			<div className="h-[10vh] w-full border-b border-black dark:border-zinc-600 text-lg flex items-end justify-between px-7 py-2 text-black dark:text-zinc-400 font-twid">
+				<span>Powered by AI-enhanced workflows</span>
+				<span>Pune, Bangalore - India</span>
 			</div>
 		</div>
 	)

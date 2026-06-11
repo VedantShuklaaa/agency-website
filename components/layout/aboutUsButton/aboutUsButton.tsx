@@ -1,17 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
 
-interface NavLinkProps {
-	text: string;
-}
 
-export function NavLink({ text }: NavLinkProps) {
+
+export default function AboutUsText() {
+	const text = "ABOUT US";
+
 	return (
 		<motion.div
 			initial="rest"
 			whileHover="hover"
 			animate="rest"
-			className="relative overflow-hidden h-[1.2em] cursor-pointer"
+			className="relative overflow-hidden h-[1.2em] w-fit cursor-pointer "
 		>
 			{/* Current text */}
 			<div className="flex">
