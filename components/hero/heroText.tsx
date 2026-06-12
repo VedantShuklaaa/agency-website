@@ -6,9 +6,9 @@ const words = ["MOTION.", "BRANDING.", "UI/UX."];
 
 export default function HeroText() {
 	return (
-		<div className=" flex flex-col items-between justify-center ">
-			<div className="h-[60vh] border-b border-black dark:border-zinc-700 flex items-end justify-between py-7 px-7">
-				<div className="h-[45vh] w-[30vw] text-7xl font-twid font-[500] flex flex-col ">
+		<div className="flex flex-col items-between justify-center ">
+			<div className="h-[50vh] border-b border-black dark:border-zinc-700 flex items-end justify-between py-7 px-7">
+				<div className="h-[45vh] w-[30vw] text-7xl font-twid font-[500] flex flex-col">
 					<span>DESIGN STUDIO</span>
 					<span>FOR TIMELESS</span>
 					<RotatingText />

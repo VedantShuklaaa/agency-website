@@ -1,33 +1,94 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/theme/theme-button";
 import { NavLink } from "@/components/layout/navAnimation/navAnimation";
 import LiveTime from "./time";
+import Navlinks from "./navlinks";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const navItems = ["Home", "About", "Work", "Services", "AI Labs", "Contact"];
 
-const container = {
-	hidden: {},
-	show: {
-		transition: {
-			staggerChildren: 0.08,
-		},
-	},
-};
-
-const item = {
-	hidden: { opacity: 0, y: 16 },
-	show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
-};
-
-
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
+	const navbarRef = useRef<HTMLDivElement>(null);
+
+	useGSAP(() => {
+		if (!navbarRef.current) return;
+
+		let lastScrollY = window.scrollY;
+		let isHidden = false;
+
+		const handleScroll = () => {
+			if (isOpen) return;
+			const currentScrollY = window.scrollY;
+
+			// Always show near the top
+			if (currentScrollY < 50) {
+				if (isHidden) {
+					gsap.to(navbarRef.current, {
+						y: 0,
+						duration: 0.4,
+						ease: "power3.out",
+					});
+
+					isHidden = false;
+				}
+
+				lastScrollY = currentScrollY;
+				return;
+			}
+
+			const delta = currentScrollY - lastScrollY;
+
+			// Scrolling Down
+			if (delta > 10 && !isHidden) {
+				gsap.to(navbarRef.current, {
+					yPercent: -100,
+					duration: 0.4,
+					ease: "power3.out",
+				});
+
+				isHidden = true;
+			}
+
+			// Scrolling Up
+			if (delta < -10 && isHidden) {
+				gsap.to(navbarRef.current, {
+					yPercent: 0,
+					duration: 0.4,
+					ease: "power3.out",
+				});
+
+				isHidden = false;
+			}
+
+			lastScrollY = currentScrollY;
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, { scope: navbarRef });
+
+	useEffect(() => {
+		if (isOpen && navbarRef.current) {
+			gsap.to(navbarRef.current, {
+				yPercent: 0,
+				duration: 0.3,
+				ease: "power3.out",
+			});
+		}
+	}, [isOpen]);
 
 	return (
-		<div className="h-20 w-full border-b border-black dark:border-zinc-700 flex items-center justify-between px-4 lg:px-5 font-onest relative">
+		<div ref={navbarRef}
+			className="fixed top-0 left-0 z-[100] h-20 w-full bg-[background] border-b border-black dark:border-zinc-700 flex items-center justify-between px-4 lg:px-5 font-onest"
+		>
 			{/* Logo */}
 			<div className="text-lg sm:text-xl lg:text-xl flex items-center gap-2 text-black dark:text-white leading-none font-[700]">
 				<div className="h-10 w-10 lg:h-12 lg:w-12 border border-black dark:border-white"></div>
@@ -40,26 +101,7 @@ export default function Navbar() {
 
 			{/* Desktop Navigation */}
 			<div className="hidden lg:flex items-center gap-4 lg:gap-25">
-				<motion.div
-					className="flex gap-2"
-					variants={container}
-					initial="hidden"
-					animate="show"
-				>
-					{navItems.map((label, i) => (
-						<motion.div
-							key={label}
-							variants={item}
-							className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
-						>
-							<NavLink text={label} />
-
-							{i < navItems.length - 1 && (
-								<span className="pointer-events-none">,</span>
-							)}
-						</motion.div>
-					))}
-				</motion.div>
+				<Navlinks />
 
 				<div className="flex flex-col">
 					<div className="flex gap-2">

@@ -40,10 +40,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CursorDot />
-          <div className="absolute w-full">
-            <Navbar />
-          </div>
-          {children}
+          <Navbar />
+          <main className="pt-20">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

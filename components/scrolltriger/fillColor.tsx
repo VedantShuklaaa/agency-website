@@ -1,5 +1,4 @@
 "use client";
-
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,7 +18,7 @@ interface ScrollRevealTextProps {
 export default function ScrollRevealText({
 	text,
 	className = "",
-	initialColor = "text-zinc-400",
+	initialColor = "text-zinc-600",
 	stagger = 0.01,
 	start = "top 80%",
 	end = "bottom 40%",
@@ -29,7 +28,6 @@ export default function ScrollRevealText({
 	useGSAP(
 		() => {
 			if (!container.current) return;
-
 			const words = container.current.querySelectorAll(".char");
 
 			gsap.to(words, {

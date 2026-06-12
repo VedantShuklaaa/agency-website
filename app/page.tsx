@@ -6,6 +6,10 @@ import FeaturedWorkMarquee from "@/components/marquee/marquee1";
 import Reveal from "@/components/marquee/reveal";
 import Projects from "@/components/projects/projects";
 import FeaturedProjects from "@/components/projects/faturedProjects";
+import Marquee from "@/components/marquee/marquee1";
+import ScrollCarousel from "@/components/marquee/3DRollerMarquee";
+import ContactUs from "@/components/contactUsCard/contactUs";
+import Footer from "@/components/layout/footer/footer";
 
 
 
@@ -24,6 +28,13 @@ export default function HomePage() {
       </Reveal>
 
       <CarouselPage />
+
+      <Marquee text="clients©" />
+
+      <ScrollCarousel />
+
+      <ContactUs />
+      <Footer />
     </main>
   );
 }

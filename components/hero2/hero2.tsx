@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import ScrollRevealText from "@/components/scrolltriger/fillColor";
-import AboutUsText from "../layout/aboutUsButton/aboutUsButton";
+import SlidingText from "../layout/aboutUsButton/aboutUsButton";
 
 const items = [
 	"WORK",
@@ -78,10 +78,10 @@ export default function Hero2() {
 				<div />
 
 				<div className="flex flex-col gap-4">
-						<ScrollRevealText text={text} className="text-4xl"/>
+					<ScrollRevealText text={text} className="text-4xl" />
 					<div className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden">
 						<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
-						<span className="relative z-10"><AboutUsText text="ABOUT US"/></span>
+						<span className="relative z-10"><SlidingText text="ABOUT US" /></span>
 					</div>
 				</div>
 
