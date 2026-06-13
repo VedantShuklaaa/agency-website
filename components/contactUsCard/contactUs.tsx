@@ -8,7 +8,7 @@ import { NavLink } from "@/components/layout/navAnimation/navAnimation";
 
 export default function ContactUs() {
 	return (
-		<div className="h-[107vh] w-full">
+		<div className="h-[107vh] w-full" id="contact">
 			<div className="w-full flex items-center justify-between text-2xl text-black dark:text-zinc-400 border-b border-black dark:border-zinc-600 p-4">
 				<span>© Get in touch</span>
 				<span>(CAD® — 09)</span>
@@ -77,9 +77,9 @@ export default function ContactUs() {
 						</form>
 					</div>
 
-					<div className="h-15 w-15 cursor-pointer rounded-full bg-black dark:bg-white hover:bg-[#ff2d55] dark:hover:bg-[#ff2d55] transition-color duration-300 flex items-center justify-center">
+					<Link className="h-15 w-15 cursor-pointer rounded-full bg-black dark:bg-white hover:bg-[#ff2d55] dark:hover:bg-[#ff2d55] transition-color duration-300 flex items-center justify-center" href="#top">
 						<ArrowUp className="text-white dark:text-black h-6 w-6" />
-					</div>
+					</Link>
 				</div>
 			</div>
 

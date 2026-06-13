@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { NavLink } from "../navAnimation/navAnimation";
+import Link from "next/link";
 
-const navItems = ["Home", "About", "Work", "Services", "AI Labs", "Contact"];
+const navItems = [
+	{ label: "Home", href: "/" },
+	{ label: "About", href: "/about" },
+	{ label: "Work", href: "#work" },
+	{ label: "Services", href: "/services" },
+	{ label: "AI Labs", href: "#ai-labs" },
+	{ label: "Contact", href: "#contact" },
+];
 
 const container = {
 	hidden: {},
@@ -27,11 +35,13 @@ export default function Navlinks() {
 		>
 			{navItems.map((label, i) => (
 				<motion.div
-					key={label}
+					key={label.label}
 					variants={item}
 					className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
 				>
-					<NavLink text={label} />
+					<Link href={label.href}>
+						<NavLink text={label.label} />
+					</Link>
 
 					{i < navItems.length - 1 && (
 						<span className="pointer-events-none">,</span>

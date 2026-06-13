@@ -48,7 +48,7 @@ export default function ScrollRevealText({
 	return (
 		<p
 			ref={container}
-			className={` ${className}`}
+			className={`mix-blend-difference ${className}`}
 		>
 			{text.split(" ").map((word, i) => (
 				<span

@@ -33,8 +33,6 @@ const projects = [
 
 
 export default function Projects() {
-	const cardRef = useRef<HTMLDivElement>(null);
-
 	useGSAP(() => {
 		gsap.registerPlugin(ScrollTrigger);
 
@@ -60,7 +58,7 @@ export default function Projects() {
 
 	return (
 		<div>
-			<div className="grid grid-cols-2 grid-rows-3 h-[240vh] font-onest font-light">
+			<div className="grid grid-cols-2 grid-rows-3 h-[240vh] font-onest font-light" id="work">
 				{projects.map((project, index) => (
 					<div
 						key={project.title}

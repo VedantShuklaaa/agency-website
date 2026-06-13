@@ -218,7 +218,7 @@ const text = "Our Lab is where we explore AI-driven workflows, emerging tools, a
 
 export default function carouselPage() {
 	return (
-		<div className="relative w-full font-twid">
+		<div className="relative w-full font-twid" id="ai-labs">
 
 			{/* HERO */}
 			<section className="relative min-h-screen flex flex-col items-center justify-center gap-8">

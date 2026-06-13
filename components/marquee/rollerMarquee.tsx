@@ -45,7 +45,7 @@ export default function ScrollCarousel() {
 	}, { scope: sectionRef, dependencies: [] });
 
 	return (
-		<section ref={sectionRef} className="relative h-screen overflow-hidden flex flex-col">
+		<section ref={sectionRef} className="relative h-screen overflow-hidden flex flex-col" id="services">
 			<div className="flex h-full items-center">
 				<div ref={trackRef} className="flex gap-8">
 					{CARDS.map((src, i) => (

@@ -3,8 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { onest, twidGrotesk } from "@/fonts/fonts";
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/layout/navbar/navbar";
+import { LoaderWrapper } from "@/components/layout/loader/loader";
 import "./globals.css";
 import CursorDot from "@/components/layout/cursorDot/cursorDot";
+import Footer from "@/components/layout/footer/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,8 +44,11 @@ export default function RootLayout({
           <CursorDot />
           <Navbar />
           <main className="pt-20">
-            {children}
+            <LoaderWrapper>
+              {children}
+            </LoaderWrapper>
           </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

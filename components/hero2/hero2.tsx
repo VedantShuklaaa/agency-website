@@ -19,7 +19,7 @@ export default function Hero2() {
 	const [active, setActive] = useState<string | null>(null);
 
 	return (
-		<div className="h-[70vh] w-full border-b border-black dark:border-zinc-600 flex">
+		<div className="h-[70vh] w-full border-b border-black dark:border-zinc-600 flex" id="about">
 			<div className="h-full w-full flex flex-col relative justify-center p-4">
 				<div className="h-full w-full flex flex-col justify-center">
 					{items.map((item) => (
