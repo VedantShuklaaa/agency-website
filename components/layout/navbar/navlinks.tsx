@@ -7,8 +7,10 @@ const navItems = [
 	{ label: "About", href: "/about" },
 	{ label: "Work", href: "#work" },
 	{ label: "Services", href: "/services" },
-	{ label: "AI Labs", href: "#ai-labs" },
+	{ label: "Community", href: "/href"},
 	{ label: "Contact", href: "#contact" },
+	{ label: "Blog", href: "/Blog" },
+	{ label: "Merch", href: "/merch" },
 ];
 
 const container = {

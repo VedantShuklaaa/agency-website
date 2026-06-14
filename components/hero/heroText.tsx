@@ -2,23 +2,25 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const words = ["MOTION.", "BRANDING.", "UI/UX."];
+const words = ["CULTURE.", "COMMUNITY.", "CONSISTENCY."];
 
 export default function HeroText() {
 	return (
 		<div className="flex flex-col items-between justify-center " id="top">
 			<div className="h-[50vh] border-b border-black dark:border-zinc-700 flex items-end justify-between py-7 px-7">
-				<div className="h-[45vh] w-[30vw] text-7xl font-twid font-[500] flex flex-col">
-					<span>DESIGN STUDIO</span>
-					<span>FOR TIMELESS</span>
+				<div className="h-[45vh] w-[45vw] text-6xl font-twid font-[500] flex flex-col">
+					<span>FROM EMPTY SPACES</span>
+					<span>TO HIGH-DEMAND DESINATIONS</span>
+					<span>WE ARCHITECT</span>
 					<RotatingText />
 				</div>
 				<div className="h-[45vh] w-[25vw] border rounded-xl bg-black dark:bg-white"></div>
 			</div>
 
 			<div className="h-[35vh] w-full border-b border-black dark:border-zinc-600 flex items-center justify-center">
-				<span className="text-[17vw] font-twid font-[500] leading-none">
-					creative apes
+				<span className="text-[6vw] font-twid font-[500] leading-none text-center flex flex-col">
+					<span>WILDBOYS TRIBE</span>
+					<span>NIGHTLIFE & ENTERTAINMENT ARCHITECTS</span>
 				</span>
 			</div>
 

@@ -214,7 +214,7 @@ export function CardStack() {
 
 
 
-const text = "Our Lab is where we explore AI-driven workflows, emerging tools, and modern creative production methods. From testing AI video ads and content systems to experimenting with new design and development approaches, this is where ideas are validated before being applied to real client work.";
+const text = "This is where we deploy our systems. Each space becomes a live environment where we test potential, apply operational expertise, and refine performance in real time. From unlocking venue potential to experimenting with new models, business architecture, and growth strategies, everything is built to drive relevance, consistency, and demand. If it doesn’t perform, it doesn’t stay.";
 
 export default function carouselPage() {
 	return (

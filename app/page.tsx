@@ -9,7 +9,6 @@ import FeaturedProjects from "@/components/projects/faturedProjects";
 import Marquee from "@/components/marquee/marquee1";
 import ScrollCarousel from "@/components/marquee/rollerMarquee";
 import ContactUs from "@/components/contactUsCard/contactUs";
-import Footer from "@/components/layout/footer/footer";
 
 
 
@@ -24,12 +23,10 @@ export default function HomePage() {
       <FeaturedProjects />
 
       <Reveal>
-        <FeaturedWorkMarquee text="creative AI labs©" />
+        <FeaturedWorkMarquee text="@Venues" />
       </Reveal>
 
       <CarouselPage />
-
-      <Marquee text="clients©" />
 
       <ScrollCarousel />
 

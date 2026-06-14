@@ -10,9 +10,10 @@ const items = [
 	"ABOUT",
 	"SERVICES",
 	"CONTACT",
+	"COMMUNITY",
 ];
 
-const text = "We’re a creative design and development studio based in India, working with brands across branding, UI/UX, motion, and interactive web experiences. Our focus is on building clear, scalable digital systems, supported by AI-enhanced workflows that help us move faster without compromising craft.";
+const text = "We are India's First Nightlife & Entertainment Growth Studio. We design operating systems that make venues culturally relevant, community - led, and consistently engaging.";
 
 
 export default function Hero2() {

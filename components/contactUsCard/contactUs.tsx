@@ -8,12 +8,7 @@ import { NavLink } from "@/components/layout/navAnimation/navAnimation";
 
 export default function ContactUs() {
 	return (
-		<div className="h-[107vh] w-full" id="contact">
-			<div className="w-full flex items-center justify-between text-2xl text-black dark:text-zinc-400 border-b border-black dark:border-zinc-600 p-4">
-				<span>© Get in touch</span>
-				<span>(CAD® — 09)</span>
-				<span>Studio Wrap</span>
-			</div>
+		<div className="h-[100vh] w-full" id="contact">
 
 			<div className="h-[92vh] w-full grid grid-cols-2 font-onest">
 				<div className="w-full h-full flex items-center justify-center p-4">

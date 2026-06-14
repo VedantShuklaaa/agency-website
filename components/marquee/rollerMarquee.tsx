@@ -3,19 +3,23 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Marquee from "./marquee1";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CARDS = [
-	"/images/1.jpg",
-	"/images/2.jpg",
-	"/images/3.jpg",
-	"/images/4.jpg",
-	"/images/5.jpg",
+	"POCO",
+	"Pure Project",
+	"Groww",
+	"cult.",
+	"prime video",
+	"xiaomi",
+	"POCO",
+	"cult.",
 ];
 
 const CARD_WIDTH_VW = 0.6;
-const GAP = 32; 
+const GAP = 32;
 
 export default function ScrollCarousel() {
 	const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,9 +30,8 @@ export default function ScrollCarousel() {
 		const section = sectionRef.current;
 		if (!track || !section) return;
 
-		const cardWidth = window.innerWidth * CARD_WIDTH_VW;
-		const totalWidth = CARDS.length * cardWidth + (CARDS.length - 1) * GAP;
-		const scrollDistance = totalWidth - window.innerWidth;
+		const scrollDistance =
+			track.scrollWidth - section.clientWidth - 64;
 
 		gsap.to(track, {
 			x: -scrollDistance,
@@ -45,20 +48,30 @@ export default function ScrollCarousel() {
 	}, { scope: sectionRef, dependencies: [] });
 
 	return (
-		<section ref={sectionRef} className="relative h-screen overflow-hidden flex flex-col" id="services">
-			<div className="flex h-full items-center">
-				<div ref={trackRef} className="flex gap-8">
+		<section
+			ref={sectionRef}
+			className="relative overflow-hidden flex flex-col font-twid"
+		>
+			<Marquee text="clients©" />
+
+			<div className="flex h-full items-center border-t border-black dark:border-zinc-600">
+				<div ref={trackRef} className="flex gap-8 px-8 py-4">
 					{CARDS.map((src, i) => (
 						<div
 							key={i}
-							className="carousel-card h-[75vh] w-[60vw] flex-shrink-0 overflow-hidden rounded-xl border border-zinc-700"
+							className="carousel-card h-[40vh] w-[30vw] flex-shrink-0 overflow-hidden rounded-sm border border-zinc-700 flex items-center justify-center text-5xl shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
 						>
-							<img src={src} alt={`slide ${i + 1}`} className="h-full w-full object-cover" />
+							{src}
 						</div>
 					))}
 				</div>
 			</div>
 
+			<div className="w-full flex items-center justify-between text-xl text-black dark:text-zinc-400 border-b border-black dark:border-zinc-600 p-4">
+				<span>© Get in touch</span>
+				<span>(CAD® — 09)</span>
+				<span>Studio Wrap</span>
+			</div>
 		</section>
 	);
 }

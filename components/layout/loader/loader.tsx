@@ -28,8 +28,8 @@ export default function Loader({ onComplete }: LoaderProps) {
 		)
 			// 2. text grows + slides to bottom simultaneously
 			.to(textRef.current, {
-				y: "27vh",
-				fontSize: "17vw",
+				y: "26vh",
+				fontSize: "6vw",
 				duration: 2,
 				ease: "power3.inOut",
 			})
@@ -56,9 +56,11 @@ export default function Loader({ onComplete }: LoaderProps) {
 			{/* text sits above bg, never moves in step 3 */}
 			<div
 				ref={textRef}
-				className="relative z-10 text-white text-7xl font-twid font-medium whitespace-nowrap"
+				className="relative z-10 text-white text-3xl font-twid font-medium whitespace-nowrap flex flex-col text-center leading-none"
 			>
-				creative apes
+				<span>WILDBOYS TRIBE</span>
+				<span>NIGHTLIFE & ENTERTAINMENT</span>
+				<span>ARCHITECTS</span>
 			</div>
 		</div>
 	);
