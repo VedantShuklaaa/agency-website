@@ -31,6 +31,7 @@ export default function Reveal({
 				duration,
 				ease: [0.22, 1, 0.36, 1],
 			}}
+			className="border-b border-black dark:border-zinc-600"
 		>
 			{children}
 		</motion.div>

@@ -5,7 +5,7 @@ import CarouselPage from "@/components/layout/3DCarousel/carousel";
 import FeaturedWorkMarquee from "@/components/marquee/marquee1";
 import Reveal from "@/components/marquee/reveal";
 import Projects from "@/components/projects/projects";
-import FeaturedProjects from "@/components/projects/faturedProjects";
+import FeaturedProjects from "@/components/projects/featuredProjects";
 import Marquee from "@/components/marquee/marquee1";
 import ScrollCarousel from "@/components/marquee/rollerMarquee";
 import ContactUs from "@/components/contactUsCard/contactUs";
@@ -22,7 +22,10 @@ export default function HomePage() {
         <Marquee text="featured works©" />
       </Reveal>
       <Projects />
-      
+
+      <Reveal>
+        <Marquee text="Experiences©" />
+      </Reveal>
       <FeaturedProjects />
 
       <Reveal>

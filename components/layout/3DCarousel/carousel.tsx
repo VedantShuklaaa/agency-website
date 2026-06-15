@@ -7,6 +7,7 @@ import SlidingText from "../aboutUsButton/aboutUsButton";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TiltCard from "../tiltCard/tiltCard";
 import { SentenceRoll } from "../navAnimation/navAnimation";
+import Marquee from "@/components/marquee/marquee1";
 
 interface OrbitBackgroundProps {
 	pivotX?: string;
@@ -133,24 +134,28 @@ const cards = [
 		color: "bg-black",
 		tilt: "2",
 		cardColor: "bg-red-400",
+		description: "We partner with brands to create design systems that scale. Our work includes art direction, responsive web design, and visual content that communicates what words can't.",
 	},
 	{
 		title: "ENGINEERING",
 		color: "bg-purple-300",
 		tilt: "-4",
 		cardColor: "bg-black",
+		description: "We build websites that empower founders and marketers to react quickly, test concepts, and measure results. We cut our teeth at full-stack developers on enterprise platforms and custom builds, and we apply that same discipline to low-code systems like Webflow. We specialize in large-scale migrations from WordPress to Webflow, helping organizations move past painful maintenance and Frankenstein builds to clean, modern systems.",
 	},
 	{
 		title: "STRATEGY",
 		color: "bg-teal-200",
 		tilt: "2",
 		cardColor: "bg-white",
+		description: "Our approach to strategy is precise, efficient, and grounded in expertise. We consider everything from competitive landscape and project goals to tactical plans for SEO and conversion optimization. Strategic planning sets the foundation for creative work, so we move through it quickly and deliberately. Our process eliminates the bottlenecks and endless conceptual discussions that drag out early phases and cause delays downstream.",
 	},
 	{
 		title: "DESIGN",
 		color: "bg-black",
 		tilt: "-4",
 		cardColor: "bg-red-400",
+		description: "We partner with brands to create design systems that scale. Our work includes art direction, responsive web design, and visual content that communicates what words can't.",
 	},
 ];
 
@@ -211,10 +216,11 @@ export function CardStack() {
 						zIndex: idx - 1,
 					}}
 				>
-					<div className={`stack-card h-screen w-screen flex items-center justify-center text-[150px] font-bold text-white ${card.color}`}>
+					<div className={`stack-card h-screen w-screen flex items-center justify-center font-twid text-[150px] font-bold text-white ${card.color}`}>
 						<div className="h-full w-full flex flex-col justify-between p-10">
-							<div>
+							<div className="flex flex-col gap-4 leading-none">
 								<span className="h-10 w-10 rounded-full border border-white flex items-center justify-center text-xl">{idx + 1}</span>
+								<span className={`text-2xl w-[40vw] font-light ${card.color == "bg-black" ? `text-white` : `text-black`}`}>{card.description}</span>
 							</div>
 							<span className={`${card.color === "bg-black" ? "text-white" : `text-black`}`}>{card.title}</span>
 						</div>
@@ -233,7 +239,7 @@ const text = "This is where we deploy our systems. Each space becomes a live env
 export default function carouselPage() {
 	return (
 		<div className="relative w-full font-twid" id="ai-labs">
-			<section className="relative min-h-screen flex flex-col items-center justify-center gap-8">
+			<section className="relative min-h-screen flex flex-col items-center justify-center gap-8 border-b border-black dark:border-zinc-600">
 				<div className="absolute inset-0 pointer-events-none">
 					<OrbitBackground pivotY="30%" />
 				</div>
@@ -252,10 +258,9 @@ export default function carouselPage() {
 						<SlidingText text="INSIDE AI LABS" />
 					</span>
 				</div>
-
-
 			</section>
 
+			<Marquee text="@Intellectual Property"/>
 			{/* STACK SECTION */}
 			<CardStack />
 

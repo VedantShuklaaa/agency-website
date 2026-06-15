@@ -51,18 +51,18 @@ export default function ScrollCarousel() {
 	return (
 		<section
 			ref={sectionRef}
-			className="relative overflow-hidden flex flex-col font-twid"
+			className="relative overflow-hidden flex flex-col font-twid border-b border-black dark:border-zinc-600"
 		>
 			<Reveal>
 				<Marquee text="clients©" />
 			</Reveal>
 
-			<div className="flex h-full items-center border-t border-black dark:border-zinc-600">
+			<div className="flex h-full items-center">
 				<div ref={trackRef} className="flex gap-8 px-8 py-4">
 					{CARDS.map((src, i) => (
 						<div
 							key={i}
-							className="carousel-card h-[40vh] w-[30vw] flex-shrink-0 overflow-hidden rounded-sm border border-zinc-700 flex items-center justify-center text-5xl shadow-[0_0_40px_rgba(0,0,0,0.15)] dark:shadow-[0_0_60px_rgba(203,249,213,0.35)]"
+							className="carousel-card h-[40vh] w-[30vw] flex-shrink-0 overflow-hidden rounded-sm border border-zinc-700 flex items-center justify-center text-5xl"
 						>
 							{src}
 						</div>
