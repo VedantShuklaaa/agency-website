@@ -73,7 +73,7 @@ export default function Navbar() {
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, { scope: navbarRef });
+	}, { scope: navbarRef, dependencies: []  });
 
 	useEffect(() => {
 		if (isOpen && navbarRef.current) {

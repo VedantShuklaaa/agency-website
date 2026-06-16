@@ -8,6 +8,7 @@ import "./globals.css";
 import CursorDot from "@/components/layout/cursorDot/cursorDot";
 import Footer from "@/components/layout/footer/footer";
 import PageTransition from "@/components/layout/pageTransition/pageTransition";
+import LenisProvider from "@/components/layout/lenis/lenis";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <LenisProvider />
           <PageTransition />
 
           <CursorDot />

@@ -11,7 +11,7 @@ export default async function WorkPage({
 	return (
 		<div className="w-full bg-[background] flex flex-col items-center gap-10">
 			<div className="w-full border-b border-black dark:border-zinc-600">
-				<Marquee text={`/${(await params).slug.toLocaleLowerCase()}`} />
+				<Marquee text={slug} />
 			</div>
 
 			<div className="h-[80vh] w-[80vw] border-t border-l border-r rounded-t-[15px] bg-pink-200"></div>
@@ -29,7 +29,7 @@ export default async function WorkPage({
 						<div className="h-full w-full flex flex-col gap-5 py-10">
 							<div className="flex flex-col">
 								<span className="text-zinc-600 dark:text-zinc-400 text-sm">Client:</span>
-								<span className="text-lg">{(await params).slug}</span>
+								<span className="text-lg">{slug}</span>
 							</div>
 
 							<div className="flex flex-col">

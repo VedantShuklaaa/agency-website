@@ -38,7 +38,7 @@ export default function FloatingCard({
 				},
 			}
 		);
-	}, []);
+	}, { scope: cardRef, dependencies: [] });
 
 	return (
 		<div

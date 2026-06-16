@@ -47,19 +47,11 @@ const Skiper30 = () => {
 	const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
 
 	useEffect(() => {
-		const lenis = new Lenis();
-
-		const raf = (time: number) => {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		};
-
 		const resize = () => {
 			setDimension({ width: window.innerWidth, height: window.innerHeight });
 		};
 
 		window.addEventListener("resize", resize);
-		requestAnimationFrame(raf);
 		resize();
 
 		return () => {

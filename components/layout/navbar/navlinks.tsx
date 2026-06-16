@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { NavLink } from "../navAnimation/navAnimation";
 import TransitionLink from "../pageTransition/transitionLink";

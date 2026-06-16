@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Marquee from "./marquee1";
-import Reveal from "./reveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,9 +17,6 @@ const CARDS = [
 	"POCO",
 	"cult.",
 ];
-
-const CARD_WIDTH_VW = 0.6;
-const GAP = 32;
 
 export default function ScrollCarousel() {
 	const sectionRef = useRef<HTMLDivElement>(null);
@@ -53,9 +49,9 @@ export default function ScrollCarousel() {
 			ref={sectionRef}
 			className="relative overflow-hidden flex flex-col font-twid border-b border-black dark:border-zinc-600"
 		>
-			<Reveal>
+			<div className="flex w-full border-b border-black dark:border-zinc-600">
 				<Marquee text="clients©" />
-			</Reveal>
+			</div>
 
 			<div className="flex h-full items-center">
 				<div ref={trackRef} className="flex gap-8 px-8 py-4">

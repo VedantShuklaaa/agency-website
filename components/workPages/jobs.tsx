@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Jobs() {
 	return (
-		<div className="h-[50vh] w-full flex flex-col items-center justify-between py-4">
+		<div className="h-[50vh] w-full flex flex-col items-center justify-between py-4 border-b border-black dark:border-zinc-600">
 			<div className="h-[20%] w-full flex items-center justify-center">
 				<h1 className="text-6xl">JOB OPENINGS</h1>
 			</div>

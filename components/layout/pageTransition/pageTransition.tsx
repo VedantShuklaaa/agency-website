@@ -1,16 +1,22 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 export default function PageTransition() {
 	const pathname = usePathname();
 
+	const [firstLoad, setFirstLoad] = useState(true);
+
+	useEffect(() => {
+		setFirstLoad(false);
+	}, []);
+
 	return (
 		<motion.div
 			key={pathname}
 			id="page-transition"
-			initial={{ y: "0%" }}
+			initial={{ y: firstLoad ? "-100%" : "0%" }} 
 			animate={{ y: "-100%" }}
 			transition={{
 				duration: 1,

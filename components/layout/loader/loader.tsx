@@ -1,8 +1,8 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { flushSync } from "react-dom";
 
 interface LoaderProps {
 	onComplete?: () => void;
@@ -14,26 +14,20 @@ export default function Loader({ onComplete }: LoaderProps) {
 	const bgRef = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
+		// timeline must be inside useGSAP
 		const tl = gsap.timeline({ onComplete });
 
-		// 1. text starts above screen, slides to center
 		tl.fromTo(
 			textRef.current,
 			{ y: "-100vh", opacity: 1 },
-			{
-				y: "0vh",
-				duration: 1.5,
-				ease: "power3.out",
-			}
+			{ y: "0vh", duration: 1.5, ease: "power3.out" }
 		)
-			// 2. text grows + slides to bottom simultaneously
 			.to(textRef.current, {
 				y: "26.5vh",
 				fontSize: "6vw",
 				duration: 2,
 				ease: "power3.inOut",
 			})
-			// 3. background panel slides up revealing page
 			.to(bgRef.current, {
 				opacity: 0,
 				duration: 0.8,
@@ -47,13 +41,7 @@ export default function Loader({ onComplete }: LoaderProps) {
 			ref={loaderRef}
 			className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
 		>
-			{/* background as separate layer */}
-			<div
-				ref={bgRef}
-				className="absolute inset-0 bg-[background]"
-			/>
-
-			{/* text sits above bg, never moves in step 3 */}
+			<div ref={bgRef} className="absolute inset-0 bg-background" />
 			<div
 				ref={textRef}
 				className="relative z-10 text-white text-3xl font-twid font-medium whitespace-nowrap flex flex-col text-center leading-none"
@@ -68,15 +56,16 @@ export default function Loader({ onComplete }: LoaderProps) {
 
 export function LoaderWrapper({ children }: { children: React.ReactNode }) {
 	const [loaded, setLoaded] = useState(false);
-	const router = useRouter();
-
-	useEffect(() => {
-		router.replace("/");
-	}, []);
 
 	return (
 		<>
-			{!loaded && <Loader onComplete={() => setLoaded(true)} />}
+			{!loaded && (
+				<Loader
+					onComplete={() => {
+						flushSync(() => setLoaded(true));
+					}}
+				/>
+			)}
 			{children}
 		</>
 	);

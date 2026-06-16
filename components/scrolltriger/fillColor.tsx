@@ -42,9 +42,8 @@ export default function ScrollRevealText({
 				},
 			});
 		},
-		{ scope: container }
+		{ scope: container, dependencies: [] }
 	);
-
 	return (
 		<p
 			ref={container}

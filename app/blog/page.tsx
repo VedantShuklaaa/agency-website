@@ -13,7 +13,7 @@ export default function Page() {
 				<Skiper49 />
 			</div>
 
-			<div className="w-full flex flex-col p-4 gap-2 font-twid">
+			<div className="w-full flex flex-col p-4 gap-2 font-twid border-b border-black dark:border-zinc-600">
 				{blogs.map((items, idx) => (
 					<motion.div
 						key={idx}

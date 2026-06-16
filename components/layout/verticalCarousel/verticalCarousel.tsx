@@ -1,7 +1,8 @@
 "use client";
-import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import SlidingText from "../aboutUsButton/aboutUsButton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -52,7 +53,7 @@ export function ProcessCardRight() {
 	const stageRef = useRef<HTMLDivElement>(null);
 	const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-	useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		const ctx = gsap.context(() => {
 			const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
 			const n = cards.length;

@@ -6,7 +6,7 @@ import SlidingText from "../layout/aboutUsButton/aboutUsButton";
 
 export default function Links() {
 	return (
-		<div className="flex flex-col w-full p-4 gap-10 border-b border-black dark:border-zinc-600">
+		<div className="flex flex-col w-full p-4 gap-3 border-b border-black dark:border-zinc-600">
 			<UnderlineHover>
 				<SentenceRoll className="text-xl font-onest" text="Office: Banglore, Pune. India" />
 			</UnderlineHover>

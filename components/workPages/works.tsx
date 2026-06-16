@@ -8,6 +8,7 @@ import Link from "next/link";
 
 export default function Works() {
 	const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+	const containerRef = useRef<HTMLDivElement>(null);
 
 	useGSAP(() => {
 		cardsRef.current.forEach((card) => {
@@ -34,9 +35,9 @@ export default function Works() {
 				}
 			);
 		});
-	}, []);
+	}, { scope: containerRef, dependencies: [] });
 	return (
-		<div className="w-full flex flex-col p-4 font-twid gap-8">
+		<div className="w-full flex flex-col p-4 font-twid gap-8" ref={containerRef}>
 			{projects.map((items, idx) => (
 				<Link
 					key={idx}

@@ -178,10 +178,6 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 .backface-hidden {
 	backface-visibility: hidden;
 	transform-style: preserve-3d;
