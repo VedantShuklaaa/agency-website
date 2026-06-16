@@ -3,17 +3,18 @@ import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/theme/theme-button";
-import { NavLink } from "@/components/layout/navAnimation/navAnimation";
 import LiveTime from "./time";
 import Navlinks from "./navlinks";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
-const navItems = ["Home", "About", "Work", "Services", "AI Labs", "Contact"];
-
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
+
 	const navbarRef = useRef<HTMLDivElement>(null);
+	const isOpenRef = useRef(false);
+
+	useEffect(() => { isOpenRef.current = isOpen }, [isOpen]);
 
 	useGSAP(() => {
 		if (!navbarRef.current) return;
@@ -22,14 +23,15 @@ export default function Navbar() {
 		let isHidden = false;
 
 		const handleScroll = () => {
-			if (isOpen) return;
+			if (isOpenRef.current) return;
+
 			const currentScrollY = window.scrollY;
 
-			// Always show near the top
+			// Always show near top
 			if (currentScrollY < 50) {
 				if (isHidden) {
 					gsap.to(navbarRef.current, {
-						y: 0,
+						yPercent: 0,
 						duration: 0.4,
 						ease: "power3.out",
 					});
@@ -43,7 +45,7 @@ export default function Navbar() {
 
 			const delta = currentScrollY - lastScrollY;
 
-			// Scrolling Down
+			// Scroll down
 			if (delta > 10 && !isHidden) {
 				gsap.to(navbarRef.current, {
 					yPercent: -100,
@@ -54,7 +56,7 @@ export default function Navbar() {
 				isHidden = true;
 			}
 
-			// Scrolling Up
+			// Scroll up
 			if (delta < -10 && isHidden) {
 				gsap.to(navbarRef.current, {
 					yPercent: 0,
@@ -73,7 +75,7 @@ export default function Navbar() {
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, { scope: navbarRef, dependencies: []  });
+	}, { scope: navbarRef });
 
 	useEffect(() => {
 		if (isOpen && navbarRef.current) {
@@ -86,28 +88,31 @@ export default function Navbar() {
 	}, [isOpen]);
 
 	return (
-		<div ref={navbarRef}
+		<div
+			ref={navbarRef}
 			className="fixed top-0 left-0 z-[100] h-20 w-full bg-[background] border-b border-black dark:border-zinc-700 flex items-center justify-between px-4 lg:px-5 font-onest"
 		>
 			{/* Logo */}
 			<div className="text-lg sm:text-xl lg:text-xl flex items-center gap-2 text-black dark:text-white leading-none font-[700]">
-				<div className="h-10 w-10 lg:h-12 lg:w-12 border border-black dark:border-white"></div>
+				<div className="h-10 w-10 lg:h-12 lg:w-12 border border-black dark:border-white lg:hidden" />
 
 				<div className="flex flex-col">
-					<h1>creative</h1>
-					<h1>apes</h1>
+					<h1>WILDBOY</h1>
+					<h1>TRIBES</h1>
 				</div>
 			</div>
 
+
+			<Navlinks />
+
 			{/* Desktop Navigation */}
 			<div className="hidden lg:flex items-center gap-4 lg:gap-25">
-				<Navlinks />
-
 				<div className="flex flex-col">
 					<div className="flex gap-2">
 						<span className="text-black dark:text-white text-sm">
 							Based in India
 						</span>
+
 						<span className="text-xs flex items-end text-red-500">
 							<LiveTime />
 						</span>
@@ -121,7 +126,7 @@ export default function Navbar() {
 				<ThemeToggle />
 			</div>
 
-			{/* Mobile Menu Button */}
+			{/* Mobile Button */}
 			<button
 				onClick={() => setIsOpen(!isOpen)}
 				className="lg:hidden text-black dark:text-white"
@@ -129,7 +134,7 @@ export default function Navbar() {
 				{isOpen ? <X size={28} /> : <Menu size={28} />}
 			</button>
 
-			{/* Mobile Dropdown */}
+			{/* Mobile Menu */}
 			<motion.div
 				initial={false}
 				animate={{
@@ -141,9 +146,7 @@ export default function Navbar() {
 				className="absolute top-20 left-0 w-full bg-white dark:bg-black border-b border-black dark:border-zinc-700 lg:hidden z-50"
 			>
 				<div className="flex flex-col items-center p-6 gap-6">
-					{navItems.map((item) => (
-						<NavLink key={item} text={item} />
-					))}
+					<Navlinks />
 
 					<div className="border-t border-zinc-300 dark:border-zinc-700 pt-6">
 						<ThemeToggle />
@@ -151,5 +154,5 @@ export default function Navbar() {
 				</div>
 			</motion.div>
 		</div>
-	)
+	);
 }

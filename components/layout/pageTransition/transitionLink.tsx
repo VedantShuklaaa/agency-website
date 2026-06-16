@@ -16,25 +16,16 @@ export default function TransitionLink({
 }: Props) {
 	const router = useRouter();
 
-	const handleClick = (
-		e: React.MouseEvent<HTMLAnchorElement>
-	) => {
+	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
 		e.preventDefault();
-
 		gsap.fromTo(
 			"#page-transition",
-			{
-				y: "100%",
-			},
+			{ y: "100%" },
 			{
 				y: "0%",
-				duration: 0.8,
+				duration: 0.7,
 				ease: "power4.inOut",
-				onComplete: () => {
-					router.push(href, {
-						scroll: true,
-					});
-				}
+				onComplete: () => router.push(href),
 			}
 		);
 	};

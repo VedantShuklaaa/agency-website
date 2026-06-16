@@ -33,7 +33,7 @@ export default function Marquee({
 			ease: "none",
 			repeat: -1,
 		});
-	}, []);
+	}, { dependencies: [] });
 
 	return (
 		<div className={containerClassName}>

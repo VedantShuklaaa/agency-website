@@ -77,7 +77,7 @@ export function VerticalMarquee({
 				},
 			}
 		);
-	}, []);
+	}, { scope: containerRef, dependencies: [] });
 
 	return (
 		<div

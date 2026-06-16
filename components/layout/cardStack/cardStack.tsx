@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TiltCard from "../tiltCard/tiltCard";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +14,7 @@ const cards = [
 		color: "bg-black",
 		tilt: "2",
 		cardColor: "bg-red-400",
+		src: "/1.png",
 		description: "We partner with brands to create design systems that scale. Our work includes art direction, responsive web design, and visual content that communicates what words can't.",
 	},
 	{
@@ -20,6 +22,7 @@ const cards = [
 		color: "bg-purple-300",
 		tilt: "-4",
 		cardColor: "bg-black",
+		src: "/2.png",
 		description: "We build websites that empower founders and marketers to react quickly, test concepts, and measure results. We cut our teeth at full-stack developers on enterprise platforms and custom builds, and we apply that same discipline to low-code systems like Webflow. We specialize in large-scale migrations from WordPress to Webflow, helping organizations move past painful maintenance and Frankenstein builds to clean, modern systems.",
 	},
 	{
@@ -27,6 +30,7 @@ const cards = [
 		color: "bg-teal-200",
 		tilt: "2",
 		cardColor: "bg-white",
+		src: "/3.png",
 		description: "Our approach to strategy is precise, efficient, and grounded in expertise. We consider everything from competitive landscape and project goals to tactical plans for SEO and conversion optimization. Strategic planning sets the foundation for creative work, so we move through it quickly and deliberately. Our process eliminates the bottlenecks and endless conceptual discussions that drag out early phases and cause delays downstream.",
 	},
 	{
@@ -34,6 +38,7 @@ const cards = [
 		color: "bg-black",
 		tilt: "-4",
 		cardColor: "bg-red-400",
+		src: "/4.png",
 		description: "We partner with brands to create design systems that scale. Our work includes art direction, responsive web design, and visual content that communicates what words can't.",
 	},
 ];
@@ -44,46 +49,43 @@ const cards = [
 export default function CardStack() {
 	const sectionRef = useRef<HTMLDivElement>(null);
 
-	useGSAP(
-		() => {
-			const cards = gsap.utils.toArray<HTMLElement>(".stack-card");
+	useGSAP(() => {
+		const cards = gsap.utils.toArray<HTMLElement>(".stack-card");
 
-			cards.forEach((card, i) => {
-				if (i === 0) return;
+		cards.forEach((card, i) => {
+			if (i === 0) return;
 
-				gsap.set(card, {
-					yPercent: 120,
-				});
+			gsap.set(card, {
+				yPercent: 120,
+			});
+		});
+
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: sectionRef.current,
+				start: "top top",
+				end: () => `+=${window.innerHeight * cards.length}`,
+				pin: true,
+				scrub: 1.5,
+				anticipatePin: 1,
+				invalidateOnRefresh: true,
+			},
+		});
+
+		cards.forEach((card, i) => {
+			if (i === 0) return;
+
+			tl.to(card, {
+				yPercent: 0,
+				duration: 1,
+				ease: "none",
 			});
 
-			const tl = gsap.timeline({
-				scrollTrigger: {
-					trigger: sectionRef.current,
-					start: "top top",
-					end: () => `+=${window.innerHeight * cards.length}`,
-					pin: true,
-					scrub: 1.5,
-					anticipatePin: 1,
-					invalidateOnRefresh: true,
-				},
-			});
 
-			cards.forEach((card, i) => {
-				if (i === 0) return;
+		});
 
-				tl.to(card, {
-					yPercent: 0,
-					duration: 1,
-					ease: "none",
-				});
-
-
-			});
-
-			ScrollTrigger.refresh();
-		},
-		{ scope: sectionRef }
-	);
+		ScrollTrigger.refresh();
+	}, { scope: sectionRef, dependencies: [] });
 
 	return (
 		<section
@@ -106,7 +108,22 @@ export default function CardStack() {
 							</div>
 							<span className={`${card.color === "bg-black" ? "text-white" : `text-black`}`}>{card.title}</span>
 						</div>
-						<TiltCard className={`h-[800px] w-[800px] right-20`} cardClassName={` ${card.cardColor}`} tilt={card.tilt} />
+						<TiltCard
+							className="h-[800px] w-[800px] right-20"
+							cardClassName={card.cardColor}
+							tilt={card.tilt}
+						>
+							<div className="relative h-full w-full overflow-hidden">
+								<Image
+									src={card.src}
+									alt={card.title}
+									fill
+									quality={100}
+									className="object-cover"
+									sizes="800px"
+								/>
+							</div>
+						</TiltCard>
 					</div>
 				</div>
 			))}

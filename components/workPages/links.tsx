@@ -79,8 +79,6 @@ export function ContactForm() {
 	) => {
 		e.preventDefault();
 
-		console.log(form);
-
 		// API call here
 		// await fetch("/api/contact", {
 		//   method: "POST",

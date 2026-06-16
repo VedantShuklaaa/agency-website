@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const projects = [
 	{
 		title: "Groww",
@@ -33,8 +35,6 @@ const projects = [
 
 export default function Projects() {
 	useGSAP(() => {
-		gsap.registerPlugin(ScrollTrigger);
-
 		gsap.utils.toArray<HTMLElement>(".project-card").forEach((card) => {
 			gsap.fromTo(
 				card,
@@ -53,7 +53,7 @@ export default function Projects() {
 				}
 			);
 		});
-	});
+	}, { dependencies: [] });
 
 	return (
 		<div>

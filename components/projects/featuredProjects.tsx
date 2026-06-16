@@ -3,15 +3,16 @@ import TiltCard from "@/components/layout/tiltCard/tiltCard";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 
 const projects = [
-	{ title: "Vibrant", tilt: -20, x: -390, y: 10, z: 10, color: "#d8cdb5" },
-	{ title: "Just Salad", tilt: -10, x: -260, y: -50, z: 20, color: "#7ca4ff" },
-	{ title: "Epbright", tilt: -2, x: -90, y: -100, z: 30, color: "#d8d3c8" },
+	{ title: "Vibrant", tilt: -20, x: -390, y: 10, z: 10, color: "#d8cdb5", src: "/1.png" },
+	{ title: "Just Salad", tilt: -10, x: -260, y: -50, z: 20, color: "#7ca4ff", src: "/2.png" },
+	{ title: "Epbright", tilt: -2, x: -90, y: -100, z: 30, color: "#d8d3c8", src: "/3.png" },
 
-	{ title: "PBS", tilt: 5, x: 90, y: -100, z: 40, color: "#444444" },
-	{ title: "Titan", tilt: 12, x: 250, y: -40, z: 50, color: "#efefef" },
-	{ title: "Betterment", tilt: 22, x: 380, y: 80, z: 60, color: "#4d8ff5" },
+	{ title: "PBS", tilt: 5, x: 90, y: -100, z: 40, color: "#444444", src: "/4.png" },
+	{ title: "Titan", tilt: 12, x: 250, y: -40, z: 50, color: "#efefef", src: "/5.png" },
+	{ title: "Betterment", tilt: 22, x: 380, y: 80, z: 60, color: "#4d8ff5", src: "/6.png" },
 ];
 
 export default function FeaturedProjects() {
@@ -41,9 +42,9 @@ export default function FeaturedProjects() {
 
 			{/* Cards */}
 			<div className="absolute left-1/2 top-[58%] h-[700px] w-[1400px] -translate-x-1/2 -translate-y-1/2">
-				{projects.map((project) => (
+				{projects.map((project, idx) => (
 					<motion.div
-						key={project.title}
+						key={idx}
 						className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
 						onHoverStart={() => setHovered(project.title)}
 						onHoverEnd={() => setHovered(null)}
@@ -72,9 +73,13 @@ export default function FeaturedProjects() {
 							tilt={String(project.tilt)}
 							className="h-[720px] w-[520px]"
 						>
-							<div
-								className="h-full w-full"
-								style={{ backgroundColor: project.color }}
+							<Image
+								src={project.src}
+								fill
+								quality={100}
+								sizes="520px"
+								className="object-cover"
+								alt="NA"
 							/>
 						</TiltCard>
 					</motion.div>

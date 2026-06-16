@@ -51,10 +51,7 @@ export default function FAQAccordion() {
 							className="border-b border-black dark:border-zinc-800"
 						>
 							<button
-								onClick={() => {
-									console.log("clicked", index);
-									setActive(open ? null : index);
-								}}
+								onClick={() => { setActive(open ? null : index) }}
 								className="w-full px-4 py-8 flex items-center justify-between text-left"
 							>
 								<h3 className="text-2xl font-light">
