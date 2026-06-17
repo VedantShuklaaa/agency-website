@@ -4,18 +4,18 @@ import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const images = [
-	"/images/lummi/img15.png",
-	"/images/lummi/img21.png",
-	"/images/lummi/img3.png",
-	"/images/lummi/img4.png",
-	"/images/lummi/img5.png",
-	"/images/lummi/img6.png",
-	"/images/lummi/img7.png",
-	"/images/lummi/img8.png",
-	"/images/lummi/img24.png",
-	"/images/lummi/img10.png",
-	"/images/lummi/img11.png",
-	"/images/lummi/img12.png",
+	"/1.png",
+	"/2.png",
+	"/3.png",
+	"/4.png",
+	"/5.png",
+	"/6.png",
+	"/AQUA_RUMBLE.png",
+	"/KITTY&CHAOS.png",
+	"/WILDRUN.png",
+	"/1.png",
+	"/2.png",
+	"/3.png",
 ];
 
 const fallbackColors = [

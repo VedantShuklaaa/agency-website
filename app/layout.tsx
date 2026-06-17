@@ -51,19 +51,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LenisProvider />
-          <PageTransition />
+            <LenisProvider />
+            <PageTransition />
+            <CursorDot />
+            <Navbar />
 
-          <CursorDot />
-          <Navbar />
-
-          <main className="pt-20">
-            <LoaderWrapper>
+            <main className="pt-20">
               {children}
-            </LoaderWrapper>
-          </main>
+            </main>
 
-          <Footer />
+            <Footer />
         </ThemeProvider>
       </body>
     </html>

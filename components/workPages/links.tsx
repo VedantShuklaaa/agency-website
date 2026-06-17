@@ -34,7 +34,7 @@ export default function Links() {
 				<ContactForm />
 			</div>
 
-			<BottomDesc text1="© Featured Projects" text2="(CAD® — 02)" text3="Digital Showcase" />
+			<BottomDesc text1="© Featured Projects" text2="(CAD® — 02)" text3="Digital Showcase" className="text-black dark:text-zinc-400"/>
 		</div>
 	)
 }

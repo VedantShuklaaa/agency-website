@@ -1,8 +1,9 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { flushSync } from "react-dom";
+import gsap from "gsap";
+
+gsap.registerPlugin(useGSAP);
 
 interface LoaderProps {
 	onComplete?: () => void;
@@ -12,14 +13,18 @@ export default function Loader({ onComplete }: LoaderProps) {
 	const loaderRef = useRef<HTMLDivElement>(null);
 	const textRef = useRef<HTMLDivElement>(null);
 	const bgRef = useRef<HTMLDivElement>(null);
+	const completedRef = useRef(false); // prevent double fire
+
+	const handleComplete = () => {
+		if (completedRef.current) return;
+		completedRef.current = true;
+		onComplete?.();
+	};
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			console.log("Loader fallback triggered");
-			onComplete?.();
-		}, 5000);
+		const timer = setTimeout(handleComplete, 5000);
 		return () => clearTimeout(timer);
-	}, [onComplete]);
+	}, []);
 
 	useGSAP(() => {
 		const isMobile = window.innerWidth < 768;
@@ -42,14 +47,12 @@ export default function Loader({ onComplete }: LoaderProps) {
 			autoAlpha: 0,
 			duration: 0.8,
 			ease: "power2.inOut",
-			onComplete: () => {
-				console.log("loader complete");
-				onComplete?.();
-			},
+			onComplete: handleComplete,
 		});
 
 		return () => tl.kill();
 	}, { scope: loaderRef, dependencies: [] });
+
 
 	return (
 		<div

@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import Image from "next/image";
 
 
 export default function Works() {
@@ -47,7 +48,15 @@ export default function Works() {
 						}}
 					>
 						{/* Image Section */}
-						<div className="w-full lg:w-1/2 aspect-[16/10] lg:aspect-auto bg-black" />
+						<div className="group relative w-full lg:w-1/2 aspect-[16/10] lg:aspect-auto overflow-hidden">
+							<Image
+								src={items.src}
+								alt={items.title}
+								fill
+								className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+								sizes="(max-width: 1024px) 100vw, 50vw"
+							/>
+						</div>
 
 						{/* Content Section */}
 						<div className="flex flex-col justify-between w-full lg:w-1/2 p-6 md:p-8 lg:p-10 gap-6">
@@ -79,30 +88,36 @@ const projects = [
 		title: "Groww",
 		description: "Launch Video Campaign",
 		slug: "Groww",
+		src: "/1.png",
 	},
 	{
 		title: "Cult",
 		description: "Smartwatch Launch Video",
 		slug: "Cult",
+		src: "/2.png",
 	},
 	{
 		title: "Arovalis",
 		description: "Brand Identity Design",
 		slug: "Arovalis",
+		src: "/3.png",
 	},
 	{
 		title: "Pure Project",
 		description: "Brand Identity & Packaging Design",
 		slug: "Pur Project",
+		src: "/4.png",
 	},
 	{
 		title: "Slice",
 		description: "Feature Launch Commercial",
 		slug: "Slice",
+		src: "/5.png",
 	},
 	{
 		title: "MadDrop",
 		description: "Website Design & Development",
 		slug: "MadDrop",
+		src: "/6.png",
 	},
 ];

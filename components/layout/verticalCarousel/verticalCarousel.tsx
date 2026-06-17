@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import SlidingText from "../aboutUsButton/aboutUsButton";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -176,12 +177,12 @@ export default function ProcessCardLeft() {
 				We focus on what gets results.
 			</span>
 
-			<div className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden">
+			<Link className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden" href="/about">
 				<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
 				<span className="relative z-10">
 					<SlidingText text="ABOUT US" />
 				</span>
-			</div>
+			</Link>
 		</div>
 	);
 }

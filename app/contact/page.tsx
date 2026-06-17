@@ -6,10 +6,10 @@ import Links from "@/components/workPages/links";
 
 export default function Page() {
 	return (
-		<div className="bg-[background] w-full">
+		<div className="bg-[background] w-full overflow-hidden">
 			<div className="py-5 w-full flex flex-col items-center justify-center bg-pink-200 gap-4 md:gap-20 leading-none">
 				<span className="leading-none">
-					<h1 className="text-display-lg tracking-tighter text-black text-center font-bold font-druk">IT STARTS WITH A CONVERSATION</h1>
+					<h1 className="text-display-sm sm:text-display-lg tracking-tighter text-black text-center font-bold font-druk">IT STARTS WITH A CONVERSATION</h1>
 				</span>
 
 				<span className="px-2 md:px-20 lg:px-50 2xl:px-110">

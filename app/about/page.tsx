@@ -8,7 +8,7 @@ import BottomDesc from "@/components/layout/bottomDesc/bottomDesc";
 
 export default function Page() {
 	return (
-		<div className="w-full bg-[background]">
+		<div className="w-full bg-[background] overflow-hidden">
 			<div className="w-full flex flex-col items-center gap-10 justify-between bg-[#938ACF]">
 				<div className="w-full max-w-8xl flex flex-col gap-2 items-center p-4 mt-10 leading-none">
 					<span className="text-display-md leading-none text-center">

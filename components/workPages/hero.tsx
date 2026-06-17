@@ -1,3 +1,4 @@
+import Image from "next/image";
 import TiltCard from "../layout/tiltCard/tiltCard";
 
 
@@ -15,12 +16,34 @@ export default function Hero() {
 
 			<div className="h-full w-full flex items-center justify-center">
 				<div className="grid place-items-center">
-					<div className="col-start-1 row-start-1 z-10">
-						<TiltCard tilt="-2" className="h-[500px] w-[350px] 2xl:h-[800px] 2xl:w-[700px]" />
+					{/* Front Card */}
+					<div className="col-start-1 row-start-1 z-10 relative">
+						<TiltCard
+							tilt="-2"
+							className="h-[500px] w-[350px] 2xl:h-[800px] 2xl:w-[700px]"
+						/>
+
+						<Image
+							src="/1.png"
+							alt="Front Card"
+							fill
+							className="object-cover pointer-events-none"
+						/>
 					</div>
 
-					<div className="col-start-1 row-start-1">
-						<TiltCard tilt="2" className="h-[500px] w-[350px] 2xl:h-[800px] 2xl:w-[700px]" />
+					{/* Back Card */}
+					<div className="col-start-1 row-start-1 relative">
+						<TiltCard
+							tilt="2"
+							className="h-[500px] w-[350px] 2xl:h-[800px] 2xl:w-[700px]"
+						/>
+
+						<Image
+							src="/2.png"
+							alt="Back Card"
+							fill
+							className="object-cover pointer-events-none"
+						/>
 					</div>
 				</div>
 			</div>

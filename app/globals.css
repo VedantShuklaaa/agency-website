@@ -260,21 +260,7 @@
     overflow-x: hidden;
   }
 
-  /* disable heavy animations on mobile */
-  @media (max-width: 768px) {
-    * {
-      animation-duration: 0.01ms !important;
-      transition-duration: 0s !important;
-    }
-  }
 
-  /* respect reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    * {
-      animation: none !important;
-      transition: none !important;
-    }
-  }
 }
 
 .backface-hidden {

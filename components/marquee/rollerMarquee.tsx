@@ -4,19 +4,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Marquee from "./marquee1";
+import BottomDesc from "../layout/bottomDesc/bottomDesc";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CARDS = [
-	"POCO",
-	"Pure Project",
-	"Groww",
-	"cult.",
-	"prime video",
-	"xiaomi",
-	"POCO",
-	"cult.",
-];
+const CARDS = ["POCO", "Pure Project", "Groww", "cult.", "prime video", "xiaomi", "POCO", "cult."];
 
 export default function ScrollCarousel() {
 	const sectionRef = useRef<HTMLDivElement>(null);
@@ -47,7 +39,7 @@ export default function ScrollCarousel() {
 	return (
 		<section
 			ref={sectionRef}
-			className="relative overflow-hidden flex flex-col font-twid border-b border-black dark:border-zinc-600"
+			className="relative overflow-hidden flex flex-col font-twid border-b border-black dark:border-zinc-600 hidden md:flex"
 		>
 			{/* Marquee */}
 			<div className="flex w-full border-b border-black dark:border-zinc-600">
@@ -71,14 +63,7 @@ export default function ScrollCarousel() {
 				</div>
 			</div>
 
-			{/* Footer */}
-			<div
-				className="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 p-4 text-sm md:text-lg lg:text-xl text-black dark:text-zinc-400 border-b border-black dark:border-zinc-600"
-			>
-				<span>© Get in touch</span>
-				<span>(CAD® — 09)</span>
-				<span>Studio Wrap</span>
-			</div>
+			<BottomDesc text1="© Get in touch" text2="(CAD® — 09)" text3="Studio Wrap" className="text-black dark:text-zinc-400" />
 		</section>
 	);
 }

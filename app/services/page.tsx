@@ -11,7 +11,7 @@ import DetailCard from "@/components/servicesPage/details";
 
 export default function Page() {
 	return (
-		<div className="w-full bg-[background] font-twid">
+		<div className="w-full bg-[background] font-twid overflow-hidden">
 			<Hero />
 
 			<Reveal>

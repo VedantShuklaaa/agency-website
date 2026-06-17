@@ -108,7 +108,7 @@ export default function Navbar() {
 			</div>
 
 			{/* Desktop Navigation */}
-			<div className="hidden lg:flex items-center gap-4 lg:gap-25">
+			<div className="hidden lg:flex items-center gap-4 xl:gap-25">
 				<div className="flex flex-col">
 					<div className="flex gap-2">
 						<span className="text-black dark:text-white text-sm">

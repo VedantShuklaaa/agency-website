@@ -21,14 +21,14 @@ export default function FeaturedProjects() {
 	return (
 		<section className="relative min-h-screen w-full overflow-hidden bg-black">
 			{/* Header */}
-			<div className="flex flex-col gap-4 lg:block">
-				<div className="absolute left-4 lg:left-6 top-4 lg:top-6 z-50">
-					<h1 className="font-druk text-3xl md:text-5xl lg:text-6xl text-white uppercase">
+			<div className="flex flex-col md:flex-row md:justify-between p-4 gap-6 backdrop-blur-xl bg-white/5">
+				<div className="leading-none z-50">
+					<h1 className="font-dage text-display-lg text-white uppercase">
 						Selected Client Projects
 					</h1>
 				</div>
 
-				<div className="absolute right-4 lg:right-6 top-4 lg:top-6 z-50">
+				<div className=" z-50">
 					<button className="group flex items-center gap-3 border border-white px-4 py-2 lg:px-6 lg:py-3 text-white">
 						<span className="font-twid italic uppercase text-sm lg:text-base">
 							View All Projects
@@ -48,14 +48,14 @@ export default function FeaturedProjects() {
 					{projects.map((project) => (
 						<div
 							key={project.title}
-							className="relative shrink-0 w-[280px] h-[400px] snap-center rounded-xl overflow-hidden"
+							className="relative shrink-0 w-[280px] h-[400px] snap-center rounded-xl overflow-hidden group"
 						>
 							<Image
 								src={project.src}
 								alt={project.title}
 								fill
 								quality={100}
-								className="object-cover"
+								className="object-cover transition-transform duration-700 group-hover:scale-105"
 							/>
 
 							<div className="absolute bottom-0 left-0 right-0 p-4 bg-black/40 backdrop-blur-sm">
@@ -104,7 +104,7 @@ export default function FeaturedProjects() {
 						>
 							<TiltCard
 								tilt={String(project.tilt)}
-								className="relative h-[720px] w-[520px]"
+								className="relative h-[720px] w-[520px] group"
 							>
 								<Image
 									src={project.src}
@@ -112,7 +112,7 @@ export default function FeaturedProjects() {
 									fill
 									quality={100}
 									sizes="520px"
-									className="object-cover"
+									className="object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
 							</TiltCard>
 						</motion.div>

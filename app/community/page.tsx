@@ -7,7 +7,7 @@ import { Skiper30 } from "@/components/layout/skipper/skipper";
 
 export default function CommunityPage() {
 	return (
-		<div className="w-full relative bg-[background]">
+		<div className="w-full relative bg-[background] overflow-hidden">
 			<HeaderPara />
 
 			<Second />

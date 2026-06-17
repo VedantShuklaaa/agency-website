@@ -29,8 +29,7 @@ const item = {
 	},
 };
 
-const inputStyles =
-	"w-full rounded-[10px] border border-zinc-800 bg-transparent px-4 md:px-6 py-3 md:py-4 text-base md:text-lg lg:text-xl text-black dark:text-white outline-none transition-colors duration-300 placeholder:text-black dark:placeholder:text-white focus:border-zinc-600";
+const inputStyles = "w-full rounded-[10px] border border-zinc-800 bg-transparent px-4 md:px-6 py-3 md:py-4 text-base md:text-lg lg:text-xl text-black dark:text-white outline-none transition-colors duration-300 placeholder:text-black dark:placeholder:text-white focus:border-zinc-600";
 
 export default function ContactUs() {
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -82,24 +81,20 @@ export default function ContactUs() {
 								Name
 							</label>
 
-							<input
+							<InputField
 								id="name"
 								type="text"
-								required
 								placeholder="Name*"
-								className={inputStyles}
 							/>
 
 							<label htmlFor="email" className="sr-only">
 								Email
 							</label>
 
-							<input
+							<InputField
 								id="email"
 								type="email"
-								required
 								placeholder="Email*"
-								className={inputStyles}
 							/>
 
 							<label htmlFor="message" className="sr-only">
@@ -166,26 +161,17 @@ export default function ContactUs() {
 
 export function Socials() {
 	return (
-		<motion.div
-			className="flex flex-wrap gap-x-2 gap-y-1 text-sm md:text-base lg:text-lg"
-			variants={container}
-			initial="hidden"
-			animate="show"
-		>
+		<div className="flex flex-wrap gap-x-2 gap-y-1 text-sm md:text-base lg:text-lg">
 			{socialItems.map((label, i) => (
-				<motion.div
+				<div
 					key={label}
-					variants={item}
-					className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
+					className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A]"
 				>
 					<NavLink text={label} />
-
-					{i < socialItems.length - 1 && (
-						<span className="pointer-events-none">,</span>
-					)}
-				</motion.div>
+					{i < socialItems.length - 1 && ","}
+				</div>
 			))}
-		</motion.div>
+		</div>
 	);
 }
 
@@ -195,7 +181,8 @@ export function BottomLinks() {
 			className="flex flex-wrap gap-x-2 gap-y-1 text-sm md:text-base lg:text-lg"
 			variants={container}
 			initial="hidden"
-			animate="show"
+			whileInView="show"
+			viewport={{ once: true, amount: 0.3 }}
 		>
 			{navItems.map((link, i) => (
 				<motion.div
@@ -213,5 +200,74 @@ export function BottomLinks() {
 				</motion.div>
 			))}
 		</motion.div>
+	);
+}
+
+
+type LinkItem = {
+	label: string;
+	href?: string;
+};
+
+function AnimatedLinks({
+	items,
+	isTransition = false,
+}: {
+	items: LinkItem[];
+	isTransition?: boolean;
+}) {
+	return (
+		<motion.div
+			variants={container}
+			initial="hidden"
+			whileInView="show"
+			viewport={{ once: true }}
+			className="flex flex-wrap gap-x-2 gap-y-1"
+		>
+			{items.map((link, i) => (
+				<motion.div
+					key={link.label}
+					variants={item}
+					className="flex items-center"
+				>
+					{isTransition ? (
+						<TransitionLink href={link.href!}>
+							<NavLink text={link.label} />
+						</TransitionLink>
+					) : (
+						<NavLink text={link.label} />
+					)}
+
+					{i < items.length - 1 && ","}
+				</motion.div>
+			))}
+		</motion.div>
+	);
+}
+
+function InputField({
+	id,
+	type,
+	placeholder,
+}: {
+	id: string;
+	type: string;
+	placeholder: string;
+}) {
+	return (
+		<>
+			<label htmlFor={id} className="sr-only">
+				{placeholder}
+			</label>
+
+			<input
+				id={id}
+				type={type}
+				autoComplete={id}
+				required
+				placeholder={placeholder}
+				className={inputStyles}
+			/>
+		</>
 	);
 }

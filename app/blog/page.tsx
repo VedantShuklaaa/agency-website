@@ -1,15 +1,16 @@
 "use client";
 import { Skiper49 } from "@/components/layout/skipper/skipper2";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 
 export default function Page() {
 	return (
-		<div className="w-full bg-[background]">
+		<div className="w-full bg-[background] overflow-hidden">
 			<div className="py-10 w-full flex flex-col items-center gap-10 pt-10 font-twid bg-purple-300 text-black">
-				<div className=" flex flex-col items-center leading-none">
-					<span className="text-display-lg tracking-tight">BLOGS</span>
-					<span className="text-xl text-zinc-600">Expert perspectives, industry trends, and practical wisdom.</span>
+				<div className="flex flex-col items-center leading-none">
+					<span className="text-display-2xl tracking-tight font-dage">BLOGS</span>
+					<span className="text-xl text-zinc-600 text-center">Expert perspectives, industry trends, and practical wisdom.</span>
 				</div>
 
 				<Skiper49 />
@@ -29,7 +30,15 @@ export default function Page() {
 							ease: [0.16, 1, 0.3, 1],
 						}}
 					>
-						<div className="h-full w-[30%] lg:w-[15%] border border-black dark:border-zinc-600 hidden md:flex" />
+						<div className="relative h-full w-[30%] overflow-hidden border border-black dark:border-zinc-600 hidden md:flex lg:w-[15%]">
+							<Image
+								src={items.src}
+								alt={items.title}
+								fill
+								className="object-cover"
+								sizes="(max-width: 1024px) 30vw, 15vw"
+							/>
+						</div>
 
 						<div className=" lg:h-full w-full p-4 flex flex-col gap-2">
 							<span className="text-zinc-400 text-body-sm xl:text-body-md">
@@ -55,31 +64,31 @@ const blogs = [
 	{
 		date: "SEP 12, 2023",
 		title: "4 Ways to Elevate Your Designs With Authentic Photos",
-		description:
-			"Four ways designers can push themselves when deciding which photos to place in their projects, presentations, and pitches.",
+		description: "Four ways designers can push themselves when deciding which photos to place in their projects, presentations, and pitches.",
+		src: "/1.png"
 	},
 	{
 		date: "AUG 29, 2023",
 		title: "How to make (and keep) money as a freelance designer",
-		description:
-			"Use this guide to establish strong practices and automate recurring processes so you can consistently grow your business and revenue over time.",
+		description: "Use this guide to establish strong practices and automate recurring processes so you can consistently grow your business and revenue over time.",
+		src: "/2.png"
 	},
 	{
 		date: "AUG 25, 2023",
 		title: "The Remarkable Evolution of the Drawing Tablet: Why Designers Should Ditch the Mouse",
-		description:
-			"The artist's tools have seen radical transformations from the ancient caves of Lascaux to modern digital canvases.",
+		description: "The artist's tools have seen radical transformations from the ancient caves of Lascaux to modern digital canvases.",
+		src: "/3.png"
 	},
 	{
 		date: "JUN 29, 2023",
 		title: "A guide to mastering financial security: 5 tips from freelancing experts",
-		description:
-			"Get actionable tips and lessons learned from financial experts who specialize in assisting freelancers and entrepreneurs!",
+		description: "Get actionable tips and lessons learned from financial experts who specialize in assisting freelancers and entrepreneurs!",
+		src: "/4.png"
 	},
 	{
 		date: "JUN 27, 2023",
 		title: "This BIG mistake could cost you your job as a UX designer",
-		description:
-			"Learn how to avoid the biggest pitfall in UX design. (Hint: It's not just about the client.)",
+		description: "Learn how to avoid the biggest pitfall in UX design. (Hint: It's not just about the client.)",
+		src: "/5.png"
 	},
 ];

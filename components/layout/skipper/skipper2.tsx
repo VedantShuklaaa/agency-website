@@ -65,31 +65,31 @@ const fallbackColors = [
 const Skiper49 = () => {
 	const images = [
 		{
-			src: "/images/x.com/13.jpeg",
+			src: "/1.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 		{
-			src: "/images/x.com/32.jpeg",
+			src: "/2.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 		{
-			src: "/images/x.com/20.jpeg",
+			src: "/3.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 		{
-			src: "/images/x.com/21.jpeg",
+			src: "/4.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 		{
-			src: "/images/x.com/19.jpeg",
+			src: "/5.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 		{
-			src: "/images/x.com/1.jpeg",
+			src: "5.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 		{
-			src: "/images/x.com/2.jpeg",
+			src: "6.png",
 			alt: "Illustrations by my fav AarzooAly",
 		},
 

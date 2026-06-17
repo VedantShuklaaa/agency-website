@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 
 const words = ["CULTURE.", "COMMUNITY.", "CONSISTENCY."];
 
@@ -17,7 +18,15 @@ export default function HeroText() {
 					<RotatingText />
 				</div>
 
-				<div className="h-[30vh] w-full md:h-[35vh] lg:h-[45vh] lg:w-[25vw] border rounded-xl bg-black dark:bg-white" />
+				<div className="relative h-[30vh] w-full overflow-hidden rounded-xl border bg-black dark:bg-white md:h-[35vh] lg:h-[45vh] lg:w-[25vw]">
+					<Image
+						src="/1.png"
+						alt="Your image"
+						fill
+						className="object-cover"
+						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 25vw"
+					/>
+				</div>
 			</div>
 
 			{/* Main Heading */}

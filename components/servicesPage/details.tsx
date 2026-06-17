@@ -43,7 +43,7 @@ export default function DetailCard() {
 		<div className="mt-20 md:mt-28 lg:mt-40 flex flex-col gap-8 lg:gap-10" ref={containerRef}>
 			<BigRevealCard className="mx-auto h-[35vh] sm:h-[50vh] md:h-[60vh] lg:h-[80vh] w-[95vw] md:w-[85vw] lg:w-[70vw] overflow-hidden rounded-2xl lg:rounded-[40px] border border-zinc-700">
 				<Image
-					src="/images/about.jpg"
+					src="/AQUA_RUMBLE.png"
 					alt="About"
 					fill
 					className="object-cover"

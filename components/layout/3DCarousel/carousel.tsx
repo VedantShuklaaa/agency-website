@@ -9,6 +9,7 @@ import Marquee from "@/components/marquee/marquee1";
 import CardStack from "../cardStack/cardStack";
 import BottomDesc from "../bottomDesc/bottomDesc";
 import Image from "next/image";
+import Reveal from "@/components/marquee/reveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +28,7 @@ const ORBIT_IMAGES = [
 	"/4.png",
 	"/5.png",
 	"/6.png",
-  ];
+];
 
 const getRadius = (width: number) => {
 	// Small phones
@@ -186,23 +187,17 @@ export default function carouselPage() {
 					<OrbitBackground pivotY="30%" />
 				</div>
 
-				<div className="relative z-10 w-[90vw] md:w-[70vw] lg:w-[45vw] text-center mt-55 lg:mt-100">
+				<div className="relative z-10 w-[90vw] md:w-[70vw] lg:w-[45vw] text-center mt-70 md:mt-55 lg:mt-100">
 					<ScrollRevealText
 						text={text}
 						className="text-heading-lg"
 					/>
 				</div>
-
-				<div className="group relative z-10 w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden">
-					<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
-
-					<span className="relative z-10">
-						<SlidingText text="INSIDE AI LABS" />
-					</span>
-				</div>
 			</section>
 
-			<Marquee text="@Intellectual Property" />
+			<Reveal>
+				<Marquee text="@Intellectual Property" />
+			</Reveal>
 
 			{/* STACK SECTION */}
 			<CardStack />

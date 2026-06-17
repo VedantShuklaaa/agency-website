@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import SlidingText from "../layout/aboutUsButton/aboutUsButton";
 import FloatingCard from "../layout/floatingCard/floatingCard";
 import ScrollRevealText from "../scrolltriger/fillColor";
+import Link from "next/link";
 
 const text =
 	"What begins within our community doesn't stay here. It moves outward — shaping the work, the experiences, and the culture we bring into the world. Every collaboration and every exchange adds to something larger — influencing how ideas take form and how creative work evolves beyond individual effort. Over time, this shared momentum builds depth, direction, and relevance — allowing us to create work that resonates, performs, and lasts.";
@@ -69,12 +70,12 @@ export default function Second() {
 			{/* text + cta */}
 			<div className="w-full lg:w-1/2 flex flex-col justify-end p-6 lg:p-8 gap-4">
 				<ScrollRevealText text={text} className="text-body-sm sm:text-body-lg md:text-heading-lg" />
-				<div className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden">
+				<Link className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden" href="/about">
 					<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
 					<span className="relative z-10">
 						<SlidingText text="ABOUT US" />
 					</span>
-				</div>
+				</Link>
 			</div>
 		</div>
 	);

@@ -9,7 +9,7 @@ export default async function WorkPage({
 	const { slug } = await params;
 
 	return (
-		<div className="w-full bg-[background] flex flex-col items-center gap-10">
+		<div className="w-full bg-[background] flex flex-col items-center gap-10 overflow-hidden">
 			<div className="w-full border-b border-black dark:border-zinc-600">
 				<Marquee text={slug} />
 			</div>

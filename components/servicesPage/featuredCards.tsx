@@ -1,3 +1,4 @@
+import Image from "next/image";
 import BottomDesc from "../layout/bottomDesc/bottomDesc";
 
 export default function Feature() {
@@ -19,8 +20,15 @@ export default function Feature() {
 							</span>
 						</div>
 
-						<div className="flex items-center justify-center px-4 md:px-6 pb-6">
-							<div className="project-card h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] w-full bg-black dark:bg-white rounded-xl" />
+						<div className="flex items-center justify-center px-4 md:px-6 pb-6 group">
+							<div className="project-card relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] w-full overflow-hidden rounded-xl">
+								<Image
+									src="/1.png"
+									alt="Project Preview"
+									fill
+									className="object-cover transition-transform duration-700 group-hover:scale-105"
+								/>
+							</div>
 						</div>
 					</div>
 
@@ -36,8 +44,15 @@ export default function Feature() {
 							</span>
 						</div>
 
-						<div className="flex items-center justify-center px-4 md:px-6 pb-6">
-							<div className="project-card h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] w-full bg-black dark:bg-white rounded-xl" />
+						<div className="flex items-center justify-center px-4 md:px-6 pb-6 group">
+							<div className="project-card relative h-[250px] sm:h-[350px] md:h-[450px] lg:h-[500px] w-full overflow-hidden rounded-xl">
+								<Image
+									src="/2.png"
+									alt="Project Preview"
+									fill
+									className="object-cover transition-transform duration-700 group-hover:scale-105"
+								/>
+							</div>
 						</div>
 					</div>
 
