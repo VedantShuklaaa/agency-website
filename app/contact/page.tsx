@@ -3,6 +3,10 @@ import Reveal from "@/components/marquee/reveal";
 import Jobs from "@/components/workPages/jobs";
 import Links from "@/components/workPages/links";
 
+export const metadata = {
+	title: "Contact | Wildboys Tribe",
+	description: "Start a conversation. Every message is read by a partner.",
+};
 
 export default function Page() {
 	return (

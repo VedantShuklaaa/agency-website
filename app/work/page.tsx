@@ -1,4 +1,3 @@
-"use client";
 import CardStack from "@/components/layout/cardStack/cardStack";
 import Marquee from "@/components/marquee/marquee1";
 import Reveal from "@/components/marquee/reveal";
@@ -6,6 +5,11 @@ import Details from "@/components/workPages/details";
 import Hero from "@/components/workPages/hero";
 import Second from "@/components/workPages/second";
 import Works from "@/components/workPages/works";
+
+export const metadata = {
+	title: "Work | Wildboys Tribe",
+	description: "Past events, campaigns, and projects by Wildboys Tribe.",
+};
 
 export default function Page() {
 

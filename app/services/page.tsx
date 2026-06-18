@@ -7,7 +7,10 @@ import Feature from "@/components/servicesPage/featuredCards";
 import AboutUs from "@/components/servicesPage/about";
 import DetailCard from "@/components/servicesPage/details";
 
-
+export const metadata = {
+	title: "Services | Wildboys Tribe",
+	description: "Full spectrum of venue business development — from strategy and audience growth to event design and execution.",
+  };
 
 export default function Page() {
 	return (

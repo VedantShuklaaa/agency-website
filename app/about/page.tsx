@@ -4,7 +4,10 @@ import FloatCard from "@/components/aboutUsPage/floatCard";
 import ContactUs from "@/components/contactUsCard/contactUs";
 import BottomDesc from "@/components/layout/bottomDesc/bottomDesc";
 
-
+export const metadata = {
+	title: "About | Wildboys Tribe",
+	description: "India's first nightlife architects and management studio.",
+};
 
 export default function Page() {
 	return (

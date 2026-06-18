@@ -254,13 +254,25 @@
     @apply border-border outline-ring/50;
   }
 
-  body {
-    @apply bg-background text-foreground;
-    /* prevent horizontal overflow on mobile */
-    overflow-x: hidden;
+  html {
+    scrollbar-gutter: stable;
   }
 
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    /* ✅ improve text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
 
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
 }
 
 .backface-hidden {

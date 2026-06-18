@@ -22,20 +22,32 @@ export default function Marquee({
 
 	useGSAP(() => {
 		const track = trackRef.current;
-
 		if (!track) return;
 
-		const distance = track.scrollWidth / 2;
+		const createTween = () => {
+			const distance = track.scrollWidth / 2;
+			return gsap.to(track, {
+				x: -distance,
+				duration: speed,
+				ease: "none",
+				repeat: -1,
+			});
+		};
 
-		const tween = gsap.to(track, {
-			x: -distance,
-			duration: speed,
-			ease: "none",
-			repeat: -1,
+		let tween = createTween();
+
+		const ro = new ResizeObserver(() => {
+			tween.kill();
+			gsap.set(track, { x: 0 });
+			tween = createTween();
 		});
+		ro.observe(track);
 
-		return () => tween.kill();
-	}, []);
+		return () => {
+			tween.kill();
+			ro.disconnect();
+		};
+	}, [speed]);
 
 	return (
 		<div className={containerClassName}>

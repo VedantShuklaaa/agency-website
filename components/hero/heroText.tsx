@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { headingClass } from "@/lib/constants";
 
 const words = ["CULTURE.", "COMMUNITY.", "CONSISTENCY."];
 
@@ -32,7 +33,7 @@ export default function HeroText() {
 
 			{/* Main Heading */}
 			<div className="min-h-[20vh] lg:h-[35vh] w-full border-b border-zinc-100 dark:border-zinc-900 flex items-center justify-center px-4 py-8 lg:py-0">
-				<span className="flex flex-col text-center font-twid font-medium leading-none text-3xl md:text-5xl lg:text-[6vw]">
+				<span className={headingClass}>
 					<span>WILDBOYS TRIBE</span>
 					<span>NIGHTLIFE & ENTERTAINMENT ARCHITECTS</span>
 				</span>

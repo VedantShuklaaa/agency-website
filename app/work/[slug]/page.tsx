@@ -1,6 +1,5 @@
 import Marquee from "@/components/marquee/marquee1";
 
-
 export default async function WorkPage({
 	params,
 }: {

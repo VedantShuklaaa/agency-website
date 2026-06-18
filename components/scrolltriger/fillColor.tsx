@@ -32,7 +32,7 @@ export default function ScrollRevealText({
 			const words = container.current.querySelectorAll(".char");
 
 			gsap.to(words, {
-				color: "var(--foreground)", 
+				color: "var(--foreground)",
 				stagger,
 				ease: "none",
 				scrollTrigger: {
@@ -43,7 +43,7 @@ export default function ScrollRevealText({
 				},
 			});
 		},
-		{ scope: container }
+		{ scope: container, dependencies: [] }
 	);
 
 	return (
