@@ -84,8 +84,8 @@ export default function FeaturedProjects() {
 								x: project.x,
 								y:
 									hovered === project.title
-										? project.y - 20
-										: project.y,
+										? project.y + 30
+										: project.y + 150,
 								scale:
 									hovered === project.title
 										? 1.05

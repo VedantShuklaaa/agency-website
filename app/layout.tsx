@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { dagestan, drukWide, onest, twidGrotesk } from "@/fonts/fonts";
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/layout/navbar/navbar";
-import { LoaderWrapper } from "@/components/layout/loader/loader";
 import "./globals.css";
 import CursorDot from "@/components/layout/cursorDot/cursorDot";
 import Footer from "@/components/layout/footer/footer";
 import PageTransition from "@/components/layout/pageTransition/pageTransition";
 import LenisProvider from "@/components/layout/lenis/lenis";
+import ScrollToTop from "@/components/layout/scrollToTop/scrollToTop";
+
 
 export const metadata: Metadata = {
   title: "Wildboys Tribe | Nightlife & Entertainment Architects",
@@ -50,16 +51,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-            <LenisProvider />
-            <PageTransition />
-            <CursorDot />
-            <Navbar />
+          <ScrollToTop />
+          <LenisProvider />
+          <PageTransition />
+          <CursorDot />
+          <Navbar />
 
-            <main className="pt-20">
-              {children}
-            </main>
+          <main className="pt-20">
+            {children}
+          </main>
 
-            <Footer />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

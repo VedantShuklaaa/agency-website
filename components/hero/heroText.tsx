@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -6,12 +7,14 @@ import { headingClass } from "@/lib/constants";
 
 const words = ["CULTURE.", "COMMUNITY.", "CONSISTENCY."];
 
-export default function HeroText() {
-	return (
-		<div className="flex flex-col" id="top">
-			{/* Hero */}
-			<div className="min-h-[50vh] lg:h-[50vh] border-b border-zinc-100 dark:border-zinc-900 flex flex-col lg:flex-row items-end justify-between px-4 py-7 lg:px-7 gap-6 lg:gap-0">
+interface HeroTextProps {
+	heroTitleRef: React.RefObject<HTMLElement | null>;
+}
 
+export default function HeroText({ heroTitleRef }: HeroTextProps) {
+	return (
+		<div className="flex flex-col bg-background" id="top">
+			<div className="border-b border-zinc-100 dark:border-zinc-900 flex flex-col lg:flex-row items-end justify-between px-4 py-7 lg:px-7 gap-6 lg:gap-0">
 				<div className="w-full lg:w-[45vw] lg:h-[45vh] flex flex-col font-twid font-medium text-3xl md:text-5xl lg:text-6xl leading-none">
 					<span>FROM EMPTY SPACES</span>
 					<span>TO HIGH-DEMAND DESTINATIONS</span>
@@ -31,23 +34,20 @@ export default function HeroText() {
 				</div>
 			</div>
 
-			{/* Main Heading */}
-			<div className="min-h-[20vh] lg:h-[35vh] w-full border-b border-zinc-100 dark:border-zinc-900 flex items-center justify-center px-4 py-8 lg:py-0">
-				<span className={headingClass}>
+			<div className="py-2 w-full border-b border-zinc-100 dark:border-zinc-900 flex items-center justify-center px-4">
+				<motion.span ref={heroTitleRef} className={headingClass}>
 					<span>WILDBOYS TRIBE</span>
 					<span>NIGHTLIFE & ENTERTAINMENT ARCHITECTS</span>
-				</span>
+				</motion.span>
 			</div>
 
-			{/* Footer */}
 			<div className="min-h-[6vh] w-full border-b border-zinc-100 dark:border-zinc-900 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2 px-4 lg:px-7 py-2 font-twid text-sm md:text-base lg:text-lg text-black dark:text-zinc-400">
 				<span>Powered by AI-enhanced workflows</span>
 				<span>Pune, Bangalore - India</span>
 			</div>
 		</div>
-	)
+	);
 }
-
 
 function RotatingText() {
 	const [index, setIndex] = useState(0);
@@ -74,18 +74,9 @@ function RotatingText() {
 						<motion.span
 							key={i}
 							variants={{
-								initial: {
-									y: "100%",
-									opacity: 0,
-								},
-								animate: {
-									y: 0,
-									opacity: 1,
-								},
-								exit: {
-									y: "-100%",
-									opacity: 0,
-								},
+								initial: { y: "100%", opacity: 0 },
+								animate: { y: 0, opacity: 1 },
+								exit: { y: "-100%", opacity: 0 },
 							}}
 							transition={{
 								duration: 0.4,

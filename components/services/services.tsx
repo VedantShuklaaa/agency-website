@@ -88,21 +88,21 @@ export default function Services() {
 					key={idx}
 					className="w-full border-b border-zinc-100 dark:border-zinc-900"
 				>
-					<div className="flex flex-col gap-6 p-4 md:p-6 lg:p-8 py-10 ">
+					<div className="flex flex-col gap-6 p-4 md:p-6">
 
 						{/* Heading */}
 						<div className="flex flex-col gap-2">
-							<span className="text-3xl md:text-5xl lg:text-7xl leading-none">
+							<span className="text-display-sm leading-none">
 								{item.title}
 							</span>
 
-							<span className="text-sm md:text-lg lg:text-xl text-zinc-400 tracking-wide">
+							<span className="text-body-md text-zinc-400 tracking-wide">
 								{item.subHeading}
 							</span>
 						</div>
 
 						{/* Description */}
-						<span className="w-full lg:w-[40vw] text-base md:text-lg text-zinc-400 leading-relaxed">
+						<span className="w-full lg:w-[40vw] text-base text-body-md text-zinc-400 leading-relaxed">
 							{item.description}
 						</span>
 
@@ -111,7 +111,7 @@ export default function Services() {
 							{item.bullets.map((bullet, bulletIdx) => (
 								<span
 									key={bulletIdx}
-									className="text-sm md:text-lg lg:text-xl font-bold border border-current rounded-full px-3 py-1"
+									className="text-body-md font-bold border border-zinc-100 dark:border-zinc-800 rounded-full px-3 py-1"
 								>
 									{bullet.bulletPoints}
 								</span>

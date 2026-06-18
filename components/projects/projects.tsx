@@ -72,11 +72,11 @@ export default function Projects() {
 						className={`border-b border-zinc-100 dark:border-zinc-900 lg:min-h-[80vh] ${index % 2 === 1 ? "lg:border-l lg:border-zinc-100 lg:dark:border-zinc-900" : ""}`}
 					>
 						<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
-							<span className="text-3xl md:text-4xl lg:text-5xl">
+							<span className="text-display-sm">
 								{project.title}
 							</span>
 
-							<span className="text-base md:text-lg lg:text-xl">
+							<span className="text-heading-lg">
 								{project.description}
 							</span>
 						</div>
@@ -103,11 +103,11 @@ export default function Projects() {
 				{/* Bloc */}
 				<div className="lg:border-r border-zinc-100 dark:border-zinc-900">
 					<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
-						<span className="text-3xl md:text-4xl lg:text-5xl">
+						<span className="text-display-sm">
 							Bloc
 						</span>
 
-						<span className="text-base md:text-lg lg:text-xl">
+						<span className="text-heading-lg">
 							Brand Identity, Product Design
 						</span>
 					</div>
@@ -128,11 +128,11 @@ export default function Projects() {
 				{/* Redmi */}
 				<div className="lg:border-r border-zinc-100 dark:border-zinc-900">
 					<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
-						<span className="text-3xl md:text-4xl lg:text-5xl">
+						<span className="text-display-sm">
 							Redmi 11S
 						</span>
 
-						<span className="text-base md:text-lg lg:text-xl">
+						<span className="text-heading-lg">
 							Product Launch Video
 						</span>
 					</div>

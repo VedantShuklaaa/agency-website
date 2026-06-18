@@ -1,4 +1,6 @@
 import Marquee from "@/components/marquee/marquee1";
+import Image from "next/image";
+import Link from "next/link";
 
 export default async function WorkPage({
 	params,
@@ -8,83 +10,144 @@ export default async function WorkPage({
 	const { slug } = await params;
 
 	return (
-		<div className="w-full bg-[background] flex flex-col items-center gap-10 overflow-hidden">
-			<div className="w-full border-b border-black dark:border-zinc-600">
+		<div className="w-full bg-[background] flex flex-col items-center overflow-hidden">
+			<div className="w-full border-b border-zinc-100 dark:border-zinc-900">
 				<Marquee text={slug} />
 			</div>
 
-			<div className="h-[80vh] w-[80vw] border-t border-l border-r rounded-t-[15px] bg-pink-200"></div>
+			<div className="h-[80vh] w-[80vw] bg-pink-200"></div>
 
-			<div className="h-screen w-full flex justify-center border-b border-black dark:border-zinc-600">
-				<div className="w-[30%] h-full flex flex-col p-4">
-					<div className="h-[30%] w-full flex flex-col justify-center gap-2">
-						<span className="text-black dark:text-zinc-400 text-3xl">Overview</span>
-						<span>
-							<p className="text-xl">Groww asked us to work on video editing and post-production for their pre-IPO launch, supporting a critical phase in the brand’s growth journey. The focus was on creating sharp, high-quality video content that aligned with Groww’s clean, trustworthy brand presence.</p>
-						</span>
+			<div className="w-full flex flex-col lg:flex-row border-b border-zinc-100 dark:border-zinc-900">
+
+				{/* Left Side */}
+				<div className="w-full lg:w-[30%] flex flex-col p-4 md:p-6 gap-8">
+
+					{/* Overview */}
+					<div className="flex flex-col gap-3">
+						<h2 className="text-2xl md:text-3xl text-black dark:text-zinc-400">
+							Overview
+						</h2>
+
+						<p className="text-body-sm leading-relaxed">
+							Groww asked us to work on video editing and post-production for
+							their pre-IPO launch, supporting a critical phase in the brand's
+							growth journey. The focus was on creating sharp, high-quality
+							video content that aligned with Groww's clean, trustworthy brand
+							presence.
+						</p>
 					</div>
 
-					<div className="h-[50%] w-full flex justify-center gap-2">
-						<div className="h-full w-full flex flex-col gap-5 py-10">
-							<div className="flex flex-col">
-								<span className="text-zinc-600 dark:text-zinc-400 text-sm">Client:</span>
-								<span className="text-lg">{slug}</span>
+					{/* Details */}
+					<div className="grid grid-cols-2 gap-6">
+
+						<div className="flex flex-col gap-4">
+							<div>
+								<p className="text-sm text-zinc-600 dark:text-zinc-400">
+									Client
+								</p>
+
+								<p className="text-base md:text-lg">
+									{slug}
+								</p>
 							</div>
 
-							<div className="flex flex-col">
-								<span className="text-zinc-600 dark:text-zinc-400 text-sm">Duration</span>
-								<span className="text-lg">1 month</span>
+							<div>
+								<p className="text-sm text-zinc-600 dark:text-zinc-400">
+									Duration
+								</p>
+
+								<p className="text-base md:text-lg">
+									1 Month
+								</p>
 							</div>
 						</div>
-						<div className="h-full w-full flex flex-col gap-5 py-10">
-							<div className="flex flex-col">
-								<span className="text-zinc-600 dark:text-zinc-400 text-sm">Location:</span>
-								<span className="text-lg">Bengaluru, India</span>
+
+						<div className="flex flex-col gap-4">
+							<div>
+								<p className="text-sm text-zinc-600 dark:text-zinc-400">
+									Location
+								</p>
+
+								<p className="text-base md:text-lg">
+									Bengaluru, India
+								</p>
 							</div>
 
-							<div className="flex flex-col">
-								<span className="text-zinc-600 dark:text-zinc-400 text-sm">Stack</span>
-								<span className="w-40 text-lg">Adobe Premier Pro, Adobe After Effects</span>
+							<div>
+								<p className="text-sm text-zinc-600 dark:text-zinc-400">
+									Stack
+								</p>
+
+								<p className="text-base md:text-lg">
+									Adobe Premiere Pro,
+									<br />
+									Adobe After Effects
+								</p>
 							</div>
+						</div>
+
+					</div>
+
+					{/* Services */}
+					<div className="flex flex-col gap-3">
+						<p className="text-sm text-zinc-600 dark:text-zinc-400">
+							Services
+						</p>
+
+						<div className="flex flex-col text-base md:text-lg">
+							<span>Video Editing</span>
+							<span>Composition & Sound</span>
+							<span>VFX</span>
+							<span>Motion Graphics</span>
 						</div>
 					</div>
 
-					<div className="h-[20%] w-full flex flex-col justify-center p-4 gap-2">
-						<h1 className="text-zinc-600 dark:text-zinc-400 text-sm">Services</h1>
-						<div className="flex flex-col text-lg">
-							<span>Video editing,</span>
-							<span>Composition, Sound,</span>
-							<span>VFX, Motion Graphics.</span>
-						</div>
-					</div>
 				</div>
 
-				<div className="h-full w-[70%] p-4">
-					<div className="h-full w-full bg-purple-200">
-
-					</div>
+				{/* Right Side */}
+				<div className="w-full lg:w-[70%] p-4 md:p-6">
+					<div className="w-full aspect-video lg:min-h-[80vh] rounded-xl bg-purple-200" />
 				</div>
+
 			</div>
 
-			<div className="w-full border-b border-black dark:border-zinc-600">
+			<div className="w-full border-b border-zinc-100 dark:border-zinc-900">
 				<Marquee text="More Work©" />
 			</div>
 
-			<div className="w-full grid grid-cols-2 h-[150vh]">
-				{projects.map((project, index) => (
-					<div
-						key={project.title}
-						className={`${index % 2 === 1 ? "border-l" : ""} ${index < projects.length - 2 ? "border-b" : ""}`}
-					>
-						<div className="h-[75%] w-full flex items-center justify-center py-4 px-20">
-							<div className="project-card h-full w-full bg-black dark:bg-white rounded-xl" />
-						</div>
+			<div className="grid grid-cols-1 lg:grid-cols-2 font-onest font-light w-full">
+				{projects.map((project, idx) => (
+					<Link
+						key={idx}
+						href={`/work/${project.slug}`}>
+						<div
+							key={project.title}
+							className={`border-b border-zinc-100 dark:border-zinc-900 lg:min-h-[80vh] ${idx % 2 === 1 ? "lg:border-l lg:border-zinc-100 lg:dark:border-zinc-900" : ""}`}
+						>
+							<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
+								<span className="text-display-sm">
+									{project.title}
+								</span>
 
-						<div className="h-[25%] w-full flex flex-col justify-center gap-2 px-10">
-							<span className="text-5xl">{project.title}</span>
-							<span className="text-xl">{project.description}</span>
+								<span className="text-heading-lg">
+									{project.description}
+								</span>
+							</div>
+
+							<div className="flex items-center justify-center px-4 md:px-6 pb-6">
+								<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-xl group">
+									<Image
+										src={project.src}
+										alt={project.title}
+										fill
+										priority={idx === 0}
+										className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+									/>
+								</div>
+							</div>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 		</div>
@@ -95,17 +158,25 @@ const projects = [
 	{
 		title: "Groww",
 		description: "Launch Video Campaign",
+		slug: "Groww",
+		src: "/1.png"
 	},
 	{
 		title: "Cult",
 		description: "Smartwatch Launch Video",
+		slug: "Cult",
+		src: "/2.png"
 	},
 	{
 		title: "Arovalis",
 		description: "Brand Identity Design",
+		slug: "Arovalis",
+		src: "/3.png"
 	},
 	{
 		title: "Pure Project",
 		description: "Brand Identity & Packaging Design",
+		slug: "Pure Project",
+		src: "/4.png"
 	},
 ] 

@@ -202,7 +202,7 @@ export default function carouselPage() {
 			{/* STACK SECTION */}
 			<CardStack />
 
-			<BottomDesc text1="© Clients" text2="(CAD® — 06)" text3="Brand Partners" />
+			<BottomDesc text1="© Clients" text2="(CAD® — 06)" text3="Brand Partners" className="text-black dark:text-zinc-400" />
 		</div>
 
 	)
