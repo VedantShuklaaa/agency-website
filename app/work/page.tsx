@@ -14,7 +14,7 @@ export const metadata = {
 export default function Page() {
 
 	return (
-		<div className="bg-[background] w-full overflow-hidden">
+		<div className="bg-background w-full overflow-hidden">
 			<Hero />
 
 			<Second />

@@ -13,7 +13,7 @@ interface HeroTextProps {
 
 export default function HeroText({ heroTitleRef }: HeroTextProps) {
 	return (
-		<div className="flex flex-col bg-background" id="top">
+		<div className="flex flex-col" id="top">
 			<div className="border-b border-zinc-100 dark:border-zinc-900 flex flex-col lg:flex-row items-end justify-between px-4 py-7 lg:px-7 gap-6 lg:gap-0">
 				<div className="w-full lg:w-[45vw] lg:h-[45vh] flex flex-col font-twid font-medium text-3xl md:text-5xl lg:text-6xl leading-none">
 					<span>FROM EMPTY SPACES</span>
@@ -22,7 +22,7 @@ export default function HeroText({ heroTitleRef }: HeroTextProps) {
 					<RotatingText />
 				</div>
 
-				<div className="relative h-[30vh] w-full overflow-hidden rounded-xl border bg-black dark:bg-white md:h-[35vh] lg:h-[45vh] lg:w-[25vw]">
+				<div className="relative h-[30vh] w-full overflow-hidden rounded-[10px] border bg-black dark:bg-white md:h-[35vh] lg:h-[45vh] lg:w-[25vw]">
 					<Image
 						src="/1.png"
 						alt="Your image"

@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import ThemeToggle from "@/components/theme/theme-button";
 import LiveTime from "./time";
 import Navlinks from "./navlinks";
@@ -11,71 +12,75 @@ import gsap from "gsap";
 export default function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 
+	const pathname = usePathname();
 	const navbarRef = useRef<HTMLDivElement>(null);
 	const isOpenRef = useRef(false);
 
-	useEffect(() => { isOpenRef.current = isOpen }, [isOpen]);
+	useEffect(() => {
+		isOpenRef.current = isOpen;
+	}, [isOpen]);
 
-	useGSAP(() => {
-		if (!navbarRef.current) return;
+	useEffect(() => {
+		setIsOpen(false);
+	}, [pathname]);
 
-		let lastScrollY = window.scrollY;
-		let isHidden = false;
+	useGSAP(
+		() => {
+			if (!navbarRef.current) return;
 
-		const handleScroll = () => {
-			if (isOpenRef.current) return;
+			let lastScrollY = window.scrollY;
+			let isHidden = false;
 
-			const currentScrollY = window.scrollY;
+			const handleScroll = () => {
+				if (isOpenRef.current) return;
 
-			// Always show near top
-			if (currentScrollY < 50) {
-				if (isHidden) {
+				const currentScrollY = window.scrollY;
+
+				if (currentScrollY < 50) {
+					if (isHidden) {
+						gsap.to(navbarRef.current, {
+							yPercent: 0,
+							duration: 0.4,
+							ease: "power3.out",
+						});
+						isHidden = false;
+					}
+
+					lastScrollY = currentScrollY;
+					return;
+				}
+
+				const delta = currentScrollY - lastScrollY;
+
+				if (delta > 10 && !isHidden) {
+					gsap.to(navbarRef.current, {
+						yPercent: -100,
+						duration: 0.4,
+						ease: "power3.out",
+					});
+					isHidden = true;
+				}
+
+				if (delta < -10 && isHidden) {
 					gsap.to(navbarRef.current, {
 						yPercent: 0,
 						duration: 0.4,
 						ease: "power3.out",
 					});
-
 					isHidden = false;
 				}
 
 				lastScrollY = currentScrollY;
-				return;
-			}
+			};
 
-			const delta = currentScrollY - lastScrollY;
+			window.addEventListener("scroll", handleScroll);
 
-			// Scroll down
-			if (delta > 10 && !isHidden) {
-				gsap.to(navbarRef.current, {
-					yPercent: -100,
-					duration: 0.4,
-					ease: "power3.out",
-				});
-
-				isHidden = true;
-			}
-
-			// Scroll up
-			if (delta < -10 && isHidden) {
-				gsap.to(navbarRef.current, {
-					yPercent: 0,
-					duration: 0.4,
-					ease: "power3.out",
-				});
-
-				isHidden = false;
-			}
-
-			lastScrollY = currentScrollY;
-		};
-
-		window.addEventListener("scroll", handleScroll);
-
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, { scope: navbarRef });
+			return () => {
+				window.removeEventListener("scroll", handleScroll);
+			};
+		},
+		{ scope: navbarRef }
+	);
 
 	useEffect(() => {
 		if (isOpen && navbarRef.current) {
@@ -87,35 +92,32 @@ export default function Navbar() {
 		}
 	}, [isOpen]);
 
+	const closeMenu = () => setIsOpen(false);
+
 	return (
 		<div
 			ref={navbarRef}
-			className="fixed top-0 left-0 z-[100] h-20 w-full bg-[background] border-b border-black dark:border-zinc-700 flex items-center justify-between px-4 lg:px-5 font-onest"
+			className="fixed top-0 left-0 z-[100] flex h-20 w-full items-center justify-between border-b border-zinc-100 bg-background px-4 font-onest dark:border-zinc-900 lg:px-5"
 		>
-			{/* Logo */}
-			<div className="text-lg sm:text-xl lg:text-xl flex items-center gap-2 text-black dark:text-white leading-none font-[700]">
-				<div className="h-10 w-10 lg:h-12 lg:w-12 border border-black dark:border-white lg:hidden" />
-
+			<div className="flex items-center gap-2 text-lg leading-none font-[700] text-black dark:text-white sm:text-xl lg:text-xl">
+				<div className="h-10 w-10 border border-black dark:border-white lg:hidden lg:h-12 lg:w-12" />
 				<div className="flex flex-col">
 					<h1>WILDBOY</h1>
 					<h1>TRIBES</h1>
 				</div>
 			</div>
 
-
-			<div className="hidden lg:flex items-center justify-center">
+			<div className="hidden items-center justify-center lg:flex">
 				<Navlinks />
 			</div>
 
-			{/* Desktop Navigation */}
-			<div className="hidden lg:flex items-center gap-4 xl:gap-25">
+			<div className="hidden items-center gap-4 lg:flex xl:gap-25">
 				<div className="flex flex-col">
 					<div className="flex gap-2">
-						<span className="text-black dark:text-white text-sm">
+						<span className="text-sm text-black dark:text-white">
 							Based in India
 						</span>
-
-						<span className="text-xs flex items-end text-red-500">
+						<span className="flex items-end text-xs text-red-500">
 							<LiveTime />
 						</span>
 					</div>
@@ -128,15 +130,14 @@ export default function Navbar() {
 				<ThemeToggle />
 			</div>
 
-			{/* Mobile Button */}
 			<button
-				onClick={() => setIsOpen(!isOpen)}
-				className="lg:hidden text-black dark:text-white"
+				onClick={() => setIsOpen((prev) => !prev)}
+				className="text-black dark:text-white lg:hidden"
+				aria-label={isOpen ? "Close menu" : "Open menu"}
 			>
 				{isOpen ? <X size={28} /> : <Menu size={28} />}
 			</button>
 
-			{/* Mobile Menu */}
 			<motion.div
 				initial={false}
 				animate={{
@@ -145,12 +146,12 @@ export default function Navbar() {
 					pointerEvents: isOpen ? "auto" : "none",
 				}}
 				transition={{ duration: 0.25 }}
-				className="absolute top-20 left-0 w-full bg-white dark:bg-black border-b border-black dark:border-zinc-700 lg:hidden z-50"
+				className="absolute top-20 left-0 z-50 w-full border-b border-black bg-white dark:border-zinc-700 dark:bg-black lg:hidden"
 			>
-				<div className="flex flex-col items-center p-6 gap-6">
-					<Navlinks />
+				<div className="flex flex-col items-center gap-6 p-6">
+					<Navlinks onLinkClick={closeMenu} />
 
-					<div className="border-t border-zinc-300 dark:border-zinc-700 pt-6">
+					<div className="border-t border-zinc-300 pt-6 dark:border-zinc-700">
 						<ThemeToggle />
 					</div>
 				</div>

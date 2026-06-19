@@ -41,7 +41,7 @@ export default function DetailCard() {
 
 	return (
 		<div className="mt-20 md:mt-28 lg:mt-20 flex flex-col gap-8 lg:gap-10" ref={containerRef}>
-			<BigRevealCard className="mx-auto h-[35vh] sm:h-[50vh] md:h-[60vh] lg:h-[80vh] w-[95vw] md:w-[85vw] lg:w-[70vw] overflow-hidden rounded-2xl lg:rounded-[40px] border border-zinc-700">
+			<BigRevealCard className="mx-auto h-[35vh] sm:h-[50vh] md:h-[60vh] lg:h-[80vh] w-[95vw] md:w-[85vw] lg:w-[70vw] overflow-hidden rounded-sm border border-zinc-700">
 				<div className="relative h-full w-full">
 					<Image
 						src="/AQUA_RUMBLE.png"

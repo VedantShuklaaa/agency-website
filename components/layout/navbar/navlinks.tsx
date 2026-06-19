@@ -3,21 +3,25 @@ import { navItems } from "@/lib";
 import { NavLink } from "../navAnimation/navAnimation";
 import TransitionLink from "../pageTransition/transitionLink";
 
-export default function NavbarLinks() {
+type NavbarLinksProps = {
+	onLinkClick?: () => void;
+};
+
+export default function NavbarLinks({ onLinkClick }: NavbarLinksProps) {
 	const firstHalf = navItems.slice(0, 4);
 	const secondHalf = navItems.slice(4);
 
 	return (
 		<>
 			{/* Desktop Navigation */}
-			<div className="hidden lg:flex items-center justify-center gap-8">
+			<div className="hidden items-center justify-center gap-8 lg:flex">
 				<div className="flex items-center gap-2">
 					{firstHalf.map((item, i) => (
 						<div
 							key={item.label}
-							className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
+							className="flex items-center text-black hover:text-[#F04D5A] dark:text-zinc-400 dark:hover:text-[#F04D5A]"
 						>
-							<TransitionLink href={item.href}>
+							<TransitionLink href={item.href} onClick={onLinkClick}>
 								<NavLink text={item.label} />
 							</TransitionLink>
 
@@ -28,19 +32,17 @@ export default function NavbarLinks() {
 					))}
 				</div>
 
-				<TransitionLink href="/">
-					<div className="h-10 w-10 border border-black dark:border-white">
-
-					</div>
+				<TransitionLink href="/" onClick={onLinkClick}>
+					<div className="h-10 w-10 border border-black dark:border-white" />
 				</TransitionLink>
 
 				<div className="flex items-center gap-2">
 					{secondHalf.map((item, i) => (
 						<div
 							key={item.label}
-							className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
+							className="flex items-center text-black hover:text-[#F04D5A] dark:text-zinc-400 dark:hover:text-[#F04D5A]"
 						>
-							<TransitionLink href={item.href}>
+							<TransitionLink href={item.href} onClick={onLinkClick}>
 								<NavLink text={item.label} />
 							</TransitionLink>
 
@@ -57,9 +59,9 @@ export default function NavbarLinks() {
 				{navItems.map((item) => (
 					<div
 						key={item.label}
-						className="text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
+						className="text-black hover:text-[#F04D5A] dark:text-zinc-400 dark:hover:text-[#F04D5A]"
 					>
-						<TransitionLink href={item.href}>
+						<TransitionLink href={item.href} onClick={onLinkClick}>
 							<NavLink text={item.label} />
 						</TransitionLink>
 					</div>

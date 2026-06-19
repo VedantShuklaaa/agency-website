@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function Page() {
 	return (
-		<div className="w-full bg-[background] font-twid">
+		<div className="w-full bg-background font-twid">
 			<Hero />
 
 			<Reveal>

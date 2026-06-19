@@ -12,7 +12,7 @@ export default function FloatCard() {
 				y={100}
 				className="absolute top-10 lg:top-50 lg:left-40 hidden lg:flex"
 			>
-				<div className="relative h-160 w-80 overflow-hidden rounded-3xl border border-black dark:border-zinc-600">
+				<div className="relative h-160 w-80 overflow-hidden rounded-[10px] border border-black dark:border-zinc-600">
 					<Image
 						src="/1.png"
 						alt="Nightlife venue"
@@ -31,7 +31,7 @@ export default function FloatCard() {
 				y={100}
 				className="absolute top-20 right-30 hidden lg:flex"
 			>
-				<div className="relative h-150 w-100 overflow-hidden rounded-3xl border border-black dark:border-zinc-600">
+				<div className="relative h-150 w-100 overflow-hidden rounded-[10px] border border-black dark:border-zinc-600">
 					<Image
 						src="/2.png"
 						alt="Nightlife crowd"

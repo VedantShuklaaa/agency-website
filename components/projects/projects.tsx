@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,10 +67,11 @@ export default function Projects() {
 		<div id="work">
 			{/* Main Projects Grid */}
 			<div className="grid grid-cols-1 lg:grid-cols-2 font-onest font-light border-t border-zinc-100 dark:border-zinc-900">
-				{projects.map((project, index) => (
-					<div
+				{projects.map((project, idx) => (
+					<Link
+						href={`/work/${project.title.toLocaleLowerCase()}`}
 						key={project.title}
-						className={`border-b border-zinc-100 dark:border-zinc-900 lg:min-h-[80vh] ${index % 2 === 1 ? "lg:border-l lg:border-zinc-100 lg:dark:border-zinc-900" : ""}`}
+						className={`border-b border-zinc-100 transition-all duration-500 hover:bg-zinc-50 dark:border-zinc-900 dark:hover:bg-zinc-950 ${idx % 2 === 1 ? "lg:border-l lg:border-zinc-100 lg:dark:border-zinc-900" : ""}`}
 					>
 						<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
 							<span className="text-display-sm">
@@ -82,18 +84,18 @@ export default function Projects() {
 						</div>
 
 						<div className="flex items-center justify-center px-4 md:px-6 pb-6">
-							<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-xl group">
+							<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-[10px] group">
 								<Image
 									src={project.src}
 									alt={project.title}
 									fill
-									priority={index === 0}
+									priority={idx === 0}
 									className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
 									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
 								/>
 							</div>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 
@@ -101,7 +103,7 @@ export default function Projects() {
 			<div className="grid grid-cols-1 lg:grid-cols-[2fr_2fr_1fr] border-b border-zinc-100 dark:border-zinc-900">
 
 				{/* Bloc */}
-				<div className="lg:border-r border-zinc-100 dark:border-zinc-900">
+				<Link href="/work/bloc" className="lg:border-r border-zinc-100 dark:border-zinc-900 hover:bg-zinc-50 dark:border-zinc-900 dark:hover:bg-zinc-950 duration-500 transition-all">
 					<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
 						<span className="text-display-sm">
 							Bloc
@@ -113,7 +115,7 @@ export default function Projects() {
 					</div>
 
 					<div className="flex items-center justify-center px-4 md:px-6 pb-6">
-						<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-xl group">
+						<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-[10px] group">
 							<Image
 								src="/AQUA_RUMBLE.png"
 								alt="NAH"
@@ -123,10 +125,10 @@ export default function Projects() {
 							/>
 						</div>
 					</div>
-				</div>
+				</Link>
 
 				{/* Redmi */}
-				<div className="lg:border-r border-zinc-100 dark:border-zinc-900">
+				<Link href="/work/redmi" className="lg:border-r border-zinc-100 dark:border-zinc-900 hover:bg-zinc-50 dark:border-zinc-900 dark:hover:bg-zinc-950 duration-500 transition-all">
 					<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
 						<span className="text-display-sm">
 							Redmi 11S
@@ -138,7 +140,7 @@ export default function Projects() {
 					</div>
 
 					<div className="flex items-center justify-center px-4 md:px-6 pb-6">
-						<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-xl group">
+						<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-[10px] group">
 							<Image
 								src="/KITTY&CHAOS.png"
 								alt="NAH"
@@ -148,15 +150,15 @@ export default function Projects() {
 							/>
 						</div>
 					</div>
-				</div>
+				</Link>
 
 				{/* CTA */}
 				<div className="p-4 group overflow-hidden min-h-[250px] lg:min-h-0">
-					<div className="h-full min-h-[250px] lg:min-h-full w-full bg-[#ff2d55] rounded-xl transition-all cursor-pointer duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-[1.1] group-hover:rounded-none flex items-center justify-center">
+					<Link href="/work" className="h-full min-h-[250px] lg:min-h-full w-full bg-[#ff2d55] rounded-[10px] transition-all cursor-pointer duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:scale-[1.1] group-hover:rounded-none flex items-center justify-center">
 						<span className="text-xl md:text-2xl lg:text-3xl text-black text-center px-4">
 							View All Projects
 						</span>
-					</div>
+					</Link>
 				</div>
 			</div>
 		</div>

@@ -1,182 +1,205 @@
 import Marquee from "@/components/marquee/marquee1";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { projects } from "@/lib/constants";
 
-export default async function WorkPage({
-	params,
-}: {
+type Props = {
 	params: Promise<{ slug: string }>;
-}) {
+};
+
+export async function generateStaticParams() {
+	return projects.map((project) => ({
+		slug: project.slug,
+	}));
+}
+
+export const dynamicParams = false;
+
+export default async function WorkPage({ params }: Props) {
 	const { slug } = await params;
 
+	const project = projects.find((item) => item.slug === slug);
+
+	if (!project) {
+		notFound();
+	}
+
+	const relatedProjects = projects.filter((item) => item.slug !== project.slug).slice(0, 4);
+
 	return (
-		<div className="w-full bg-[background] flex flex-col items-center overflow-hidden">
+		<div className="flex w-full flex-col items-center overflow-hidden bg-background">
 			<div className="w-full border-b border-zinc-100 dark:border-zinc-900">
-				<Marquee text={slug} />
+				<Marquee text={project.title} />
 			</div>
 
-			<div className="h-[80vh] w-[80vw] bg-pink-200"></div>
+			{/* Hero */}
+			<section className="w-full border-b border-zinc-100 dark:border-zinc-900">
+				<div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-0 lg:grid-cols-12">
+					<div className="flex flex-col justify-between px-4 py-8 md:px-6 lg:col-span-4 lg:px-8 lg:py-10">
+						<div className="flex flex-col gap-6">
+							<span className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+								Selected Work
+							</span>
 
-			<div className="w-full flex flex-col lg:flex-row border-b border-zinc-100 dark:border-zinc-900">
-
-				{/* Left Side */}
-				<div className="w-full lg:w-[30%] flex flex-col p-4 md:p-6 gap-8">
-
-					{/* Overview */}
-					<div className="flex flex-col gap-3">
-						<h2 className="text-2xl md:text-3xl text-black dark:text-zinc-400">
-							Overview
-						</h2>
-
-						<p className="text-body-sm leading-relaxed">
-							Groww asked us to work on video editing and post-production for
-							their pre-IPO launch, supporting a critical phase in the brand's
-							growth journey. The focus was on creating sharp, high-quality
-							video content that aligned with Groww's clean, trustworthy brand
-							presence.
-						</p>
-					</div>
-
-					{/* Details */}
-					<div className="grid grid-cols-2 gap-6">
-
-						<div className="flex flex-col gap-4">
-							<div>
-								<p className="text-sm text-zinc-600 dark:text-zinc-400">
-									Client
-								</p>
-
-								<p className="text-base md:text-lg">
-									{slug}
-								</p>
-							</div>
-
-							<div>
-								<p className="text-sm text-zinc-600 dark:text-zinc-400">
-									Duration
-								</p>
-
-								<p className="text-base md:text-lg">
-									1 Month
-								</p>
-							</div>
-						</div>
-
-						<div className="flex flex-col gap-4">
-							<div>
-								<p className="text-sm text-zinc-600 dark:text-zinc-400">
-									Location
-								</p>
-
-								<p className="text-base md:text-lg">
-									Bengaluru, India
-								</p>
-							</div>
-
-							<div>
-								<p className="text-sm text-zinc-600 dark:text-zinc-400">
-									Stack
-								</p>
-
-								<p className="text-base md:text-lg">
-									Adobe Premiere Pro,
-									<br />
-									Adobe After Effects
-								</p>
-							</div>
-						</div>
-
-					</div>
-
-					{/* Services */}
-					<div className="flex flex-col gap-3">
-						<p className="text-sm text-zinc-600 dark:text-zinc-400">
-							Services
-						</p>
-
-						<div className="flex flex-col text-base md:text-lg">
-							<span>Video Editing</span>
-							<span>Composition & Sound</span>
-							<span>VFX</span>
-							<span>Motion Graphics</span>
-						</div>
-					</div>
-
-				</div>
-
-				{/* Right Side */}
-				<div className="w-full lg:w-[70%] p-4 md:p-6">
-					<div className="w-full aspect-video lg:min-h-[80vh] rounded-xl bg-purple-200" />
-				</div>
-
-			</div>
-
-			<div className="w-full border-b border-zinc-100 dark:border-zinc-900">
-				<Marquee text="More Work©" />
-			</div>
-
-			<div className="grid grid-cols-1 lg:grid-cols-2 font-onest font-light w-full">
-				{projects.map((project, idx) => (
-					<Link
-						key={idx}
-						href={`/work/${project.slug}`}>
-						<div
-							key={project.title}
-							className={`border-b border-zinc-100 dark:border-zinc-900 lg:min-h-[80vh] ${idx % 2 === 1 ? "lg:border-l lg:border-zinc-100 lg:dark:border-zinc-900" : ""}`}
-						>
-							<div className="flex flex-col justify-center gap-2 px-4 md:px-6 lg:px-10 py-6">
-								<span className="text-display-sm">
+							<div className="flex flex-col gap-3">
+								<h1 className="text-4xl leading-none sm:text-5xl md:text-6xl xl:text-7xl">
 									{project.title}
-								</span>
+								</h1>
 
-								<span className="text-heading-lg">
+								<p className="text-lg  text-zinc-700 dark:text-zinc-300">
 									{project.description}
+								</p>
+
+								{"smallDescription" in project && project.smallDescription && (
+									<p className="max-w-4xl text-sm leading-7 text-zinc-500 dark:text-zinc-400">
+										{project.smallDescription}
+									</p>
+								)}
+							</div>
+						</div>
+
+						<div className="mt-10 grid grid-cols-2 gap-6 border-t border-zinc-100 pt-6 dark:border-zinc-900">
+							<div className="flex flex-col gap-1">
+								<span className="text-xs uppercase tracking-[0.18em] text-zinc-500">
+									Client
+								</span>
+								<span className="text-base md:text-lg">{project.title}</span>
+							</div>
+
+							<div className="flex flex-col gap-1">
+								<span className="text-xs uppercase tracking-[0.18em] text-zinc-500">
+									Location
+								</span>
+								<span className="text-base md:text-lg">
+									{"location" in project && project.location ? project.location : "Bengaluru, India"}
 								</span>
 							</div>
 
-							<div className="flex items-center justify-center px-4 md:px-6 pb-6">
-								<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-xl group">
+							<div className="flex flex-col gap-1">
+								<span className="text-xs uppercase tracking-[0.18em] text-zinc-500">
+									Scope
+								</span>
+								<span className="text-base md:text-lg">{project.description}</span>
+							</div>
+
+							<div className="flex flex-col gap-1">
+								<span className="text-xs uppercase tracking-[0.18em] text-zinc-500">
+									Year
+								</span>
+								<span className="text-base md:text-lg">
+									{project.year ?? "2026"}
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<div className="relative min-h-[50vh] w-full lg:col-span-8 lg:min-h-[85vh] rounded-[10px]">
+						<Image
+							src={project.src}
+							alt={project.title}
+							fill
+							priority
+							className="object-cover rounded-[10px]"
+							sizes="(max-width: 1024px) 100vw, 70vw"
+						/>
+					</div>
+				</div>
+			</section>
+
+			{/* Overview */}
+			<section className="w-full border-b border-zinc-100 dark:border-zinc-900">
+				<div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-10 px-4 py-10 md:px-6 lg:grid-cols-12 lg:px-8 lg:py-14">
+					<div className="lg:col-span-4">
+						<h2 className="text-2xl md:text-3xl">Overview</h2>
+					</div>
+
+					<div className="lg:col-span-8">
+						<p className="max-w-4xl text-base leading-8 text-zinc-700 dark:text-zinc-300 md:text-lg">
+							Groww asked us to work on video editing and post-production for their pre-IPO
+							launch, supporting a critical phase in the brand&apos;s growth journey. The focus
+							was on creating sharp, high-quality video content that aligned with Groww&apos;s
+							clean, trustworthy brand presence.
+						</p>
+					</div>
+				</div>
+			</section>
+
+			{/* Showcase */}
+			<section className="w-full border-b border-zinc-100 dark:border-zinc-900">
+				<div className="mx-auto flex w-full max-w-[1600px] flex-col gap-6 px-4 py-8 md:px-6 lg:px-8 lg:py-10">
+					<div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-zinc-100">
+						<Image
+							src={project.src}
+							alt={project.title}
+							fill
+							className="object-cover"
+							sizes="100vw"
+						/>
+					</div>
+
+					<div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+						<div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100">
+							<Image
+								src={project.src}
+								alt={`${project.title} still 1`}
+								fill
+								className="object-cover"
+								sizes="50vw"
+							/>
+						</div>
+
+						<div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-zinc-100">
+							<Image
+								src={project.src}
+								alt={`${project.title} still 2`}
+								fill
+								className="object-cover"
+								sizes="50vw"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* More Work */}
+			<div className="w-full border-b border-zinc-100 dark:border-zinc-900">
+				<Marquee text="More Work ©" />
+			</div>
+
+			<section className="grid w-full grid-cols-1 font-onest font-light lg:grid-cols-2">
+				{relatedProjects.map((item, idx) => (
+					<Link key={item.slug} href={`/work/${item.slug}`} className="group">
+						<article
+							className={`min-h-[70vh] border-b border-zinc-100 transition-all duration-500 hover:bg-zinc-50 dark:border-zinc-900 dark:hover:bg-zinc-950 ${idx % 2 === 1 ? "lg:border-l lg:border-zinc-100 lg:dark:border-zinc-900" : ""
+								}`}
+						>
+							<div className="flex flex-col justify-center gap-2 px-4 py-6 md:px-6 lg:px-10">
+								<span className="text-display-sm">{item.title}</span>
+								<span className="text-heading-lg">{item.description}</span>
+
+								{"smallDescription" in item && item.smallDescription && (
+									<p className="max-w-4xl pt-2 text-sm leading-6 text-zinc-500 dark:text-zinc-400">
+										{item.smallDescription}
+									</p>
+								)}
+							</div>
+
+							<div className="flex items-center justify-center px-4 pb-6 md:px-6">
+								<div className="relative aspect-[16/10] w-full overflow-hidden rounded-[10px]">
 									<Image
-										src={project.src}
-										alt={project.title}
+										src={item.src}
+										alt={item.title}
 										fill
-										priority={idx === 0}
 										className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+										sizes="(max-width: 768px) 100vw, 50vw"
 									/>
 								</div>
 							</div>
-						</div>
+						</article>
 					</Link>
 				))}
-			</div>
+			</section>
 		</div>
 	);
 }
-
-const projects = [
-	{
-		title: "Groww",
-		description: "Launch Video Campaign",
-		slug: "Groww",
-		src: "/1.png"
-	},
-	{
-		title: "Cult",
-		description: "Smartwatch Launch Video",
-		slug: "Cult",
-		src: "/2.png"
-	},
-	{
-		title: "Arovalis",
-		description: "Brand Identity Design",
-		slug: "Arovalis",
-		src: "/3.png"
-	},
-	{
-		title: "Pure Project",
-		description: "Brand Identity & Packaging Design",
-		slug: "Pure Project",
-		src: "/4.png"
-	},
-] 

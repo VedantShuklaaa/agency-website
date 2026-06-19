@@ -1,161 +1,156 @@
 "use client";
-
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
+import { blogs } from "@/lib/constants";
 
-export default function Second() {
-	const [expanded, setExpanded] = useState<number | null>(null);
-	const [isMobile, setIsMobile] = useState(false);
+
+const categories = ["All", "Nightlife", "Strategy", "Culture", "Trends", "Branding"];
+
+export default function BlogGrid() {
+	const [active, setActive] = useState("All");
+	const [sortOrder, setSortOrder] = useState<"latest" | "oldest">("latest");
+
+	const months: Record<string, number> = {
+		JANUARY: 1, FEBRUARY: 2, MARCH: 3, APRIL: 4,
+		MAY: 5, JUNE: 6, JULY: 7, AUGUST: 8,
+		SEPTEMBER: 9, OCTOBER: 10, NOVEMBER: 11, DECEMBER: 12,
+	};
+
+	const parse = (d: string) => {
+		const [month, year] = d.split(" ");
+		return Number(year) * 100 + months[month.toUpperCase()];
+	};
+
+	const filtered = [...blogs]
+		.filter((b) => active === "All" || b.category === active)
+		.sort((a, b) =>
+			sortOrder === "latest"
+				? parse(b.date) - parse(a.date)
+				: parse(a.date) - parse(b.date)
+		);
+
+	const [cols, setCols] = useState(3);
 
 	useEffect(() => {
-		setIsMobile(window.innerWidth < 768);
+		const update = () => {
+			const w = window.innerWidth;
+			setCols(w < 480 ? 1 : w < 768 ? 2 : w < 1280 ? 3 : 5);
+		};
+		update();
+		window.addEventListener("resize", update);
+		return () => window.removeEventListener("resize", update);
 	}, []);
 
 	return (
-		<div className="w-full flex flex-col p-4 gap-2 font-twid border-b border-zinc-100 dark:border-zinc-900">
-			{blogs.map((items, idx) => (
-				<motion.div
-					key={idx}
-					className="overflow-hidden cursor-pointer border-b border-zinc-100 dark:border-zinc-900 last:border-b-0"
-					onClick={() =>
-						setExpanded(expanded === idx ? null : idx)
-					}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true, amount: 0.2 }}
-					initial={{ opacity: 0, y: 120 }}
-					transition={{
-						duration: 1,
-						delay: idx * 0.2,
-						ease: [0.16, 1, 0.3, 1],
-					}}
+		<div className="w-full flex flex-col font-twid border-b border-zinc-100 dark:border-zinc-900">
+
+			{/* Controls */}
+			<div className="px-4 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-zinc-100 dark:border-zinc-900">
+				<div className="flex flex-wrap gap-2">
+					{categories.map((cat) => (
+						<button
+							key={cat}
+							onClick={() => setActive(cat)}
+							className={`px-4 py-1.5 rounded-full text-sm border transition-all duration-150
+								${active === cat
+									? "bg-foreground text-background border-transparent font-medium"
+									: "bg-transparent text-zinc-500 border-zinc-200 dark:border-zinc-800 hover:text-foreground"
+								}`}
+						>
+							{cat}
+						</button>
+					))}
+				</div>
+
+				<button
+					onClick={() => setSortOrder((p) => p === "latest" ? "oldest" : "latest")}
+					className="text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-1.5 rounded-full text-zinc-500 hover:text-foreground transition-all whitespace-nowrap"
 				>
-					<motion.div
-						className="flex flex-col md:flex-row items-center"
-						animate={{
-							minHeight:
-								expanded === idx
-									? "50vh"
-									: "30vh",
-						}}
-						transition={{
-							duration: 0.6,
-							ease: [0.16, 1, 0.3, 1],
-						}}
-					>
-						{/* Image */}
-						{/* Image */}
+					{sortOrder === "latest" ? "Latest First" : "Oldest First"}
+				</button>
+			</div>
+
+			{/* Masonry Grid */}
+			{filtered.length === 0 ? (
+				<div className="p-10 text-center text-zinc-400 text-body-sm">
+					No posts in this category yet.
+				</div>
+			) : (
+				<div
+					style={{ display: "grid", gridTemplateColumns: `repeat(${cols}, 1fr)`, gap: "1rem" }}
+					className="w-full p-2"
+				>
+					{filtered.map((item, idx) => (
 						<motion.div
-							className="relative hidden md:flex self-center overflow-hidden border border-black dark:border-zinc-600 min-h-[220px]"
-							initial={false}
-							animate={{
-								width:
-									expanded === idx
-										? "100%"
-										: !isMobile
-											? "20%"
-											: 0,
-
-								height:
-									expanded === idx
-										? 680
-										: !isMobile
-											? 220
-											: 0,
-
-								opacity:
-									expanded === idx || !isMobile
-										? 1
-										: 0,
-							}}
+							key={item.slug}
+							className="break-inside-avoid mb-4"
+							initial={{ opacity: 0, y: 40 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true, amount: 0.2 }}
 							transition={{
-								duration: 0.6,
+								duration: 0.7,
+								delay: idx * 0.1,
 								ease: [0.16, 1, 0.3, 1],
 							}}
 						>
-							<Image
-								src={items.src}
-								alt={items.title}
-								fill
-								className="object-cover"
-								sizes="(max-width: 768px) 100vw, 35vw"
-							/>
+							<Link
+								href={`/blog/${item.slug}`}
+								className="group flex flex-col gap-3"
+							>
+								{/* Image */}
+								<div
+									style={{ height: 300 }}
+									className="relative w-full overflow-hidden border border-zinc-100 dark:border-zinc-900"
+								>
+									<Image
+										src={item.src}
+										alt={item.title}
+										fill
+										className="object-cover transition-transform duration-700 group-hover:scale-105"
+										sizes="(max-width: 640px) 80vw, (max-width: 1024px) 40vw, 20vw"
+									/>
+									{/* fallback bg so card is visible when image missing */}
+									<div className="absolute inset-0 bg-zinc-900 -z-10" />
+
+									<div style={{ position: "absolute", top: 5, left: 5, display: "flex", gap: 4, flexWrap: "wrap", zIndex: 10 }}>
+										{item.tags.map((tag) => (
+											<span
+												key={tag}
+												style={{
+													background: "rgba(255,255,255,0.9)",
+													backdropFilter: "blur(4px)",
+													borderRadius: "6px",
+													padding: "2px 8px",
+													fontSize: "12px",
+													fontWeight: 500,
+													color: "black",
+												}}
+											>
+												{tag}
+											</span>
+										))}
+									</div>
+								</div>
+
+								{/* Meta */}
+								<div className="flex flex-col gap-1 pb-2">
+									<span className="text-xs text-zinc-400 font-onest">
+										{item.date}
+									</span>
+									<h3 className="text-body-md font-medium leading-snug group-hover:text-[#ff2d55] transition-colors duration-200">
+										{item.title}
+									</h3>
+									<p className="text-body-sm text-zinc-500 leading-relaxed line-clamp-2">
+										{item.description}
+									</p>
+								</div>
+							</Link>
 						</motion.div>
-						{/* Content */}
-						<div className="w-full p-4 flex flex-col justify-center gap-2">
-							<span className="text-zinc-400 text-body-sm xl:text-body-md">
-								{items.date}
-							</span>
-
-							<span className="lg:text-body-lg 2xl:text-heading-lg">
-								{items.title}
-							</span>
-
-							<span className="text-body-sm 2xl:text-body-lg text-zinc-500 lg:w-[70%] xl:w-[50%]">
-								{items.description}
-							</span>
-
-							<AnimatePresence>
-								{expanded === idx && (
-									<motion.div
-										initial={{
-											height: 0,
-											opacity: 0,
-										}}
-										animate={{
-											height: "auto",
-											opacity: 1,
-										}}
-										exit={{
-											height: 0,
-											opacity: 0,
-										}}
-										transition={{
-											duration: 0.5,
-											ease: [0.16, 1, 0.3, 1],
-										}}
-										className="overflow-hidden"
-									>
-										<p className="pt-6 text-body-sm lg:text-body-md text-zinc-500 leading-relaxed lg:w-[85%]">
-											{items.fullDescription}
-										</p>
-									</motion.div>
-								)}
-							</AnimatePresence>
-						</div>
-					</motion.div>
-				</motion.div>
-			))}
+					))}
+				</div>
+			)}
 		</div>
 	);
 }
-
-const blogs = [
-	{
-		title: "How Nightlife Brands Build Community",
-		date: "MAY 2026",
-		src: "/1.png",
-		description:
-			"Building a venue is easy. Building a community is the hard part.",
-		fullDescription:
-			"Community is the most defensible asset in hospitality. While competitors can copy menus, interiors, and pricing, they cannot easily replicate a loyal audience that feels connected to a venue. In this article, we explore the systems, programming strategies, and brand principles that transform nightlife spaces into cultural destinations.",
-	},
-	{
-		title: "Why Consistency Beats Virality",
-		date: "APRIL 2026",
-		src: "/2.png",
-		description:
-			"One viral reel won't save a weak operating system.",
-		fullDescription:
-			"Most hospitality brands chase spikes in attention while neglecting operational consistency. Sustainable growth comes from delivering repeatable experiences, building trust, and creating systems that perform regardless of trends. We break down how leading venues maintain demand year-round.",
-	},
-	{
-		title: "The Future of Venue Growth",
-		date: "MARCH 2026",
-		src: "/3.png",
-		description:
-			"The next generation of nightlife growth looks very different.",
-		fullDescription:
-			"From AI-assisted operations to community-driven programming, venue growth is becoming increasingly systemized. We examine emerging trends that will define the next decade of hospitality and entertainment experiences.",
-	},
-];

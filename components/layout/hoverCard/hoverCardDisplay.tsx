@@ -25,7 +25,7 @@ export default function HoverExpand() {
 				<motion.div
 					layout
 					key={i}
-					className={`relative cursor-pointer overflow-hidden rounded-xl lg:rounded-2xl w-full transition-all
+					className={`relative cursor-pointer overflow-hidden rounded-[10px] w-full transition-all duration-200
 					${active === i
 							? "h-[220px] md:h-[300px] lg:h-[380px]"
 							: "h-12"}`}
@@ -64,7 +64,7 @@ export default function HoverExpand() {
 							>
 								<span className="text-xs md:text-sm font-medium tracking-widest uppercase">
 									{img.label}
-								</span>
+								</span>ƒ
 							</motion.div>
 						)}
 					</AnimatePresence>

@@ -15,7 +15,8 @@ interface FloatingCardProps {
 
 
 export default function FloatingCard({
-	children, className = "",
+	children, 
+	className = "",
 	style,
 	y = 80
 }: FloatingCardProps) {

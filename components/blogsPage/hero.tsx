@@ -1,16 +1,45 @@
+"use client";
 import { Skiper49 } from "../layout/skipper/skipper2";
 
 
 
 export default function Hero() {
 	return (
-		<div className="py-10 w-full flex flex-col items-center gap-10 pt-10 font-twid bg-purple-300 text-black">
+		<div className="py-10 w-full flex flex-col items-center gap-10 pt-10 ">
 			<div className="flex flex-col items-center leading-none">
-				<span className="text-display-2xl tracking-tight font-dage">BLOGS</span>
-				<span className="text-xl text-zinc-600 text-center">Expert perspectives, industry trends, and practical wisdom.</span>
+				<span className="text-display-xl xl:text-display-lg tracking-tight font-dage">INTELLIGENCE.</span>
+				<span className="text-xl text-zinc-600 text-center font-twid">Strategy, culture, and industry insight — curated for the serious operator.</span>
 			</div>
 
-			<Skiper49 />
+			<CategoryPills />
 		</div>
 	)
+}
+
+
+const categories = [
+	{ label: "All", icon: "🎯" },
+	{ label: "Nightlife", icon: "🌙" },
+	{ label: "Strategy", icon: "📊" },
+	{ label: "Culture", icon: "🎵" },
+	{ label: "Branding", icon: "✦" },
+	{ label: "Operations", icon: "⚙" },
+	{ label: "Community", icon: "👥" },
+	{ label: "Trends", icon: "↗" },
+];
+
+export function CategoryPills() {
+	return (
+		<div className="flex flex-wrap gap-2 justify-center">
+			{categories.map(({ label, icon }) => (
+				<button
+					key={label}
+					className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm transition-all duration-150 border`}
+				>
+					<span>{icon}</span>
+					<span className="font-twid text-body-sm">{label}</span>
+				</button>
+			))}
+		</div>
+	);
 }

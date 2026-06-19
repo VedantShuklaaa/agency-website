@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import HeroText from "@/components/hero/heroText";
 import { Loader } from "@/components/layout/loader/loader";

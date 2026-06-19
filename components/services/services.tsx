@@ -86,7 +86,7 @@ export default function Services() {
 			{data.map((item, idx) => (
 				<div
 					key={idx}
-					className="w-full border-b border-zinc-100 dark:border-zinc-900"
+					className="w-full border-b border-zinc-100 dark:border-zinc-900 hover:bg-zinc-50 dark:border-zinc-900 dark:hover:bg-zinc-950 duration-500 transition-all"
 				>
 					<div className="flex flex-col gap-6 p-4 md:p-6">
 
