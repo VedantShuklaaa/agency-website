@@ -5,9 +5,9 @@ import { Skiper49 } from "../layout/skipper/skipper2";
 
 export default function Hero() {
 	return (
-		<div className="py-10 w-full flex flex-col items-center gap-10 pt-10 ">
+		<div className="min-h-[40vh] lg:h-[60vh] w-full flex flex-col items-center justify-center gap-10 bg-linear-to-b from-white via-orange-300 to-[#CD7F32]">
 			<div className="flex flex-col items-center leading-none">
-				<span className="text-display-xl xl:text-display-lg tracking-tight font-dage">INTELLIGENCE.</span>
+				<span className="text-display-xl xl:text-display-lg 2xl:text-display-xl tracking-tight font-dage text-black">INTELLIGENCE.</span>
 				<span className="text-xl text-zinc-600 text-center font-twid">Strategy, culture, and industry insight — curated for the serious operator.</span>
 			</div>
 

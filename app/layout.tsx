@@ -52,6 +52,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ScrollToTop />
+          <LenisProvider />
           <PageTransition />
           <CursorDot />
           <Navbar />

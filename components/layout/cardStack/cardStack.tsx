@@ -116,7 +116,7 @@ export default function CardStack() {
 						</div>
 						<div className="h-full w-full flex items-center justify-center md:justify-start">
 							<TiltCard
-								className="h-[400px] w-[300px] md:h-[500px] md:w-[340px] lg:h-[600px] lg:w-[450px] xl:h-[600px] xl:w-[550px] 2xl:h-[800px] 2xl:w-[750px]"
+								className="h-[400px] w-[300px] md:h-[500px] md:w-[340px] lg:h-[600px] lg:w-[450px] xl:h-[600px] xl:w-[550px] 2xl:h-[800px] 2xl:w-[690px]"
 								cardClassName={card.cardColor}
 								tilt={card.tilt}
 							>

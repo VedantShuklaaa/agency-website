@@ -25,7 +25,7 @@ export default function HoverExpand() {
 				<motion.div
 					layout
 					key={i}
-					className={`relative cursor-pointer overflow-hidden rounded-[10px] w-full transition-all duration-200
+					className={`relative cursor-pointer overflow-hidden rounded-[10px] w-full transition-all duration-400
 					${active === i
 							? "h-[220px] md:h-[300px] lg:h-[380px]"
 							: "h-12"}`}

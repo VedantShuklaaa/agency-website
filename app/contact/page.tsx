@@ -11,7 +11,7 @@ export const metadata = {
 export default function Page() {
 	return (
 		<div className="bg-background w-full overflow-hidden">
-			<div className="py-5 w-full flex flex-col items-center justify-center bg-pink-200 gap-4 md:gap-20 leading-none">
+			<div className="min-h-[40vh] lg:h-[60vh] w-full flex flex-col items-center justify-center gap-4 md:gap-20 leading-none bg-gradient-to-b from-white via-purple-300 to-purple-500">
 				<span className="leading-none">
 					<h1 className="text-display-sm sm:text-display-lg tracking-tighter text-black text-center font-bold font-druk">IT STARTS WITH A CONVERSATION</h1>
 				</span>

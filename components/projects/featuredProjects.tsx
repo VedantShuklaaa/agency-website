@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const projects = [
 	{ title: "Vibrant", tilt: -20, x: -390, y: 10, z: 10, color: "#d8cdb5", src: "/1.png" },
@@ -16,20 +17,21 @@ const projects = [
 ];
 
 export default function FeaturedProjects() {
+	const router = useRouter()
 	const [hovered, setHovered] = useState<string | null>(null);
 
 	return (
-		<section className="relative min-h-screen w-full overflow-hidden bg-black border-b border-zinc-100 dark:border-zinc-900">
+		<section className="relative min-h-screen w-full overflow-hidden border-b border-zinc-100 dark:border-zinc-900 ">
 			{/* Header */}
-			<div className="flex flex-col md:flex-row md:justify-between p-4 gap-6 backdrop-blur-xl bg-white/5">
+			<div className="flex flex-col md:flex-row md:justify-between p-4 gap-6 backdrop-blur-xl  bg-black/10 dark:bg-white/5">
 				<div className="leading-none z-50">
-					<h1 className="font-dage text-display-lg text-white uppercase">
+					<h1 className="font-dage text-display-lg uppercase">
 						Selected Client Projects
 					</h1>
 				</div>
 
 				<div className=" z-50">
-					<button className="group flex items-center gap-3 border border-white px-4 py-2 lg:px-6 lg:py-3 text-white">
+					<button className="group flex items-center gap-3 border border-white px-4 py-2 lg:px-6 lg:py-3 text-white" onClick={() => { router.push("/work") }}>
 						<span className="font-twid italic uppercase text-sm lg:text-base">
 							View All Projects
 						</span>
