@@ -3,6 +3,7 @@ import { dagestan, drukWide, onest, twidGrotesk } from "@/fonts/fonts";
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/layout/navbar/navbar";
 import "./globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import CursorDot from "@/components/layout/cursorDot/cursorDot";
 import Footer from "@/components/layout/footer/footer";
 import PageTransition from "@/components/layout/pageTransition/pageTransition";
@@ -50,6 +51,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <SpeedInsights />
           <ScrollToTop />
           <LenisProvider />
           <PageTransition />
