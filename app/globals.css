@@ -279,13 +279,3 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
-
-.image-text {
-  background-image: url('/1.png');
-  background-size: cover;
-  background-position: center;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-

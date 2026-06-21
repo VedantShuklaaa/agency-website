@@ -14,7 +14,7 @@ export const twidGrotesk = localFont({
 });
 
 export const drukWide = localFont({
-  src: "./DrukWide-Medium-Trial.otf",
+  src: "./DrukWide-Medium-Trial.woff2",
   variable: "--font-druk",
   display: "swap", 
 });

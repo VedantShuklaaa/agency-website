@@ -147,6 +147,7 @@ export function OrbitBackground({
 									<Image
 										src={ORBIT_IMAGES[index]}
 										alt="NAH"
+										loading="lazy" 
 										fill
 										className="object-cover"
 										sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"

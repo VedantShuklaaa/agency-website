@@ -1,4 +1,3 @@
-"use client"
 import Hero from "@/components/blogsPage/hero";
 import Second from "@/components/blogsPage/seconds";
 

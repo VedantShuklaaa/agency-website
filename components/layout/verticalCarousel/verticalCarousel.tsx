@@ -134,7 +134,7 @@ export function ProcessCardRight() {
 							}}
 							className={`absolute left-0 right-0 rounded-2xl border overflow-hidden will-change-transform ${step.green
 								? "bg-emerald-400 text-black border-green-300"
-								: "bg-[#0f0f0f] border-white/10"
+								: "bg-zinc-300 dark:bg-[#0f0f0f] border-white/10"
 								}`}
 							style={{
 								height: EXPANDED_H,
@@ -145,7 +145,7 @@ export function ProcessCardRight() {
 							}}
 						>
 							<div className="grid grid-cols-1 md:px-8 h-full items-start">
-								<span className={`text-sm p-2 ${step.green ? "text-black/60" : "text-white/40"}`}>
+								<span className={`text-sm p-2 ${step.green ? "text-black/60" : "text-black dark:text-white/40"}`}>
 									{step.green ? "☺" : step.num}
 								</span>
 								<div className="px-2">
@@ -154,7 +154,7 @@ export function ProcessCardRight() {
 									>
 										{step.title}
 									</h3>
-									<p className={`card-desc mt-4 max-w-5xl leading-relaxed ${step.green ? "text-black/70" : "text-white/55"}`} >
+									<p className={`card-desc mt-4 max-w-5xl leading-relaxed ${step.green ? "text-black/70" : "text-zinc-600 dark:text-white/55"}`} >
 										{step.description}
 									</p>
 								</div>

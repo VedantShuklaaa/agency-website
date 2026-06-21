@@ -9,7 +9,6 @@ import PageTransition from "@/components/layout/pageTransition/pageTransition";
 import LenisProvider from "@/components/layout/lenis/lenis";
 import ScrollToTop from "@/components/layout/scrollToTop/scrollToTop";
 
-
 export const metadata: Metadata = {
   title: "Wildboys Tribe | Nightlife & Entertainment Architects",
   description: "India's First Nightlife & Entertainment Growth Studio. We design operating systems that make venues culturally relevant, community-led, and consistently engaging.",
@@ -67,4 +66,3 @@ export default function RootLayout({
     </html>
   );
 }
-

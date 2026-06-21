@@ -22,9 +22,11 @@ export default function LenisProvider() {
 		gsap.ticker.add(rafFn);
 		gsap.ticker.lagSmoothing(0);
 
+		setTimeout(() => ScrollTrigger.refresh(), 100)
+
 		return () => {
 			lenis.destroy();
-			gsap.ticker.remove(rafFn); // ✅ same reference now
+			gsap.ticker.remove(rafFn);
 		};
 	}, []);
 
