@@ -2,14 +2,32 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { blogs } from "@/lib/constants";
 import TransitionLink from "../layout/pageTransition/transitionLink";
 
 const categories = ["All", "Nightlife", "Strategy", "Culture", "Trends", "Branding"];
 
+type Blog = {
+	id: string;
+	title: string;
+	slug: string;
+	description: string;
+	category: string;
+	tags: string[];
+	date: string;
+	image_url: string;
+};
+
 export default function BlogGrid() {
 	const [active, setActive] = useState("All");
 	const [sortOrder, setSortOrder] = useState<"latest" | "oldest">("latest");
+	const [blogs, setBlogs] = useState<Blog[]>([]);
+
+	useEffect(() => {
+		fetch("/api/blogs")
+			.then((r) => r.json())
+			.then((data) => setBlogs(Array.isArray(data) ? data : []))
+			.catch(() => setBlogs([]));
+	}, []);
 
 	const months: Record<string, number> = {
 		JANUARY: 1, FEBRUARY: 2, MARCH: 3, APRIL: 4,
@@ -104,7 +122,7 @@ export default function BlogGrid() {
 									className="relative w-full overflow-hidden border border-zinc-100 dark:border-zinc-900"
 								>
 									<Image
-										src={item.src}
+										src={item.image_url}
 										alt={item.title}
 										fill
 										className="object-cover transition-transform duration-700 group-hover:scale-105"

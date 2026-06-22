@@ -1,7 +1,6 @@
-// app/blog/[slug]/page.tsx
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { blogs } from "@/lib/constants";
+import { supabase } from "@/lib/supabase/client";
 
 type Props = {
 	params: Promise<{ slug: string }>;
@@ -10,11 +9,13 @@ type Props = {
 export default async function BlogPostPage({ params }: Props) {
 	const { slug } = await params;
 
-	const post = blogs.find((item) => item.slug === slug);
+	const { data: post } = await supabase
+		.from("blogs")
+		.select("*")
+		.eq("slug", slug)
+		.single();
 
-	if (!post) {
-		notFound();
-	}
+	if (!post) notFound();
 
 	return (
 		<section className="w-full px-4 py-12">
@@ -36,7 +37,7 @@ export default async function BlogPostPage({ params }: Props) {
 				</div>
 
 				<div className="mt-6 flex flex-wrap gap-2">
-					{post.tags.map((tag) => (
+					{post.tags.map((tag: string) => (
 						<span
 							key={tag}
 							className="rounded-full border border-zinc-200 px-3 py-1 text-xs text-zinc-600"
