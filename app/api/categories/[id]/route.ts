@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
+import { isAdminAuthed } from "@/lib/auth";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -9,9 +10,9 @@ export async function DELETE(req: NextRequest, { params }: Props) {
 	if (!rateLimit(ip, 10, 60_000))
 		return NextResponse.json({ error: "Too many requests" }, { status: 429 });
 
-	const secret = req.headers.get("x-admin-secret");
-	if (secret !== process.env.ADMIN_SECRET)
+	if (!(await isAdminAuthed())) {
 		return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+	}
 
 	const { id } = await params;
 	const { error } = await supabaseAdmin.from("categories").delete().eq("id", id);

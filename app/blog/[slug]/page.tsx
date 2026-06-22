@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { supabase } from "@/lib/supabase/client";
+import { supabase } from "@/lib/supabase";
 
 type Props = {
 	params: Promise<{ slug: string }>;
@@ -9,13 +9,16 @@ type Props = {
 export default async function BlogPostPage({ params }: Props) {
 	const { slug } = await params;
 
-	const { data: post } = await supabase
+	const { data: post, error } = await supabase
 		.from("blogs")
 		.select("*")
 		.eq("slug", slug)
 		.single();
 
-	if (!post) notFound();
+	if (error || !post) {
+		if (error) console.error("Blog fetch error:", error.message);
+		notFound();
+	}
 
 	return (
 		<section className="w-full px-4 py-12">
@@ -27,13 +30,15 @@ export default async function BlogPostPage({ params }: Props) {
 				</h1>
 
 				<div className="mt-6 relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-zinc-100">
-					<Image
-						src={post.src}
-						alt={post.title}
-						fill
-						className="object-cover"
-						sizes="100vw"
-					/>
+					{post.image_url ? (
+						<Image
+							src={post.image_url}
+							alt={post.title}
+							fill
+							className="object-cover"
+							sizes="100vw"
+						/>
+					) : null}
 				</div>
 
 				<div className="mt-6 flex flex-wrap gap-2">

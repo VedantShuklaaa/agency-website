@@ -28,8 +28,6 @@ type FormState = {
 
 // ─── Reducer ─────────────────────────────────────────────
 type State = {
-	authed: boolean;
-	password: string;
 	blogs: Blog[];
 	categories: Category[];
 	form: FormState;
@@ -43,8 +41,6 @@ type State = {
 };
 
 type Action =
-	| { type: "SET_PASSWORD"; payload: string }
-	| { type: "SET_AUTHED" }
 	| { type: "SET_BLOGS"; payload: Blog[] }
 	| { type: "SET_CATEGORIES"; payload: Category[] }
 	| { type: "SET_FORM"; payload: Partial<FormState> }
@@ -63,8 +59,6 @@ const emptyForm: FormState = {
 };
 
 const initialState = (blogs: Blog[], categories: Category[]): State => ({
-	authed: false,
-	password: "",
 	blogs,
 	categories,
 	form: emptyForm,
@@ -79,8 +73,6 @@ const initialState = (blogs: Blog[], categories: Category[]): State => ({
 
 function reducer(state: State, action: Action): State {
 	switch (action.type) {
-		case "SET_PASSWORD": return { ...state, password: action.payload };
-		case "SET_AUTHED": return { ...state, authed: true, error: "" };
 		case "SET_BLOGS": return { ...state, blogs: action.payload };
 		case "SET_CATEGORIES": return { ...state, categories: action.payload };
 		case "SET_FORM": return { ...state, form: { ...state.form, ...action.payload } };
@@ -113,12 +105,11 @@ type Props = {
 // ─── Component ────────────────────────────────────────────
 export default function AdminClient({ initialBlogs, initialCategories }: Props) {
 	const [state, dispatch] = useReducer(reducer, initialState(initialBlogs, initialCategories));
-	const { authed, password, blogs, categories, form, editId, imageFile, loading, fetching, message, error, newCategory } = state;
+	const { blogs, categories, form, editId, imageFile, loading, fetching, message, error, newCategory } = state;
 
 	const headers = useMemo(() => ({
-		"x-admin-secret": password,
 		"Content-Type": "application/json",
-	}), [password]);
+	}), []);
 
 	const autoSlug = (title: string) =>
 		title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
@@ -157,11 +148,6 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 	}, [initialBlogs]);
 
 	// ─── Handlers ──────────────────────────────────────────
-	const handleLogin = () => {
-		if (!password) return dispatch({ type: "SET_ERROR", payload: "Enter admin secret" });
-		dispatch({ type: "SET_AUTHED" });
-	};
-
 	const handleLogout = async () => {
 		await fetch("/api/admin/logout", { method: "POST" });
 		window.location.href = "/admin";
@@ -173,7 +159,6 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 		fd.append("file", imageFile);
 		const res = await fetch("/api/blogs/upload", {
 			method: "POST",
-			headers: { "x-admin-secret": password },
 			body: fd,
 		});
 		const data = await res.json();
@@ -256,36 +241,6 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 		}
 	};
 
-	// ─── Login screen ──────────────────────────────────────
-	if (!authed) {
-		return (
-			<div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] px-6 text-white">
-				<div className="w-full max-w-4xl rounded-[10px] border border-white/10 bg-white/[0.03] p-6 backdrop-blur">
-					<p className="mb-3 text-[11px] uppercase tracking-[0.24em] text-zinc-500">Club CMS</p>
-					<h1 className="text-3xl font-semibold tracking-tight">Admin access</h1>
-					<p className="mt-2 text-sm leading-6 text-zinc-400">Enter the admin secret to manage posts.</p>
-					<div className="mt-8 space-y-3">
-						<label className="text-[11px] uppercase tracking-[0.18em] text-zinc-500">Admin Secret</label>
-						<input
-							type="password"
-							placeholder="••••••••••••"
-							value={password}
-							onChange={(e) => dispatch({ type: "SET_PASSWORD", payload: e.target.value })}
-							onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-							className={inputClass}
-						/>
-					</div>
-					{(error || message) && (
-						<p className={`mt-4 text-sm ${error ? "text-red-400" : "text-green-400"}`}>{error || message}</p>
-					)}
-					<button onClick={handleLogin} className="mt-6 h-12 w-full rounded-[10px] bg-[#ff2d55] text-sm font-medium text-white transition hover:brightness-110">
-						Continue
-					</button>
-				</div>
-			</div>
-		);
-	}
-
 	// ─── Main UI ───────────────────────────────────────────
 	return (
 		<div className="min-h-screen bg-[#0a0a0a] px-4 py-6 text-white sm:px-6 lg:px-8">
@@ -301,13 +256,13 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 						<Pill>{blogs.length} posts</Pill>
 						<Pill>{categories.length} categories</Pill>
 						<Pill>{editId ? "Editing" : "Create mode"}</Pill>
+						<button
+							onClick={handleLogout}
+							className="rounded-full border border-white/10 px-4 py-2 text-xs text-zinc-400 transition hover:bg-white/[0.04]"
+						>
+							Logout
+						</button>
 					</div>
-					<button
-						onClick={handleLogout}
-						className="rounded-full border border-white/10 px-4 py-2 text-xs text-zinc-400 transition hover:bg-white/[0.04]"
-					>
-						Logout
-					</button>
 				</div>
 
 				{/* Feedback */}

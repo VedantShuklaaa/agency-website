@@ -25,7 +25,7 @@ const categories = [
 	{ label: "Trends", icon: "↗" },
 ];
 
-export function CategoryPills() {
+function CategoryPills() {
 	return (
 		<div className="flex flex-wrap gap-2 justify-center">
 			{categories.map(({ label, icon }) => (

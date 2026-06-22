@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
+import { isAdminAuthed } from "@/lib/auth";
 
 export async function GET() {
 	try {
@@ -28,8 +29,7 @@ export async function POST(req: NextRequest) {
 			return NextResponse.json({ error: "Too many requests" }, { status: 429 });
 		}
 
-		const secret = req.headers.get("x-admin-secret");
-		if (secret !== process.env.ADMIN_SECRET) {
+		if (!(await isAdminAuthed())) {
 			return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 		}
 
