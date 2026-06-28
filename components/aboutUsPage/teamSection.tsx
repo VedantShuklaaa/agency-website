@@ -17,7 +17,6 @@ const Team = [
 type WipeDirection = "topToBottom" | "bottomToTop";
 
 export default function TeamSection() {
-	const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 	const [displayedIdx, setDisplayedIdx] = useState<number | null>(null);
 	const [direction, setDirection] = useState<WipeDirection>("topToBottom");
 	const [open, setOpen] = useState(false);
@@ -32,12 +31,10 @@ export default function TeamSection() {
 			setDirection("bottomToTop");
 		}
 		setDisplayedIdx(idx);
-		setHoveredIdx(idx);
 		requestAnimationFrame(() => setOpen(true));
 	};
 
 	const handleLeaveAll = () => {
-		setHoveredIdx(null);
 		setOpen(false);
 	};
 

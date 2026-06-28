@@ -7,7 +7,7 @@ export default function Hero() {
 				<div className="hidden lg:block h-full w-full" />
 
 				<div className="w-full lg:w-[80vw] text-heading-lg md:text-heading-xl font-light leading-tight flex flex-col gap-2">
-					<span>Great destinations aren't built by doing more. They're built by making every part of the business work together.</span>
+					<span>Great destinations aren&apos;t built by doing more. They&apos;re built by making every part of the business work together.</span>
 					<span>The WILDBOYS Operating System brings strategy, brand, experiences, talent, community, and operations into one connected framework—aligning every part of the business to create stronger destinations and measurable business performance.</span>
 				</div>
 			</div>

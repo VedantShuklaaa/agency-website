@@ -26,7 +26,7 @@ export default function Page() {
 						BUILT BY OPERATORS
 					</h1>
 					<p className="text-body-md lg:text-heading-lg lg:max-w-[50vw]">
-						WILDBOYS TRIBE was built by operators who experienced the industry's challenges firsthand—and built a system to solve them.
+						WILDBOYS TRIBE was built by operators who experienced the industry&apos;s challenges firsthand—and built a system to solve them.
 					</p>
 				</div>
 

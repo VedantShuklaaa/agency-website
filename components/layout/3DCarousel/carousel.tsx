@@ -1,4 +1,4 @@
-import ScrollRevealText, { SequentialReveal } from "@/components/scrolltriger/fillColor";
+import ScrollRevealText from "@/components/scrolltriger/fillColor";
 import BottomDesc from "../bottomDesc/bottomDesc";
 import { OrbitBackground } from "@/components/orbitBackground/withScrollTrigger";
 

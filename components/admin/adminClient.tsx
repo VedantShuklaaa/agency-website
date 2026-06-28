@@ -532,10 +532,13 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 											className="relative mt-3 h-52 overflow-hidden rounded-[10px] border border-border bg-card"
 										>
 											{imageFile ? (
-												<img
+												<Image
 													src={URL.createObjectURL(imageFile)}
 													alt="Preview"
-													className="h-full w-full object-cover"
+													fill
+													unoptimized
+													className="object-cover"
+													sizes="100vw"
 												/>
 											) : (
 												<Image

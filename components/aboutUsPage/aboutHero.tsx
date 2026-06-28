@@ -245,13 +245,13 @@ export default function AboutHero() {
 							<div className="text-display-lg font-druk leading-none" style={{ lineHeight: 0.8 }}>
 								<div>THE CROWD.</div>
 								<div>THE BUSINESS.</div>
-								<div>WE'VE LIVED BOTH.</div>
+								<div>WE&apos;VE LIVED BOTH.</div>
 							</div>
 						</div>
 
 						<div ref={rightRef} className="w-full h-full flex flex-col justify-end text-[#938ACF] text-2xl md:text-heading-xl gap-2 px-4 pb-50">
 							<p className="lg:max-w-[90%] xl:max-w-[80%] leading-none tracking-normal" style={{ lineHeight: 0.9 }}>
-								We've worked behind booths, behind bars, behind
+								We&apos;ve worked behind booths, behind bars, behind
 								campaigns, behind communities, and behind
 								businesses. The most enduring destinations are built where
 								culture meets systems, creativity meets execution,
@@ -277,10 +277,10 @@ export default function AboutHero() {
 
 					<div ref={accordionSectionRef} className="absolute inset-0 bg-black flex flex-col justify-between px-2 lg:px-10 py-20">
 						<div className="flex flex-col text-[#938ACF]">
-							<p className="text-body-md">THIS IS WHAT WE'VE LEARNED,</p>
+							<p className="text-body-md">THIS IS WHAT WE&apos;VE LEARNED,</p>
 							<div className="font-druk text-display-lg tracking-wide" style={{ lineHeight: 0.85 }}>
 								<p>GREAT DESTINATIONS</p>
-								<p>AREN'T ACCIDENTS.</p>
+								<p>AREN&apos;T ACCIDENTS.</p>
 							</div>
 						</div>
 

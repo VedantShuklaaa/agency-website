@@ -27,7 +27,7 @@ export default function Links() {
 						<p className="text-heading-lg">We partner with ambitious businesses across nightlife, entertainment, and hospitality to build destinations, experiences, and brands that move the industry forward.</p>
 					</span>
 					<span className="">
-						<p className="text-body-sm text-zinc-400 ">Whether you're launching something new, transforming an existing destination, or exploring a strategic partnership, this is where the conversation begins.</p>
+						<p className="text-body-sm text-zinc-400 ">Whether you&apos;re launching something new, transforming an existing destination, or exploring a strategic partnership, this is where the conversation begins.</p>
 					</span>
 				</span>
 
