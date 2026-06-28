@@ -12,35 +12,35 @@ type Step = {
 	num: string;
 	title: string;
 	description: string;
-	green?: boolean;
+	red?: boolean;
 };
 
 const STEPS: Step[] = [
 	{
 		num: "01",
-		title: "Discovery",
-		description: "Deep understanding of your venue, audience, and market to build a strong strategic foundation.",
+		title: "DISCOVER",
+		description: "Understand the venue, audience, opportunities, and constraints before designing the system.",
 	},
 	{
 		num: "02",
-		title: "Design",
-		description: "Crafting positioning, experiences, and systems that create demand and strengthen your brand.",
+		title: "ARCHITECT",
+		description: "Design the strategy, systems, and roadmap required to achieve the desired outcome.",
 	},
 	{
 		num: "03",
-		title: "Development",
-		description: "Executing plans, managing talent, and driving operations to deliver consistent growth and performance.",
+		title: "ACTIVATE",
+		description: "Bring the vision to life through experiences, partnerships, programming, and execution.",
 	},
 	{
 		num: "04",
-		title: "Launch",
-		description: "From setup to opening, we build momentum and ensure a powerful launch that gets people in.",
+		title: "OPTIMIZE",
+		description: "Refine performance, strengthen execution, and amplify what works.",
 	},
 	{
 		num: "",
-		title: "Contact Us",
-		description: "Let’s build something impactful together. Reach out and let’s talk.",
-		green: true,
+		title: "PARTNER WITH US",
+		description: "Ready to unlock your venue's next stage of growth? Let's build something worth returning to.",
+		red: true,
 	},
 ];
 
@@ -132,21 +132,21 @@ export function ProcessCardRight() {
 							ref={(el) => {
 								cardRefs.current[i] = el;
 							}}
-							className={`absolute left-0 right-0 rounded-2xl border overflow-hidden will-change-transform ${step.green
-								? "bg-emerald-400 text-black border-green-300"
+							className={`absolute left-0 right-0 rounded-2xl border overflow-hidden will-change-transform ${step.red
+								? "bg-[#FF0000]/60 text-black border-red-500"
 								: "bg-zinc-300 dark:bg-[#0f0f0f] border-white/10"
 								}`}
 							style={{
 								height: EXPANDED_H,
 								zIndex: i + 1, // last (red) on top
-								boxShadow: step.green
-									? "0 -20px 40px -20px rgba(21, 240, 68, 0.35)"
+								boxShadow: step.red
+									? "0 -20px 40px -20px rgba(255, 0, 0, 0.35)"
 									: "0 -10px 30px -20px rgba(225, 244, 220, 0.6)",
 							}}
 						>
 							<div className="grid grid-cols-1 md:px-8 h-full items-start">
-								<span className={`text-sm p-2 ${step.green ? "text-black/60" : "text-black dark:text-white/40"}`}>
-									{step.green ? "☺" : step.num}
+								<span className={`text-sm p-2 ${step.red ? "text-black/60" : "text-black dark:text-white/40"}`}>
+									{step.red ? "☺" : step.num}
 								</span>
 								<div className="px-2">
 									<h3
@@ -154,7 +154,7 @@ export function ProcessCardRight() {
 									>
 										{step.title}
 									</h3>
-									<p className={`card-desc mt-4 max-w-5xl leading-relaxed ${step.green ? "text-black/70" : "text-zinc-600 dark:text-white/55"}`} >
+									<p className={`card-desc mt-4 max-w-5xl leading-relaxed ${step.red ? "text-black/70" : "text-zinc-600 dark:text-white/55"}`} >
 										{step.description}
 									</p>
 								</div>
@@ -171,14 +171,12 @@ export default function ProcessCardLeft() {
 	return (
 		<div className="w-full flex flex-col gap-6 px-6 py-24 leading-none">
 			<span className="text-heading-xl font-twid">
-				Our process is built to move fast,
-				stay flexible, and keep you involved.
-				We don’t overcomplicate.
-				We focus on what gets results.
+				Our framework exists to replace fragmented execution with a unified operating system—aligning every moving part of the venue into a structure designed to perform, adapt, and compound over time.
+				No venue succeeds because of a single activity. Performance emerges when every part of the business works together as one system.
 			</span>
 
 			<Link className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden" href="/about">
-				<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
+				<div className="absolute inset-0 bg-[#FF0000] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
 				<span className="relative z-10">
 					<SlidingText text="ABOUT US" />
 				</span>

@@ -3,7 +3,7 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import TiltCard from "../tiltCard/tiltCard";
+import { TiltCard2 } from "../tiltCard/tiltCard";
 import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -114,9 +114,9 @@ export default function CardStack() {
 							</div>
 							<span className={`text-display-md ${card.color === "bg-black" ? "text-white" : `text-black`}`}>{card.title}</span>
 						</div>
-						<div className="h-full w-full flex items-center justify-center md:justify-start">
-							<TiltCard
-								className="h-[400px] w-[300px] md:h-[500px] md:w-[340px] lg:h-[600px] lg:w-[450px] xl:h-[600px] xl:w-[550px] 2xl:h-[800px] 2xl:w-[690px]"
+						<div className="h-full w-full flex items-center justify-center md:justify-end md:pr-20">
+							<TiltCard2
+								className="h-[400px] w-[300px] md:h-[500px] md:w-[340px] lg:h-[600px] lg:w-[450px] xl:h-[600px] xl:w-[550px] 2xl:h-[900px] 2xl:w-[690px]"
 								cardClassName={card.cardColor}
 								tilt={card.tilt}
 							>
@@ -131,7 +131,7 @@ export default function CardStack() {
 										sizes="(max-width: 768px) 300px, (max-width: 1024px) 340px, (max-width: 1280px) 450px, (max-width: 1536px) 550px, 750px"
 									/>
 								</div>
-							</TiltCard>
+							</TiltCard2>
 						</div>
 					</div>
 				</div>

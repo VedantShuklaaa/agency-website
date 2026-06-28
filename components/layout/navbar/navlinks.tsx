@@ -2,6 +2,7 @@
 import { navItems } from "@/lib";
 import { NavLink } from "../navAnimation/navAnimation";
 import TransitionLink from "../pageTransition/transitionLink";
+import Image from "next/image";
 
 type NavbarLinksProps = {
 	onLinkClick?: () => void;
@@ -33,7 +34,16 @@ export default function NavbarLinks({ onLinkClick }: NavbarLinksProps) {
 				</div>
 
 				<TransitionLink href="/" onClick={onLinkClick}>
-					<div className="h-10 w-10 border border-black dark:border-white" />
+					<div className="relative h-30 w-30 overflow-hidden">
+						<Image
+							src="/wildboy.svg" // put your logo in /public
+							alt="Wildboys Tribe Logo"
+							fill
+							className="object-contain p-1"
+							sizes="40px"
+							priority
+						/>
+					</div>
 				</TransitionLink>
 
 				<div className="flex items-center gap-2">

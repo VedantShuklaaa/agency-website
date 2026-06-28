@@ -16,9 +16,7 @@ export default function Page() {
 	return (
 		<div className="bg-background w-full overflow-hidden">
 			<Hero />
-
 			<Second />
-
 			<Details />
 
 			<Reveal>

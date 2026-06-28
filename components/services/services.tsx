@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+import { SentenceRoll } from "../layout/navAnimation/navAnimation";
 
 interface bulletPoints {
 	bulletPoints: string,
@@ -12,107 +15,112 @@ interface Data {
 
 const data: Data[] = [
 	{
-		title: "Demand Generation",
-		subHeading: "ALIGNED TO BRING THE RIGHT CROWD.",
-		description: "We engineer consistent footfall through curated networks, influencers, guest lists, and communities—bringing people who fit the venue, not just volume.",
+		title: "STRATEGY & INTELLIGENCE",
+		subHeading: "Defines how the business competes and wins.",
+		description: "We define where your business creates value, how it competes, and what drives long-term growth. Through strategy, intelligence, and positioning, we build the foundation behind every decision.",
 		bullets: [
-			{ bulletPoints: "Influencers" },
-			{ bulletPoints: "Guest Lists" },
-			{ bulletPoints: "Communities" },
-			{ bulletPoints: "Networks" },
-			{ bulletPoints: "Distribution" },
+			{ bulletPoints: "Market Positioning" },
+			{ bulletPoints: "Business Intelligence" },
+			{ bulletPoints: "Growth Strategy" },
+			{ bulletPoints: "Revenue Strategy" },
 		]
 	}, {
-		title: "Positioning & Brand System",
-		subHeading: "SHAPE PERCEPTION. BUILD DESIRE.",
-		description: "We define how your venue is seen before people walk in—through identity, storytelling, and content systems that make you recognizable and chosen.",
+		title: "BRAND & CULTURE",
+		subHeading: "Defines what the brand stands for and why people connect.",
+		description: "We build the brand identity, voice, and cultural relevance that give businesses a distinct position in the market and a reason for people to connect, engage, and return.",
 		bullets: [
-			{ bulletPoints: "Brand Identity" },
-			{ bulletPoints: "Story Telling" },
-			{ bulletPoints: "Strategy" },
-			{ bulletPoints: "Content" },
-			{ bulletPoints: "Creatives" },
+			{ bulletPoints: "Brand Strategy" },
+			{ bulletPoints: "Storytelling" },
+			{ bulletPoints: "Creative Direction" },
+			{ bulletPoints: "Cultural Positioning" },
 		]
 	}, {
-		title: "Programming & Experience Design",
-		subHeading: "EVERY NIGHT. PLANNED WITH INTENT.",
-		description: "We design high-energy nights with structure—music, flow, and crowd psychology—turning your calendar into a demand driver.",
+		title: "PROGRAMMING & EXPERIENCES",
+		subHeading: "Creates reasons for people to attend and return.",
+		description: "We design experiences, activations, and recurring programming that create reasons to return, turn calendars into demand drivers, and audiences into loyal communities.",
 		bullets: [
-			{ bulletPoints: "Event Design" },
-			{ bulletPoints: "Calendar" },
-			{ bulletPoints: "Production" },
-			{ bulletPoints: "Crowd Psychology" },
-			{ bulletPoints: "Concepts" },
+			{ bulletPoints: "Event Concepts" },
+			{ bulletPoints: "Experience Design" },
+			{ bulletPoints: "Venue Activations" },
+			{ bulletPoints: "Experience IP" },
 		]
 	}, {
-		title: "Talent & Culture Layer",
-		subHeading: "RIGHT TALENT. RIGHT MOMENT.",
-		description: "We curate artists and talent that match your audience and elevate your identity—no random bookings, only strategic alignment",
+		title: "TALENT & PARTNERSHIPS",
+		subHeading: "Brings together the right talent, brands, and partnerships.",
+		description: "We connect destinations with artists, creators, brands, and strategic partners that shape culture, expand influence, and accelerate long-term growth.",
 		bullets: [
-			{ bulletPoints: "Artist Booking" },
 			{ bulletPoints: "Talent Strategy" },
-			{ bulletPoints: "Performance" },
-			{ bulletPoints: "Cultural Fit" },
-		]
-	}, {
-		title: "Partnerships & Growth",
-		subHeading: "EXPAND REACH. BUILD RELEVANCE.",
-		description: "We create collaborations that amplify visibility, credibility, and demand—extending your venue beyond its walls.",
-		bullets: [
-			{ bulletPoints: "Brand Tie-ups" },
-			{ bulletPoints: "Partnerships" },
+			{ bulletPoints: "Artist Booking" },
+			{ bulletPoints: "Strategic Partnerships" },
 			{ bulletPoints: "Sponsorships" },
-			{ bulletPoints: "Community" },
-			{ bulletPoints: "Clients" },
 		]
 	}, {
-		title: "Execution & Revenue Systems",
-		subHeading: "FLAWLESS DELIVERY. REAL RETURNS.",
-		description: "We handle on-ground execution and align operations with revenue—ensuring every night performs, not just runs.",
+		title: "COMMUNITY & DEMAND",
+		subHeading: "Builds communities that sustain long-term demand and loyalty.",
+		description: "We transform audiences into communities and attention into sustainable demand through engagement, retention, content strategy, and community development. ",
 		bullets: [
-			{ bulletPoints: "Operations" },
-			{ bulletPoints: "Promotions" },
-			{ bulletPoints: "On-Ground" },
-			{ bulletPoints: "Coordination" },
-			{ bulletPoints: "Revenue" },
+			{ bulletPoints: "Community Building" },
+			{ bulletPoints: "Audience Development" },
+			{ bulletPoints: "Content Strategy" },
+			{ bulletPoints: "CRM & Retention" },
+		]
+	}, {
+		title: "OPERATIONS & PERFORMANCE",
+		subHeading: "Turns strategy into repeatable performance.",
+		description: "We design operating systems that turn vision into execution and execution into measurable performance—creating the consistency required for sustainable growth.",
+		bullets: [
+			{ bulletPoints: "Operating Systems" },
+			{ bulletPoints: "SOP Development" },
+			{ bulletPoints: "Revenue Optimization" },
+			{ bulletPoints: "Performance Tracking" },
 		]
 	},
 ]
 
 
 export default function Services() {
+	const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+
 	return (
 		<div className="flex flex-col font-twid">
 			{data.map((item, idx) => (
 				<div
 					key={idx}
-					className="w-full border-b border-zinc-100 dark:border-zinc-900 hover:bg-zinc-50 dark:border-zinc-900 dark:hover:bg-zinc-950 duration-500 transition-all"
+					onMouseEnter={() => setHoveredIdx(idx)}
+					onMouseLeave={() => setHoveredIdx(null)}
+					className="relative w-full duration-500 transition-all"
 				>
-					<div className="flex flex-col gap-6 p-4 md:p-6">
+					<div className="absolute bottom-0 left-0 w-full h-px bg-zinc-100 dark:bg-zinc-900" />
 
-						{/* Heading */}
-						<div className="flex flex-col gap-2">
-							<span className="text-display-sm leading-none">
-								{item.title}
+					<div
+						className="absolute bottom-0 left-0 w-full h-px bg-[#FF0000] origin-left transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
+						style={{
+							transform: hoveredIdx === idx ? "scaleX(1)" : "scaleX(0)",
+						}}
+					/>
+
+					<div className="flex flex-col gap-6 p-4 md:p-6">
+						<div className="flex flex-col gap-1">
+							<span className="text-2xl md:text-4xl lg:text-display-sm leading-none font-bold">
+								<SentenceRoll
+									text={item.title}
+									arrow={false}
+									isHovered={hoveredIdx === idx}
+								/>
 							</span>
 
-							<span className="text-body-md text-zinc-400 tracking-wide">
+							<span className="text-body-sm lg:text-body-md text-zinc-400 tracking-wide">
 								{item.subHeading}
 							</span>
 						</div>
 
-						{/* Description */}
-						<span className="w-full lg:w-[40vw] text-base text-body-md text-zinc-400 leading-relaxed">
+						<span className="w-full lg:w-[40vw] text-base text-body-md leading-relaxed">
 							{item.description}
 						</span>
 
-						{/* Bullets */}
-						<div className="flex flex-wrap gap-2 md:gap-3 lg:gap-4">
+						<div className="flex flex-col md:flex-row md:gap-2 md:gap-3 lg:gap-4">
 							{item.bullets.map((bullet, bulletIdx) => (
-								<span
-									key={bulletIdx}
-									className="text-body-md font-bold border border-zinc-100 dark:border-zinc-800 rounded-full px-3 py-1"
-								>
+								<span key={bulletIdx} className="text-heading-lg">
 									{bullet.bulletPoints}
 								</span>
 							))}

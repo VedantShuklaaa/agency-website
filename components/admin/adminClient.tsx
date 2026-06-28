@@ -529,13 +529,16 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 											initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.98 }}
 											animate={{ opacity: 1, scale: 1 }}
 											transition={{ duration: shouldReduceMotion ? 0 : 0.25 }}
-											className="relative mt-3 h-52 overflow-hidden rounded-[22px] border border-border bg-card"
+											className="relative mt-3 h-52 overflow-hidden rounded-[10px] border border-border bg-card"
 										>
 											{imageFile ? (
-												<img
+												<Image
 													src={URL.createObjectURL(imageFile)}
 													alt="Preview"
-													className="h-full w-full object-cover"
+													fill
+													unoptimized
+													className="object-cover"
+													sizes="100vw"
 												/>
 											) : (
 												<Image
@@ -556,7 +559,7 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 									disabled={loading}
 									whileHover={shouldReduceMotion ? {} : { y: -1, scale: 1.01 }}
 									whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
-									className="h-12 rounded-[10px] bg-primary px-6 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-50"
+									className="h-12 rounded-[10px] bg-white dark:text-black px-6 text-sm font-medium transition hover:opacity-90 disabled:opacity-50 hover:bg-[#FF0000] dark:hover:bg-[#FF0000] duration-300"
 								>
 									{loading ? "Saving..." : editId ? "Update post" : "Create post"}
 								</motion.button>
@@ -700,7 +703,7 @@ export default function AdminClient({ initialBlogs, initialCategories }: Props) 
 													onClick={() => handleDelete(blog.id)}
 													whileHover={shouldReduceMotion ? {} : { y: -1 }}
 													whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
-													className="rounded-full border border-destructive/20 bg-destructive/10 px-3 py-2 text-xs text-destructive transition hover:bg-destructive/15"
+													className="rounded-full border border-destructive/20 bg-[#FF0000]/50 px-3 py-2 text-xs text-destructive transition hover:bg-destructive/15"
 												>
 													Delete
 												</motion.button>

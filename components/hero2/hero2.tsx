@@ -2,7 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import ScrollRevealText from "@/components/scrolltriger/fillColor";
+import { SequentialReveal } from "@/components/scrolltriger/fillColor";
 import SlidingText from "../layout/aboutUsButton/aboutUsButton";
 import BottomDesc from "../layout/bottomDesc/bottomDesc";
 import TransitionLink from "../layout/pageTransition/transitionLink";
@@ -15,7 +15,9 @@ const items = [
 	{ label: "COMMUNITY", href: "/community" },
 ];
 
-const text = "We are India's First Nightlife & Entertainment Growth Studio. We design operating systems that make venues culturally relevant, community - led, and consistently engaging.";
+const text1 = "We are India's First Nightlife & Entertainment Architects. We design operating systems that make venues culturally relevant, community - led, and consistently engaging. ";
+const text2 = "WILDBOYS TRIBE exists to help build the next generation of nightlife and entertainment businesses.We believe the most successful businesses are created when culture, community, experiences, operations, and growth work together as one system. ";
+const text3 = "We architect the ecosystems that help venues create meaningful experiences, strengthen their market position, build loyal communities, and become more resilient businesses.";
 
 
 export default function Hero2() {
@@ -43,7 +45,7 @@ export default function Hero2() {
 									<AnimatePresence>
 										{active === item.label && (
 											<motion.div
-												className="absolute inset-0 bg-[#ff2d55] z-0 origin-left"
+												className="absolute inset-0 bg-[#FF0000] z-0 origin-left"
 												initial={{ scaleX: 0 }}
 												animate={{ scaleX: 1 }}
 												exit={{ scaleX: 0 }}
@@ -84,13 +86,13 @@ export default function Hero2() {
 				{/* Right */}
 				<div className="w-full lg:w-1/2 flex flex-col items-start justify-center p-4 py-8">
 					<div className="flex flex-col gap-4">
-						<ScrollRevealText
-							text={text}
+						<SequentialReveal
+							texts={[text1, text2, text3]}
 							className="text-heading-lg"
 						/>
 
 						<TransitionLink className="group relative w-fit h-10 px-5 border-2 rounded-xl border-zinc-100 dark:border-white flex items-center justify-center overflow-hidden" href="/about">
-							<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
+							<div className="absolute inset-0 bg-[#FF0000] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
 							<span className="relative z-10">
 								<SlidingText text="ABOUT US" />
 							</span>

@@ -62,7 +62,7 @@ export default function ContactUs() {
 
 							<Link
 								href="mailto:contact@creativeapes.design"
-								className="text-lg md:text-xl lg:text-2xl text-[#F04D5A] font-twid break-all"
+								className="text-lg md:text-xl lg:text-2xl text-[#FF0000] font-twid break-all"
 							>
 								contact@creativeapes.design
 							</Link>
@@ -111,7 +111,7 @@ export default function ContactUs() {
 
 							<button
 								type="submit"
-								className="mt-2 w-full rounded-[10px] bg-black dark:bg-white py-4 text-xl font-medium text-white dark:text-black transition-colors duration-300 hover:bg-[#F04D5A] dark:hover:bg-[#F04D5A]"
+								className="mt-2 w-full rounded-[10px] bg-black dark:bg-white py-4 text-xl font-medium text-white dark:text-black transition-colors duration-300 hover:bg-[#FF0000] dark:hover:bg-[#FF0000]"
 							>
 								Submit Now
 							</button>
@@ -124,7 +124,7 @@ export default function ContactUs() {
 						<div className="flex justify-start">
 							<Link
 								href="#top"
-								className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-black dark:bg-white transition-colors duration-300 hover:bg-[#F04D5A] dark:hover:bg-[#F04D5A]"
+								className="flex h-12 w-12 md:h-14 md:w-14 items-center justify-center rounded-full bg-black dark:bg-white transition-colors duration-300 hover:bg-[#FF0000] dark:hover:bg-[#FF0000]"
 							>
 								<ArrowUp className="h-4 w-4 md:h-5 md:w-5 text-white dark:text-black" />
 							</Link>
@@ -165,7 +165,7 @@ export function Socials() {
 			{socialItems.map((label, i) => (
 				<div
 					key={label}
-					className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A]"
+					className="flex items-center text-black dark:text-zinc-400 hover:text-[#FF0000] dark:hover:text-[#FF0000]"
 				>
 					<NavLink text={label} />
 					{i < socialItems.length - 1 && ","}
@@ -188,7 +188,7 @@ export function BottomLinks() {
 				<motion.div
 					key={link.label}
 					variants={item}
-					className="flex items-center text-black dark:text-zinc-400 hover:text-[#F04D5A] dark:hover:text-[#F04D5A]"
+					className="flex items-center text-black dark:text-zinc-400 hover:text-[#FF0000] dark:hover:text-[#FF0000]"
 				>
 					<TransitionLink href={link.href}>
 						<NavLink text={link.label} />

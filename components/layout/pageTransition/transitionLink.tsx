@@ -20,38 +20,36 @@ export default function TransitionLink({
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
 		onClick?.(e);
-
 		if (e.defaultPrevented) return;
-
 		e.preventDefault();
 
 		const overlay = document.getElementById("page-transition");
-		if (!overlay) {
-			router.push(href);
-			return;
-		}
+		const main = document.querySelector("main");
+		if (!overlay) { router.push(href); return; }
 
-		// Slide in (cover screen)
-		gsap.fromTo(
-			overlay,
+		gsap.fromTo(overlay,
 			{ y: "100%" },
 			{
 				y: "0%",
 				duration: 0.7,
 				ease: "power4.inOut",
 				onComplete: () => {
+					if (main) gsap.set(main, { opacity: 0 });
+
 					router.push(href);
-					// Slide out (reveal new page)
-					gsap.to(overlay, {
-						y: "-100%",
-						duration: 0.7,
-						delay: 0.1,
-						ease: "power4.inOut",
-						onComplete: () => {
-							// Reset position for next transition
-							gsap.set(overlay, { y: "100%" });
-						},
-					});
+
+					setTimeout(() => {
+						if (main) gsap.set(main, { opacity: 1 });
+
+						gsap.to(overlay, {
+							y: "-100%",
+							duration: 0.7,
+							ease: "power4.inOut",
+							onComplete: () => {
+								gsap.set(overlay, { y: "100%" });
+							},
+						});
+					}, 100);
 				},
 			}
 		);

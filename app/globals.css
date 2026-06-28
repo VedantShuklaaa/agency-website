@@ -5,6 +5,7 @@
 :root {
   --background: rgb(248, 232, 232);
   --foreground: rgb(0, 0, 0);
+	--initial-foreground: rgb(180, 180, 180);
   --card: rgb(253, 253, 253);
   --card-foreground: rgb(0, 0, 0);
   --popover: rgb(252, 252, 252);
@@ -60,6 +61,7 @@
 .dark {
   --background: rgb(18, 17, 17);
   --foreground: rgb(240, 240, 240);
+	--initial-foreground: rgb(60, 60, 60);
   --card: rgb(10, 10, 10);
   --card-foreground: rgb(240, 240, 240);
   --popover: rgb(26, 27, 27);
@@ -152,6 +154,9 @@
   --font-onest: var(--font-onest);
   --font-druk: var(--font-druk);
   --font-dage: var(--font-dage);
+  --font-august: var(--font-august);
+  --font-anton: var(--font-anton);
+
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

@@ -12,7 +12,7 @@ export function NavLink({ text }: NavLinkProps) {
 			initial="rest"
 			whileHover="hover"
 			animate="rest"
-			className="relative overflow-hidden h-[1.2em] cursor-pointer"
+			className="relative overflow-hidden h-[1.2em] cursor-pointer hover:text-[#FF0000] dark:hover:text-[#FF0000]"
 		>
 			{/* Current text */}
 			<div className="flex">
@@ -121,20 +121,26 @@ export function WordRoll({ text }: WordRollProps) {
 interface SentenceRollProps {
 	text: string;
 	className?: string;
+	arrow?: boolean;
+	isHovered?: boolean; // external control, falls back to self-hover if undefined
 }
 
 export function SentenceRoll({
 	text,
 	className = "",
+	arrow = true,
+	isHovered,
 }: SentenceRollProps) {
+	const isControlled = isHovered !== undefined;
+
 	return (
 		<motion.div
 			initial="rest"
-			whileHover="hover"
-			animate="rest"
+			{...(isControlled
+				? { animate: isHovered ? "hover" : "rest" }
+				: { whileHover: "hover", animate: "rest" })}
 			className={`relative overflow-hidden h-[1.2em] cursor-pointer ${className}`}
 		>
-			{/* Current */}
 			<motion.div
 				variants={{
 					rest: { y: 0 },
@@ -147,10 +153,9 @@ export function SentenceRoll({
 				className="flex items-center justify-between gap-2 whitespace-nowrap"
 			>
 				<span>{text}</span>
-				<ArrowUpRight size={18} />
+				{arrow && <ArrowUpRight size={18} />}
 			</motion.div>
 
-			{/* Incoming */}
 			<motion.div
 				variants={{
 					rest: { y: "100%" },
@@ -163,7 +168,7 @@ export function SentenceRoll({
 				className="absolute inset-0 flex items-center justify-between gap-2 whitespace-nowrap"
 			>
 				<span>{text}</span>
-				<ArrowUpRight size={18} />
+				{arrow && <ArrowUpRight size={18} />}
 			</motion.div>
 		</motion.div>
 	);

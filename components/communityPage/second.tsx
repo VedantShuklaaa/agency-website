@@ -70,7 +70,7 @@ export default function Second() {
 			<div className="w-full lg:w-1/2 flex flex-col justify-end p-6 lg:p-8 gap-4">
 				<ScrollRevealText text={text} className="text-body-sm sm:text-body-lg md:text-heading-lg" />
 				<Link className="group relative w-fit h-10 px-5 border-2 rounded-xl border-black dark:border-white flex items-center justify-center overflow-hidden" href="/about">
-					<div className="absolute inset-0 bg-[#ff2d55] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
+					<div className="absolute inset-0 bg-[#FF0000] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
 					<span className="relative z-10">
 						<SlidingText text="ABOUT US" />
 					</span>

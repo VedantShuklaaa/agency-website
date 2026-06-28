@@ -18,7 +18,7 @@ export default function CursorDot() {
 	return (
 		<div
 			ref={dotRef}
-			className="pointer-events-none fixed left-0 top-0 z-[9999] h-4 w-4 rounded-full bg-[#ff2d55] shadow-[0_0_20px_rgba(255,45,85,0.8)] hidden lg:block"
+			className="pointer-events-none fixed left-0 top-0 z-[9999] h-4 w-4 rounded-full bg-[#FF0000] shadow-[0_0_20px_rgba(255,45,85,0.8)] hidden lg:block"
 			style={{ willChange: "transform" }}
 		/>
 	);

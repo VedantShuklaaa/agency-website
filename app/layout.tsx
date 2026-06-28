@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dagestan, drukWide, onest, twidGrotesk } from "@/fonts/fonts";
+import { anton, august, dagestan, drukWide, onest, twidGrotesk } from "@/fonts/fonts";
 import { ThemeProvider } from "@/components/theme-provider"
 import Navbar from "@/components/layout/navbar/navbar";
 import "./globals.css";
@@ -42,7 +42,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${onest.variable} ${twidGrotesk.variable} ${drukWide.variable} ${dagestan.variable} h-full antialiased`}
+      className={`${onest.variable} ${twidGrotesk.variable} ${drukWide.variable} ${dagestan.variable} ${august.variable} ${anton.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeProvider

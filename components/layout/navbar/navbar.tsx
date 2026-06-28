@@ -121,7 +121,7 @@ export default function Navbar() {
 						<span className="text-sm text-black dark:text-white">
 							Based in India
 						</span>
-						<span className="flex items-end text-xs text-red-500">
+						<span className="flex items-end text-xs text-[#FF0000]">
 							<LiveTime />
 						</span>
 					</div>

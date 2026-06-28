@@ -32,9 +32,11 @@ export default function Second() {
 				</div>
 			</VerticalMarquee>
 
-			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 text-black">
-				<span className="leading-none">
-					<p className="text-center text-display-lg sm:text-display-lg font-druk font-bold tracking-tighter">DESIGN ENGINEERING STRATEGY</p>
+			<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 text-black font-anton">
+				<span className="leading-none text-center text-display-lg sm:text-display-lg font-bold flex flex-col">
+					<span>CULTURE</span>
+					<span>COMMUNITY</span>
+					<span>CONSISTENCY</span>
 				</span>
 			</div>
 		</div>

@@ -1,11 +1,9 @@
+import AboutHero from "@/components/aboutUsPage/aboutHero";
+import FloatCard from "@/components/aboutUsPage/floatCard";
+import TeamSection from "@/components/aboutUsPage/teamSection";
+import ContactUs from "@/components/contactUsCard/contactUs";
 import Marquee from "@/components/marquee/marquee1";
 import Reveal from "@/components/marquee/reveal";
-import FloatCard from "@/components/aboutUsPage/floatCard";
-import ContactUs from "@/components/contactUsCard/contactUs";
-import BottomDesc from "@/components/layout/bottomDesc/bottomDesc";
-import { OrbitBackground } from "@/components/orbitBackground/withoutScrollTrigger";
-import Image from "next/image";
-
 
 export const metadata = {
 	title: "About | Wildboys Tribe",
@@ -15,61 +13,34 @@ export const metadata = {
 export default function Page() {
 	return (
 		<div className="w-full bg-background overflow-hidden">
-			<div className="w-full flex flex-col items-center gap-10 justify-between">
-				<div className="w-[90%] max-w-8xl flex flex-col gap-2 items-center p-4 mt-10 leading-none">
-					<span className="text-display-md leading-none text-center">
-						<h1 className="leading-none font-druk font-bold">THIS PAGE ISN&rsquo;T ABOUT US, IT&rsquo;S ABOUT YOU.</h1>
-					</span>
-
-					<span className="max-w-4xl text-center">
-						<p className="text-body-sm md:text-body-lg font-druk text-zinc-400">
-							We are <span className="italic">not</span> vendors. We&rsquo;re an extension
-							of your team across brand and web.
-						</p>
-					</span>
-				</div>
-
-
-				<div className="relative h-60 w-60 overflow-hidden rounded-full xl:h-110 xl:w-110">
-					<Image
-						src="/vector.png"
-						alt="Vector graphic"
-						fill
-						className="object-cover"
-						sizes="(max-width: 1280px) 240px, 440px"
-					/>
-				</div>
-
-				<BottomDesc text1="© About Apes" text2="(CAD® — 02)" text3="Behind Us" className="text-black dark:text-zinc-400" />
-			</div>
+			<AboutHero />
 
 			<Reveal>
 				<Marquee text="about apes©" />
 			</Reveal>
 			<FloatCard />
 
-			<div className="py-20 w-full flex flex-col border-b border-zinc-100 dark:border-zinc-900">
-				<div className="flex flex-col p-4">
-					<span className="leading-none">
-						<h1 className="text-display-md font-druk">MEET THE TEAM</h1>
-					</span>
-					<span></span>
+			<div className="w-full flex flex-col py-1 px-2 lg:px-10">
+				<div className="flex flex-col p-1 border-b border-white">
+					<h1 className="font-druk text-display-xl" style={{ lineHeight: "1" }}>
+						BUILT BY OPERATORS
+					</h1>
+					<p className="text-body-md lg:text-heading-lg lg:max-w-[50vw]">
+						WILDBOYS TRIBE was built by operators who experienced the industry&apos;s challenges firsthand—and built a system to solve them.
+					</p>
 				</div>
-				<div className="relative h-full flex items-center justify-center">
-					<div className="flex flex-col text-9xl md:text-display-2xl text-center leading-none font-dage text-[#938ACF]">
-						<span>WILDBOY</span>
-						<span>TRIBES</span>
-					</div>
-					<OrbitBackground />
+
+				<div className="h-[70vh] w-full flex">
+					<TeamSection />
 				</div>
 			</div>
 
 			<Reveal>
-				<Marquee text="contact©" />
+				<Marquee text="@contact us" />
 			</Reveal>
 			<ContactUs />
 		</div>
-	)
+	);
 }
 
 

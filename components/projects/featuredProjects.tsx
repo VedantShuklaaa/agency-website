@@ -23,7 +23,7 @@ export default function FeaturedProjects() {
 	return (
 		<section className="relative min-h-screen w-full overflow-hidden border-b border-zinc-100 dark:border-zinc-900 ">
 			{/* Header */}
-			<div className="flex flex-col md:flex-row md:justify-between p-4 gap-6 backdrop-blur-xl  bg-black/10 dark:bg-white/5">
+			<div className="flex flex-col md:flex-row md:justify-between p-4 gap-6">
 				<div className="leading-none z-50">
 					<h1 className="font-dage text-display-lg uppercase">
 						Selected Client Projects
@@ -32,13 +32,13 @@ export default function FeaturedProjects() {
 
 				<div className=" z-50">
 					<button className="group flex items-center gap-3 border border-white px-4 py-2 lg:px-6 lg:py-3 text-white" onClick={() => { router.push("/work") }}>
-						<span className="font-twid italic uppercase text-sm lg:text-base">
+						<span className="font-twid italic uppercase text-sm lg:text-base text-[#FF0000]">
 							View All Projects
 						</span>
 
 						<ArrowUpRight
 							size={16}
-							className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+							className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 text-[#FF0000]"
 						/>
 					</button>
 				</div>

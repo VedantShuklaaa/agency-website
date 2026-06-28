@@ -1,3 +1,4 @@
+import Intro from "@/components/contactUsPage/intro";
 import Marquee from "@/components/marquee/marquee1";
 import Reveal from "@/components/marquee/reveal";
 import Jobs from "@/components/workPages/jobs";
@@ -10,18 +11,10 @@ export const metadata = {
 
 export default function Page() {
 	return (
-		<div className="bg-background w-full overflow-hidden">
-			<div className="min-h-[40vh] lg:h-[60vh] w-full flex flex-col items-center justify-center gap-4 md:gap-20 leading-none">
-				<span className="leading-none">
-					<h1 className="text-display-sm sm:text-display-lg tracking-tighter text-center font-bold font-druk">IT STARTS WITH A CONVERSATION</h1>
-				</span>
+		<div className="bg-[#F9DDE0] w-full overflow-hidden">
+			<Intro />
 
-				<span className="px-2 md:px-20 lg:px-50 2xl:px-110">
-					<p className="text-zinc-400 text-heading-lg text-center font-twid">If you&rsquo;re considering working together, this is the right place to start. Every message is read by a partner.</p>
-				</span>
-			</div>
-
-			<Reveal>
+			<Reveal className="bg-background">
 				<Marquee text="contact us©" />
 			</Reveal>
 			<Links />

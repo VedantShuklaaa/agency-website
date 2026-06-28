@@ -95,7 +95,7 @@ export default function BlogGrid() {
 							className={`px-4 py-1.5 rounded-full text-sm border transition-all duration-150
 								${active === cat
 									? "bg-foreground text-background border-transparent font-medium"
-									: "bg-transparent text-zinc-500 border-zinc-200 dark:border-zinc-800 hover:text-foreground"
+									: "bg-transparent text-zinc-500 border-zinc-200 dark:border-zinc-800 hover:text-[#FF0000]"
 								}`}
 						>
 							{cat}
@@ -106,14 +106,14 @@ export default function BlogGrid() {
 				<div className="flex items-center gap-2">
 					<button
 						onClick={() => setSortOrder((p) => p === "latest" ? "oldest" : "latest")}
-						className="text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-1.5 rounded-full text-zinc-500 hover:text-foreground transition-all whitespace-nowrap"
+						className="text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-1.5 rounded-full text-zinc-500 hover:text-[#FF0000] transition-all whitespace-nowrap"
 					>
 						{sortOrder === "latest" ? "Latest First" : "Oldest First"}
 					</button>
 
 					<TransitionLink
 						href="/admin"
-						className="flex items-center gap-1.5 text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-1.5 rounded-full text-zinc-500 hover:text-foreground transition-all whitespace-nowrap"
+						className="flex items-center gap-1.5 text-sm border border-zinc-200 dark:border-zinc-800 px-4 py-1.5 rounded-full text-zinc-500 hover:text-[#FF0000] transition-all whitespace-nowrap"
 					>
 						<ShieldHalf className="h-3.5 w-3.5" />
 						Admin
@@ -206,7 +206,7 @@ export default function BlogGrid() {
 										<span className="text-xs text-zinc-400 font-onest">
 											{item.date}
 										</span>
-										<h3 className="text-body-md font-medium leading-snug group-hover:text-[#ff2d55] transition-colors duration-200">
+										<h3 className="text-body-md font-medium leading-snug group-hover:text-[#FF0000] transition-colors duration-200">
 											{item.title}
 										</h3>
 										<p className="text-body-sm text-zinc-500 leading-relaxed line-clamp-2">

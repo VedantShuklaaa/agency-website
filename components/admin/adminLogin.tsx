@@ -74,7 +74,7 @@ export default function AdminLogin() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-              className="h-12 w-full rounded-2xl border border-input bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/20"
+              className="h-12 w-full rounded-2xl border border-input bg-background px-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:border-[#FF0000] focus:ring-2 focus:ring-[#FF0000]/20"
             />
           </div>
 
@@ -98,7 +98,7 @@ export default function AdminLogin() {
             disabled={loading}
             whileHover={shouldReduceMotion ? {} : { y: -1, scale: 1.01 }}
             whileTap={shouldReduceMotion ? {} : { scale: 0.98 }}
-            className="mt-6 h-12 w-full rounded-2xl bg-primary text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-50"
+            className="mt-6 h-12 w-full rounded-2xl bg-white hover:bg-[#FF0000] dark:hover:bg-[#FF0000] duration-200 text-sm font-medium text-primary-foreground transition hover:opacity-90 disabled:opacity-50"
           >
             {loading ? "Verifying..." : "Continue"}
           </motion.button>

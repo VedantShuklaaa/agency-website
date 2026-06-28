@@ -74,7 +74,7 @@ export default function ScrollCarousel() {
 		>
 			{/* Marquee */}
 			<div className="flex w-full border-b border-zinc-100 dark:border-zinc-900">
-				<Marquee text="clients©" />
+				<Marquee text="@clients" />
 			</div>
 
 			{/* Horizontal scroll area */}

@@ -1,4 +1,3 @@
-// app/page.tsx
 import dynamic from "next/dynamic";
 
 const HomeClient = dynamic(() => import("@/components/home/homeClient"));

@@ -25,11 +25,11 @@ export default function HeroText({ heroTitleRef }: HeroTextProps) {
 				<div className="relative h-[30vh] w-full overflow-hidden rounded-[10px] border bg-black dark:bg-white md:h-[35vh] lg:h-[45vh] lg:w-[25vw]">
 					<Image
 						src="/1.webp"
-						alt="Your image"
+						alt="Hero"
 						priority
 						fill
 						className="object-cover"
-						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 25vw"
+						sizes="(max-width: 1024px) 100vw, 25vw"
 					/>
 				</div>
 			</div>

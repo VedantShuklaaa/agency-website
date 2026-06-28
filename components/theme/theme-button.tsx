@@ -25,7 +25,7 @@ export default function ThemeToggle() {
 				width: 58,
 				height: 31,
 				borderRadius: 999,
-				background: "#ff2d55",
+				background: "#FF0000",
 				border: "none",
 				cursor: "pointer",
 				padding: 4,

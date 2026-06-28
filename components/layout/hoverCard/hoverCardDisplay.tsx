@@ -21,7 +21,7 @@ export default function HoverExpand() {
 	const [active, setActive] = useState<number>(0);
 
 	return (
-		<div className="w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col gap-2 font-twid">
+		<div className="w-full max-w-5xl mx-auto px-4 md:px-6 lg:px-8 flex flex-col gap-2 font-twid">
 			{IMAGES.map((img, i) => (
 				<motion.div
 					layout

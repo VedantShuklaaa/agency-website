@@ -57,9 +57,9 @@ export default function Works() {
 							ref={(el) => {
 								cardsRef.current[idx] = el;
 							}}
-							className={`group relative flex min-h-[320px] w-full flex-col overflow-hidden rounded-[28px] border border-zinc-200 bg-white/40 transition-all duration-500 ease-out
-								hover:-translate-y-1 hover:border-[#ff2d55]/70 hover:shadow-[0_0_0_1px_rgba(255,45,85,0.15),0_24px_80px_rgba(255,45,85,0.18)]
-								dark:border-zinc-800 dark:bg-zinc-950/40 dark:hover:border-[#ff2d55]/60 dark:hover:shadow-[0_0_0_1px_rgba(255,45,85,0.2),0_24px_80px_rgba(255,45,85,0.2)]
+							className={`group relative flex min-h-[320px] w-full flex-col overflow-hidden border border-zinc-200 bg-white/40 transition-all duration-500 ease-out
+								hover:-translate-y-1 hover:border-[#FF0000]/70 hover:shadow-[0_0_0_1px_rgba(255,45,85,0.15),0_24px_80px_rgba(255,45,85,0.18)]
+								dark:border-zinc-800 dark:bg-zinc-950/40 dark:hover:border-[#FF0000]/60 dark:hover:shadow-[0_0_0_1px_rgba(255,45,85,0.2),0_24px_80px_rgba(255,45,85,0.2)]
 								lg:min-h-[520px] ${isReverse ? "lg:flex-row-reverse" : "lg:flex-row"}`}
 						>
 							{/* Image */}
