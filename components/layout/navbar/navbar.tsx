@@ -103,13 +103,7 @@ export default function Navbar() {
 			ref={navbarRef}
 			className="fixed top-0 left-0 z-[100] flex h-20 w-full items-center justify-between border-b border-zinc-100 bg-background px-4 font-onest dark:border-zinc-900 lg:px-5"
 		>
-			<div className="flex items-center gap-2 text-lg leading-none font-[700] text-black dark:text-white sm:text-xl lg:text-xl">
-				<div className="h-10 w-10 border border-black dark:border-white lg:hidden lg:h-12 lg:w-12" />
-				<div className="flex flex-col">
-					<h1>WILDBOY</h1>
-					<h1>TRIBES</h1>
-				</div>
-			</div>
+			<div />
 
 			<div className="hidden items-center justify-center lg:flex">
 				<Navlinks />
@@ -127,7 +121,7 @@ export default function Navbar() {
 					</div>
 
 					<div className="text-black dark:text-zinc-400">
-						<p>AI-First Creative Solutions</p>
+						<p>Nightlife and Entertainment Architects</p>
 					</div>
 				</div>
 

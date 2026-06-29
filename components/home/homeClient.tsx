@@ -14,8 +14,8 @@ import FeaturedProjects from "../projects/featuredProjects";
 import ScrollCarousel from "../marquee/rollerMarquee";
 import CarouselPage from "../layout/3DCarousel/carousel";
 import CardStack from "../layout/cardStack/cardStack";
-import { OrbitBackground } from "../orbitBackground/withoutScrollTrigger";
 import RevealSection from "@/components/layout/pageTransition/revealAnimation";
+import BottomDesc from "../layout/bottomDesc/bottomDesc";
 
 export default function HomeClient() {
 	const [showLoader, setShowLoader] = useState(true);
@@ -60,33 +60,24 @@ export default function HomeClient() {
 
 			<RevealSection>
 				<Reveal>
-					<Marquee text="@wildboys operating system" />
+					<Marquee text="@Wildboys operating system" />
 				</Reveal>
 				<Services />
 			</RevealSection>
 
 			<RevealSection>
 				<Reveal>
-					<Marquee text="@Experinces we curate" />
+					<Marquee text="@Experiences we curate" />
 				</Reveal>
 				<FeaturedProjects />
 			</RevealSection>
+			<BottomDesc text1="Original Concepts" text3="Created by wildboys" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
+
 
 			<Reveal>
-				<Marquee text="@Wildboys intellectual properties" />
+				<Marquee text="Wildboys Orignals" />
 			</Reveal>
 			<CardStack />
-
-			<Reveal>
-				<Marquee text="@Community" />
-			</Reveal>
-			<div className="relative h-screen flex items-center justify-center border-b border-zinc-100 dark:border-zinc-900">
-				<div className="flex flex-col text-9xl md:text-display-2xl text-center leading-none font-dage text-[#938ACF]">
-					<span>WILDBOY</span>
-					<span>TRIBES</span>
-				</div>
-				<OrbitBackground />
-			</div>
 
 			<ScrollCarousel />
 

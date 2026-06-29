@@ -72,9 +72,10 @@ export default function ScrollCarousel() {
 			ref={sectionRef}
 			className="relative hidden overflow-hidden border-b border-zinc-100 font-twid dark:border-zinc-900 md:flex md:min-h-screen md:flex-col"
 		>
+			<BottomDesc text1="Clients" text3="Selected Collaborations" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
 			{/* Marquee */}
 			<div className="flex w-full border-b border-zinc-100 dark:border-zinc-900">
-				<Marquee text="@clients" />
+				<Marquee text="@Clients" />
 			</div>
 
 			{/* Horizontal scroll area */}
@@ -128,10 +129,9 @@ export default function ScrollCarousel() {
 			</div>
 
 			<BottomDesc
-				text1="© Get in touch"
-				text2="(CAD® — 09)"
-				text3="Studio Wrap"
-				className="text-black dark:text-zinc-400"
+				text1="Start a conversation"
+				text3="Build What's next"
+				className="text-black dark:text-zinc-400 border-t border-zinc-100 dark:border-zinc-900"
 			/>
 		</section>
 	);

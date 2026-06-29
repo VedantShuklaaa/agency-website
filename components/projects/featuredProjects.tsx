@@ -25,8 +25,8 @@ export default function FeaturedProjects() {
 			{/* Header */}
 			<div className="flex flex-col md:flex-row md:justify-between p-4 gap-6">
 				<div className="leading-none z-50">
-					<h1 className="font-dage text-display-lg uppercase">
-						Selected Client Projects
+					<h1 className="font-anton text-display-md uppercase">
+						Great experiences are never forgotten.
 					</h1>
 				</div>
 

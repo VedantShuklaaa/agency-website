@@ -103,7 +103,6 @@ export function Loader({ onComplete, targetRef }: LoaderProps) {
 					}}
 				>
 					<span>WILDBOYS TRIBE</span>
-					<span>NIGHTLIFE & ENTERTAINMENT ARCHITECTS</span>
 				</motion.span>
 			</div>
 		</motion.div>

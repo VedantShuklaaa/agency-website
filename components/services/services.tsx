@@ -1,6 +1,9 @@
 "use client";
 import { useState } from "react";
 import { SentenceRoll } from "../layout/navAnimation/navAnimation";
+import SlidingText from "../layout/aboutUsButton/aboutUsButton";
+import TransitionLink from "../layout/pageTransition/transitionLink";
+import BottomDesc from "../layout/bottomDesc/bottomDesc";
 
 interface bulletPoints {
 	bulletPoints: string,
@@ -82,7 +85,7 @@ export default function Services() {
 	const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
 	return (
-		<div className="flex flex-col font-twid">
+		<div className="flex flex-col font-twid gap-5">
 			{data.map((item, idx) => (
 				<div
 					key={idx}
@@ -128,6 +131,15 @@ export default function Services() {
 					</div>
 				</div>
 			))}
+
+			<TransitionLink className="group relative w-fit h-10 px-5 border-2 rounded-xl border-zinc-100 dark:border-white flex items-center justify-center overflow-hidden ml-5 mt-10" href="/services">
+				<div className="absolute inset-0 bg-[#FF0000] origin-bottom scale-y-0 transition-transform duration-500 ease-in-out group-hover:scale-y-100 rounded-xl" />
+				<span className="relative z-10">
+					<SlidingText text="EXPLORE SERVICES" />
+				</span>
+			</TransitionLink>
+
+			<BottomDesc text1="Curated Experiences" text3="Events • Programming • Activations" className="border-t border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
 		</div>
 	);
 }
