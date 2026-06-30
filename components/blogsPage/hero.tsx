@@ -1,14 +1,20 @@
 "use client";
 
+import { AnimatedLetters } from "../servicesPage/hero";
+
 export default function Hero() {
 	return (
-		<div className="min-h-[40vh] lg:h-[60vh] w-full flex flex-col items-center justify-center gap-10">
-			<div className="flex flex-col items-center leading-none">
-				<span className="text-display-xl xl:text-display-lg 2xl:text-display-xl tracking-tight font-dage">INTELLIGENCE.</span>
-				<span className="text-xl text-zinc-400 text-center font-twid">Strategy, culture, and industry insight — curated for the serious operator.</span>
-			</div>
+		<div className="min-h-[40vh] lg:min-h-[60vh] w-full flex flex-col items-center justify-center gap-10">
+			<div className="h-[70vh] w-full flex flex-col items-center justify-center gap-5 px-4 lg:px-6">
+				<AnimatedLetters
+					text="INTELLIGENCE."
+					className="text-display-sm md:text-display-md lg:text-display-lg font-anton text-center justify-center w-[75vw]"
+				/>
 
-			<CategoryPills />
+				<span className="text-xl text-zinc-400 text-center font-twid">Strategy, culture, and industry insight — curated for the serious operator.</span>
+
+				<CategoryPills />
+			</div>
 		</div>
 	)
 }

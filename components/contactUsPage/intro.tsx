@@ -3,9 +3,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { motion } from "framer-motion";
+import { AnimatedLetters } from "../servicesPage/hero";
 
-const LINE_1 = "BUILD WHAT DOESN'T";
-const LINE_2 = "EXIST";
 const LINE_3 = "The future isn't waiting to be discovered. It's waiting to be built. Tell us what you're building.";
 
 export default function Intro() {
@@ -25,33 +24,22 @@ export default function Intro() {
 
 	return (
 		<div ref={introRef} className="h-[50vh] md:h-[70vh] w-full flex flex-col items-center justify-center font-anton gap-4">
-			<div className="flex flex-col">
-				<div className="line-1 flex flex-wrap justify-center tracking-lighter text-5xl md:text-display-sm lg:text-display-md xl:text-display-xl text-black">
-					{LINE_1.split("").map((char, i) => (
-						<span key={i} className="letter inline-block" style={{ lineHeight: 1 }}>
-							{char === " " ? "\u00A0" : char}
-						</span>
-					))}
-				</div>
+			<div className="h-[70vh] w-full border-b border-zinc-100 dark:border-zinc-900 flex flex-col items-center justify-center px-4 lg:px-6">
+				<AnimatedLetters
+					text="BUILD WHAT DOESN'T EXIST"
+					className="text-display-sm md:text-display-md lg:text-display-lg font-anton text-center justify-center text-black w-[75vw]"
+				/>
 
-				<div className="line-1 flex flex-wrap justify-center tracking-lighter text-5xl md:text-display-sm lg:text-display-md xl:text-display-xl text-black">
-					{LINE_2.split("").map((char, i) => (
-						<span key={i} className="letter inline-block" style={{ lineHeight: 1 }}>
-							{char === " " ? "\u00A0" : char}
-						</span>
-					))}
-				</div>
+				<motion.div
+					className="line-2 flex flex-wrap justify-center tracking-lighter text-xl md:text-display-sm text-center lg:text-display-md xl:text-heading-xl text-black"
+					initial={{ y: 60, opacity: 0 }}
+					whileInView={{ y: 0, opacity: 1 }}
+					viewport={{ once: true, amount: 0.3 }}
+					transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+				>
+					{LINE_3}
+				</motion.div>
 			</div>
-
-			<motion.div
-				className="line-2 flex flex-wrap justify-center tracking-lighter text-xl md:text-display-sm text-center lg:text-display-md xl:text-heading-xl text-black"
-				initial={{ y: 60, opacity: 0 }}
-				whileInView={{ y: 0, opacity: 1 }}
-				viewport={{ once: true, amount: 0.3 }}
-				transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-			>
-				{LINE_3}
-			</motion.div>
 		</div>
 	);
 }

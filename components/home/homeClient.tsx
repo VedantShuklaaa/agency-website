@@ -16,6 +16,7 @@ import CarouselPage from "../layout/3DCarousel/carousel";
 import CardStack from "../layout/cardStack/cardStack";
 import RevealSection from "@/components/layout/pageTransition/revealAnimation";
 import BottomDesc from "../layout/bottomDesc/bottomDesc";
+import MainMarquee from "../marquee/mainMarquee";
 
 export default function HomeClient() {
 	const [showLoader, setShowLoader] = useState(true);
@@ -53,16 +54,16 @@ export default function HomeClient() {
 
 			<RevealSection>
 				<Reveal>
-					<Marquee text="@Where we operate" />
+					<Marquee text="@Wildboys operating system" />
 				</Reveal>
-				<CarouselPage />
+				<Services />
 			</RevealSection>
 
 			<RevealSection>
 				<Reveal>
-					<Marquee text="@Wildboys operating system" />
+					<Marquee text="@Where we operate" />
 				</Reveal>
-				<Services />
+				<CarouselPage />
 			</RevealSection>
 
 			<RevealSection>
@@ -71,13 +72,14 @@ export default function HomeClient() {
 				</Reveal>
 				<FeaturedProjects />
 			</RevealSection>
-			<BottomDesc text1="Original Concepts" text3="Created by wildboys" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
-
+			<BottomDesc text1="Original Concepts" text3="Created by wildboys" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400" />
 
 			<Reveal>
 				<Marquee text="Wildboys Orignals" />
 			</Reveal>
 			<CardStack />
+
+			<MainMarquee />
 
 			<ScrollCarousel />
 

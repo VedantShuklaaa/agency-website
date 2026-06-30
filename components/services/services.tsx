@@ -20,7 +20,7 @@ const data: Data[] = [
 	{
 		title: "STRATEGY & INTELLIGENCE",
 		subHeading: "Defines how the business competes and wins.",
-		description: "We define where your business creates value, how it competes, and what drives long-term growth. Through strategy, intelligence, and positioning, we build the foundation behind every decision.",
+		description: "We define where your business creates value, how it competes, and the strategy required to achieve sustainable growth.",
 		bullets: [
 			{ bulletPoints: "Market Positioning" },
 			{ bulletPoints: "Business Intelligence" },
@@ -30,7 +30,7 @@ const data: Data[] = [
 	}, {
 		title: "BRAND & CULTURE",
 		subHeading: "Defines what the brand stands for and why people connect.",
-		description: "We build the brand identity, voice, and cultural relevance that give businesses a distinct position in the market and a reason for people to connect, engage, and return.",
+		description: "We build the brand identity, narrative, and cultural positioning that give businesses a distinct position in the market and people a reason to connect, engage, and return.",
 		bullets: [
 			{ bulletPoints: "Brand Strategy" },
 			{ bulletPoints: "Storytelling" },
@@ -40,7 +40,7 @@ const data: Data[] = [
 	}, {
 		title: "PROGRAMMING & EXPERIENCES",
 		subHeading: "Creates reasons for people to attend and return.",
-		description: "We design experiences, activations, and recurring programming that create reasons to return, turn calendars into demand drivers, and audiences into loyal communities.",
+		description: "We design experiences, recurring formats, and programming that create reasons to return, turn calendars into demand drivers, and audiences into loyal communities.",
 		bullets: [
 			{ bulletPoints: "Event Concepts" },
 			{ bulletPoints: "Experience Design" },
@@ -50,7 +50,7 @@ const data: Data[] = [
 	}, {
 		title: "TALENT & PARTNERSHIPS",
 		subHeading: "Brings together the right talent, brands, and partnerships.",
-		description: "We connect destinations with artists, creators, brands, and strategic partners that shape culture, expand influence, and accelerate long-term growth.",
+		description: "We connect venues with artists, creators, brands, and strategic partners that shape culture, expand influence, and accelerate long-term growth.",
 		bullets: [
 			{ bulletPoints: "Talent Strategy" },
 			{ bulletPoints: "Artist Booking" },
@@ -139,7 +139,7 @@ export default function Services() {
 				</span>
 			</TransitionLink>
 
-			<BottomDesc text1="Curated Experiences" text3="Events • Programming • Activations" className="border-t border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
+			<BottomDesc text1="Curated Experiences" text3="Events • Programming • Activations" className="border-t border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400" />
 		</div>
 	);
 }
