@@ -15,9 +15,8 @@ const items = [
 	{ label: "COMMUNITY", href: "/community" },
 ];
 
-const text1 = "We are India's First Nightlife & Entertainment Architects. We design operating systems that make venues culturally relevant, community - led, and consistently engaging. ";
-const text2 = "WILDBOYS TRIBE exists to help build the next generation of nightlife and entertainment businesses.We believe the most successful businesses are created when culture, community, experiences, operations, and growth work together as one system. ";
-const text3 = "We architect the ecosystems that help venues create meaningful experiences, strengthen their market position, build loyal communities, and become more resilient businesses.";
+const text1 = "We are India's First Nightlife & Entertainment Architects. We design operating systems that make venues culturally relevant, community-driven, and consistently performing.";
+const text2 = "WILDBOYS TRIBE exists to shape the next generation of nightlife, entertainment, and hospitality businesses. We believe the most successful businesses are not built  through isolated activities. They are built through integrated systems.";
 
 
 export default function Hero2() {
@@ -87,8 +86,8 @@ export default function Hero2() {
 				<div className="w-full lg:w-1/2 flex flex-col items-start justify-center p-4 py-8">
 					<div className="flex flex-col gap-4">
 						<SequentialReveal
-							texts={[text1, text2, text3]}
-							className="text-heading-lg"
+							texts={[text1, text2]}
+							className="text-heading-xl"
 						/>
 
 						<TransitionLink className="group relative w-fit h-10 px-5 border-2 rounded-xl border-zinc-100 dark:border-white flex items-center justify-center overflow-hidden" href="/about">
@@ -101,7 +100,7 @@ export default function Hero2() {
 				</div>
 			</div>
 
-			<BottomDesc text1="© Featured Projects" text2="(CAD® — 03)" text3="Digital Showcase" className="text-black dark:text-zinc-400" />
+			<BottomDesc text1="Selected Projects" text3="Project Showcase" className="text-black dark:text-zinc-400" />
 		</div>
 	)
 }

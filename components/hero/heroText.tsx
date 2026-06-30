@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { headingClass } from "@/lib/constants";
+import BottomDesc from "../layout/bottomDesc/bottomDesc";
 
 const words = ["CULTURE.", "COMMUNITY.", "CONSISTENCY."];
 
@@ -14,7 +15,7 @@ interface HeroTextProps {
 export default function HeroText({ heroTitleRef }: HeroTextProps) {
 	return (
 		<div className="flex flex-col" id="top">
-			<div className="border-b border-zinc-100 dark:border-zinc-900 flex flex-col lg:flex-row items-end justify-between px-4 py-7 lg:px-7 gap-6 lg:gap-0">
+			<div className="border-b border-zinc-100 dark:border-zinc-900 flex flex-col lg:flex-row items-end justify-between px-4 py-7 lg:px-10 gap-6 lg:gap-0">
 				<div className="w-full lg:w-[45vw] lg:h-[45vh] flex flex-col font-twid font-medium text-3xl md:text-5xl lg:text-6xl leading-none">
 					<span>FROM EMPTY SPACES</span>
 					<span>TO HIGH-DEMAND DESTINATIONS</span>
@@ -37,14 +38,10 @@ export default function HeroText({ heroTitleRef }: HeroTextProps) {
 			<div className="py-2 w-full border-b border-zinc-100 dark:border-zinc-900 flex items-center justify-center px-4">
 				<motion.span ref={heroTitleRef} className={headingClass}>
 					<span>WILDBOYS TRIBE</span>
-					<span>NIGHTLIFE & ENTERTAINMENT ARCHITECTS</span>
 				</motion.span>
 			</div>
 
-			<div className="min-h-[6vh] w-full border-b border-zinc-100 dark:border-zinc-900 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2 px-4 lg:px-7 py-2 font-twid text-sm md:text-base lg:text-lg text-black dark:text-zinc-400">
-				<span>Powered by AI-enhanced workflows</span>
-				<span>Pune, Bangalore - India</span>
-			</div>
+			<BottomDesc text1="About Wildboy Tribe"  text3="Based in India" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
 		</div>
 	);
 }

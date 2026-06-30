@@ -7,6 +7,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const FRONT_IMAGES = ["/1.webp", "/2.webp", "/3.webp", "/4.webp", "/5.webp"];
+const LINE_1 = "SYSTEMS IN";
+const LINE_2 = "ACTION";
 
 export default function Hero() {
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -16,6 +18,36 @@ export default function Hero() {
 	const currentIndexRef = useRef(0);
 	const activeTimeline = useRef<gsap.core.Timeline | null>(null);
 	const isUnmounted = useRef(false);
+
+	const textRef = useRef<HTMLParagraphElement>(null);
+
+	useGSAP(() => {
+		gsap.set(textRef.current, { y: 100, opacity: 0 });
+		gsap.to(textRef.current, {
+			y: 0,
+			opacity: 1,
+			duration: 2,
+			ease: "power4.out",
+		});
+	}, { scope: textRef });
+
+	const TextRef = useRef<HTMLParagraphElement>(null);
+
+	useGSAP(
+		() => {
+			const letters = gsap.utils.toArray<HTMLElement>(".systems-letter");
+
+			gsap.set(letters, { y: 80, opacity: 0 });
+			gsap.to(letters, {
+				y: 0,
+				opacity: 1,
+				duration: 0.8,
+				ease: "power4.out",
+				stagger: 0.04,
+			});
+		},
+		{ scope: TextRef }
+	);
 
 	useGSAP(
 		() => {
@@ -101,10 +133,31 @@ export default function Hero() {
 		>
 			<div className="lg:h-full w-full flex flex-col items-center lg:items-start justify-center lg:justify-start z-30 py-5 lg:px-10 lg:py-20">
 				<span>
-					<p className="text-display-md md:text-display-lg lg:text-display-md font-anton z-30 flex">SYSTEMS IN ACTION</p>
+					<div
+						ref={TextRef}
+						className="text-display-md md:text-display-lg lg:text-display-lg font-anton z-30 flex flex-col"
+					>
+						<p className="flex flex-wrap overflow-hidden">
+							{LINE_1.split("").map((char, i) => (
+								<span key={`l1-${i}`} className="systems-letter inline-block" style={{ lineHeight: 1 }}>
+									{char === " " ? "\u00A0" : char}
+								</span>
+							))}
+						</p>
+						<p className="flex flex-wrap overflow-hidden">
+							{LINE_2.split("").map((char, i) => (
+								<span key={`l2-${i}`} className="systems-letter inline-block" style={{ lineHeight: 1 }}>
+									{char === " " ? "\u00A0" : char}
+								</span>
+							))}
+						</p>
+					</div>
 				</span>
 				<span className="text-center lg:text-start 2xl:w-[30vw] font-anton">
-					<p className="text-heading-md md:text-heading-lg text-zinc-400">This is where philosophy becomes execution. Every project is another proof that great destinations are built through systems—not chance. </p>
+					<p ref={textRef} className="text-heading-md md:text-heading-lg text-zinc-500">
+						This is where philosophy becomes execution. Every project is another
+						proof that great destinations are built through systems—not chance.
+					</p>
 				</span>
 			</div>
 

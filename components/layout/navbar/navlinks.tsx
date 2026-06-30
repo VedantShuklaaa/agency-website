@@ -17,18 +17,14 @@ export default function NavbarLinks({ onLinkClick }: NavbarLinksProps) {
 			{/* Desktop Navigation */}
 			<div className="hidden items-center justify-center gap-8 lg:flex">
 				<div className="flex items-center gap-2">
-					{firstHalf.map((item, i) => (
+					{firstHalf.map((item, idx) => (
 						<div
-							key={item.label}
+							key={idx}
 							className="flex items-center text-black hover:text-[#F04D5A] dark:text-zinc-400 dark:hover:text-[#F04D5A]"
 						>
 							<TransitionLink href={item.href} onClick={onLinkClick}>
 								<NavLink text={item.label} />
 							</TransitionLink>
-
-							{i < firstHalf.length - 1 && (
-								<span className="pointer-events-none">,</span>
-							)}
 						</div>
 					))}
 				</div>
@@ -36,7 +32,7 @@ export default function NavbarLinks({ onLinkClick }: NavbarLinksProps) {
 				<TransitionLink href="/" onClick={onLinkClick}>
 					<div className="relative h-30 w-30 overflow-hidden">
 						<Image
-							src="/wildboy.svg" // put your logo in /public
+							src="/wildboy.svg" 
 							alt="Wildboys Tribe Logo"
 							fill
 							className="object-contain p-1"
@@ -47,18 +43,14 @@ export default function NavbarLinks({ onLinkClick }: NavbarLinksProps) {
 				</TransitionLink>
 
 				<div className="flex items-center gap-2">
-					{secondHalf.map((item, i) => (
+					{secondHalf.map((item, idx) => (
 						<div
-							key={item.label}
+							key={idx}
 							className="flex items-center text-black hover:text-[#F04D5A] dark:text-zinc-400 dark:hover:text-[#F04D5A]"
 						>
 							<TransitionLink href={item.href} onClick={onLinkClick}>
 								<NavLink text={item.label} />
 							</TransitionLink>
-
-							{i < secondHalf.length - 1 && (
-								<span className="pointer-events-none">,</span>
-							)}
 						</div>
 					))}
 				</div>

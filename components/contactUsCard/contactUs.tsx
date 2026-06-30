@@ -6,7 +6,7 @@ import { navItems } from "@/lib";
 import { NavLink } from "@/components/layout/navAnimation/navAnimation";
 import TransitionLink from "../layout/pageTransition/transitionLink";
 
-const socialItems = ["Instagram", "LinkedIn", "Pinterest", "Behance"];
+const socialItems = ["Instagram", "LinkedIn", "Youtube", "Whatsapp"];
 
 const container = {
 	hidden: {},
@@ -47,24 +47,25 @@ export default function ContactUs() {
 					<div className="w-full flex flex-col gap-10">
 						<div className="flex flex-col gap-3">
 							<h2 className="text-3xl md:text-5xl lg:text-6xl leading-tight">
-								Let’s create something amazing together!
+								Ready to build what&apos;s next?
+								Bring the vision.
 							</h2>
 
 							<p className="text-lg md:text-xl text-black dark:text-zinc-400">
-								Reach out — we’d love to hear about your project and ideas.
+								We&apos;ll architect the operating system.
 							</p>
 						</div>
 
 						<div className="flex flex-col gap-2">
 							<span className="text-3xl md:text-4xl lg:text-5xl">
-								Stay connected®
+								Let&apos;s Build Together
 							</span>
 
 							<Link
 								href="mailto:contact@creativeapes.design"
 								className="text-lg md:text-xl lg:text-2xl text-[#FF0000] font-twid break-all"
 							>
-								contact@creativeapes.design
+								contact@wildboystribe.com
 							</Link>
 						</div>
 					</div>

@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import TransitionLink from "../layout/pageTransition/transitionLink";
 import HoverRevealCard from "./projectRevealCard";
+import BottomDesc from "../layout/bottomDesc/bottomDesc";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,6 +112,7 @@ export default function Projects() {
 					</TransitionLink>
 				</div>
 			</div>
+			<BottomDesc text1="Selected spaces" text3="Nightlife • Entertainment • Hospitality" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
 		</div>
 	);
 }
