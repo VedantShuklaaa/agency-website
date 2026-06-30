@@ -75,12 +75,11 @@ export default function Projects() {
 					</div>
 					<div className="flex items-center justify-center px-4 md:px-6 pb-6">
 						<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-[10px] group">
-							<Image
-								src="/AQUA_RUMBLE.webp"
-								alt="NAH"
-								fill
-								className="object-cover transition-transform duration-700 group-hover:scale-105"
-								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+							<HoverRevealCard
+								topSrc="/AQUA_RUMBLE.webp"
+								underSrc="/AQUA_RUMBLE.webp"
+								alt="NA"
+								priority
 							/>
 						</div>
 					</div>
@@ -93,12 +92,11 @@ export default function Projects() {
 					</div>
 					<div className="flex items-center justify-center px-4 md:px-6 pb-6">
 						<div className="project-card relative aspect-[16/10] w-full overflow-hidden rounded-[10px] group">
-							<Image
-								src="/KITTY&CHAOS.webp"
-								alt="NAH"
-								fill
-								className="object-cover transition-transform duration-700 group-hover:scale-105"
-								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 50vw"
+							<HoverRevealCard
+								topSrc="/KITTY&CHAOS.webp"
+								underSrc="/KITTY&CHAOS.webp"
+								alt="NA"
+								priority
 							/>
 						</div>
 					</div>
@@ -112,7 +110,7 @@ export default function Projects() {
 					</TransitionLink>
 				</div>
 			</div>
-			<BottomDesc text1="Selected spaces" text3="Nightlife • Entertainment • Hospitality" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400"/>
+			<BottomDesc text1="Selected spaces" text3="Nightlife • Entertainment • Hospitality" className="border-b border-zinc-100 dark:border-zinc-900 text-black dark:text-zinc-400" />
 		</div>
 	);
 }
